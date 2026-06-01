@@ -1,0 +1,16 @@
+{
+  "contactContent": {
+    "topBannerContext": "OMI PET SUPPORT — AVAILABLE 24/7 FOR CUSTOMERS",
+    "topBannerImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&auto=format&fit=crop&q=80",
+    "heroTitle": "Get in Touch",
+    "heroSubtitle": "Have questions about pets or our services? Contact Omi Pet today for expert guidance, trusted support, and personalized solutions for your beloved companions.",
+    "officeDetails": {
+      "title": "Omi Pet Support",
+      "address": "Omi Pet Agency, Main Road, Ranchi, Jharkhand, India",
+      "phone": "+91 98765 43210",
+      "email": "hello@Omipet.com",
+      "timings": "Mon — Fri: 09:00 AM - 06:00 PM IST"
+    },
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117223.79900197015!2d85.23892444107241!3d23.34318324293854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6899f43e!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1780035718911!5m2!1sen!2sin"
+  }
+}

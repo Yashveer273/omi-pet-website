@@ -1,0 +1,49 @@
+{
+  "reqContent": {
+    "heroTitle": "OMI PET PROJECTS",
+    "heroSubtitle": "Latest improvements enhancing pet services, user experience, and accessibility.",
+    "latestUpdates": [
+      {
+      "id": 1,
+      "tag": "Completed",
+      "title": "Pet Adoption And Listing Platform Launch",
+      "desc": "Successfully launched a user-friendly platform allowing visitors to explore, discover, and connect with trusted pet adoption opportunities.",
+      "bg": "bg-white"
+    },
+    {
+      "id": 2,
+      "tag": "Completed",
+      "title": "Pet Services Directory Integration",
+      "desc": "Added dedicated sections for breeders, trainers, walkers, clinics, boarding centers, and pet care professionals across categories.",
+      "bg": "bg-white"
+    },
+    {
+      "id": 3,
+      "tag": "In Progress",
+      "title": "Online Appointment Booking System Development",
+      "desc": "Developing a seamless appointment management system for pet consultations, grooming sessions, training programs, and veterinary services.",
+      "bg": "bg-white"
+    }
+    ],
+    "technicalSpecs": [
+      {
+      "id": "spec-1",
+      "category": "Platform Features",
+      "items": [
+        "Pet adoption and pet listing management across multiple categories.",
+        "Advanced search filters for breeds, services, locations, and pet types.",
+        "Secure contact and inquiry forms for pet owners and service providers."
+      ]
+      },
+      {
+      "id": "spec-2",
+      "category": "Service Requirements",
+      "items": [
+        "Verified breeders, trainers, walkers, and veterinary professionals.",
+        "Pet boarding and stay center information with booking capabilities.",
+        "Premium pet food, accessories, and healthcare product showcase sections."
+      ]
+      }
+    ]
+  }
+}

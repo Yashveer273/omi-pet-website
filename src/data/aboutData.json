@@ -1,0 +1,24 @@
+{
+  "aboutContent": {
+    "bannerTitle": "OMI PET — WHO WE ARE",
+    "bannerHeadline": "Providing Trusted Pet Care, Healthy Companions, and Expert Support Daily",
+    "mainHeading": "Our Story",
+    "storyCoverImage": "https://plus.unsplash.com/premium_photo-1661916447474-235409b19e16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGV0JTIwY2FyZXxlbnwwfHwwfHx8MA%3D%3D",
+    "paragraphs": [
+      "At Omi Pet, our journey began with a simple mission: to create a trusted destination where pet lovers can find everything they need for their beloved companions. We understand that pets are more than animals—they are cherished family members who deserve love, care, comfort, and attention throughout their lives.",
+      "Our platform was built to connect families with healthy pets, trusted breeders, professional trainers, reliable walkers, quality pet food, premium accessories, veterinary services, and comfortable stay centers. We wanted to make pet ownership easier by bringing all essential pet services together in one convenient place.",
+      "Over the years, Omi Pet has grown into a community dedicated to promoting responsible pet care and creating stronger bonds between pets and their owners. We focus on providing trusted information, expert guidance, and dependable services that help pets live healthier, happier, and more fulfilling lives."
+    ],
+    "companyValues": [
+      { "id": 1, "icon": "💡", "title": "Compassionate Pet Care", "desc": "We believe every pet deserves love, respect, proper care, and attention. Our services focus on improving pet well-being, comfort, happiness, and quality of life." },
+      { "id": 2, "icon": "🧬", "title": "Trust And Reliability", "desc": "We are committed to providing dependable services, verified professionals, and transparent support, helping pet owners make confident decisions for their beloved companions." },
+      { "id": 3, "icon": "🌍", "title": "Health And Happiness", "desc": "Our mission is promoting healthy lifestyles through nutrition, training, healthcare, and responsible pet ownership, ensuring happier pets and stronger family bonds." }
+    ],
+    "statistics": [
+      { "value": "15,000+", "label": "Happy Pets Served" },
+      { "value": "500+", "label": "Trusted Pet Experts" },
+      { "value": "120+", "label": "Partner Clinics" },
+      { "value": "98%", "label": "Customer Satisfaction" }
+    ]
+  }
+}
