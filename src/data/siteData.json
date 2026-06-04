@@ -1,10 +1,25 @@
 {
   "navigation": [
-    { "name": "Home", "path": "/" },
-    { "name": "About", "path": "/About" },
-    { "name": "Blog", "path": "/Blog" },
-    { "name": "Contact", "path": "/Contact" },
-    { "name": "Requirements", "path": "/Requirements" }
+    {
+      "name": "Home",
+      "path": "/"
+    },
+    {
+      "name": "About",
+      "path": "/About"
+    },
+    {
+      "name": "Blog",
+      "path": "/Blog"
+    },
+    {
+      "name": "Contact",
+      "path": "/Contact"
+    },
+    {
+      "name": "Requirements",
+      "path": "/Requirements"
+    }
   ],
   "branding": {
     "title": "OMI PET",
@@ -16,35 +31,35 @@
   },
   "recommendedSlider": [
     {
-    "id": 1,
-    "title": "Healthy Dogs Bringing Joy And Companionship To Every Family",
-    "tag": "Dogs",
-    "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600"
-  },
-  {
-    "id": 2,
-    "title": "Adorable Cats Living Happy And Comfortable Indoor Lives",
-    "tag": "Cats",
-    "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
-  },
-  {
-    "id": 3,
-    "title": "Colorful Birds Creating Beautiful Moments With Their Owners",
-    "tag": "Birds",
-    "image": "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600"
-  },
-  {
-    "id": 4,
-    "title": "Beautiful Aquarium Fish Thriving In Clean Water Environments",
-    "tag": "Fish",
-    "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600"
-  },
-  {
-    "id": 5,
-    "title": "Small Pets Offering Endless Fun And Daily Happiness",
-    "tag": "Small Animals",
-    "image": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600"
-  }
+      "id": 1,
+      "title": "Healthy Dogs Bringing Joy And Companionship To Every Family",
+      "tag": "Dogs",
+      "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600"
+    },
+    {
+      "id": 2,
+      "title": "Adorable Cats Living Happy And Comfortable Indoor Lives",
+      "tag": "Cats",
+      "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
+    },
+    {
+      "id": 3,
+      "title": "Colorful Birds Creating Beautiful Moments With Their Owners",
+      "tag": "Birds",
+      "image": "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600"
+    },
+    {
+      "id": 4,
+      "title": "Beautiful Aquarium Fish Thriving In Clean Water Environments",
+      "tag": "Fish",
+      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600"
+    },
+    {
+      "id": 5,
+      "title": "Small Pets Offering Endless Fun And Daily Happiness",
+      "tag": "Small Animals",
+      "image": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600"
+    }
   ],
   "homeContent": {
     "artist": "Trusted Pet Care",
@@ -69,10 +84,8 @@
       "https://images.unsplash.com/photo-1655761135788-a92466219d3e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1759745063505-ca18c2ccf77c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1571325654970-9c00c5432fcb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      
     ],
     "secondGalleryCover": "/src/assets/1.jpg",
-  
     "secondGalleryImages": [
       "https://plus.unsplash.com/premium_photo-1731693607351-d4f74ac3f7c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1573435567032-ff5982925350?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -95,434 +108,726 @@
     "heading": "Pets & Care Categories",
     "subheading": "Explore Dogs, Cats, Birds, Fish, Small Pets, and Trusted Veterinary Care Services",
     "speciesTabs": [
-      { "id": "dog", "name": "🐕 Dog" },
-      { "id": "cat", "name": "🐈 Cat" },
-      { "id": "small", "name": "🐹 Small Animal" },
-      { "id": "fish", "name": "🐟 Fish" },
-      { "id": "bird", "name": "🦜 Bird" },
-      { "id": "clinic", "name": "🏥 Clinic Form" }
+      {
+        "id": "dog",
+        "name": "🐕 Dog"
+      },
+      {
+        "id": "cat",
+        "name": "🐈 Cat"
+      },
+      {
+        "id": "small",
+        "name": "🐹 Small Animal"
+      },
+      {
+        "id": "fish",
+        "name": "🐟 Fish"
+      },
+      {
+        "id": "bird",
+        "name": "🦜 Bird"
+      },
+      {
+        "id": "clinic",
+        "name": "🏥 Clinic Form"
+      }
     ],
     "dogServices": [
-      { "id": "breed", "title": "Pet Breed", "desc": "Discover healthy and well-trained pet breeds with loving personalities, perfect companionship, and complete care support for your family needs.", "icon": "🧬", "triggerThirdLevel": true },
-      { "id": "breeder", "title": "Breeders", "desc": "Trusted breeders providing healthy, vaccinated, and responsibly raised pets with proper care, nutrition, and safe environments for every animal.", "icon": "🏡" },
-      { "id": "trainer", "title": "Trainers", "desc": "Professional pet trainers helping pets learn obedience, discipline, social behavior, and smart activities through friendly and effective training methods.", "icon": "🎓" },
-      { "id": "walker", "title": "Dog Walkers", "desc": "Reliable pet walkers ensuring your dogs stay active, healthy, energetic, and happy with safe daily walks and outdoor activities.", "icon": "🏃" },
-      { "id": "shed", "title": "Dog Studs", "desc": "Find popular dog breeds with unique personalities, playful nature, intelligence, loyalty, and suitability for different homes and lifestyles.", "icon": "⛺" },
-      { "id": "accessories", "title": "pet Accessories", "desc": "Shop stylish and comfortable pet accessories including collars, toys, beds, clothes, leashes, grooming kits, and everyday pet essentials.", "icon": "💎" },
-      { "id": "food", "title": "Pet Food", "desc": "Premium dog food made with healthy ingredients to support nutrition, strong immunity, energy, growth, and overall pet wellness daily.", "icon": "🥩" },
-      { "id": "stay", "title": "Stay Centres", "desc": "Safe and comfortable dog stay centers providing loving care, supervision, playtime, feeding, and relaxation while owners are away.", "icon": "🏨" }
+      {
+        "id": "breed",
+        "title": "Pet Breed",
+        "desc": "Discover healthy and well-trained pet breeds with loving personalities, perfect companionship, and complete care support for your family needs.",
+        "icon": "🧬",
+        "triggerThirdLevel": true
+      },
+      {
+        "id": "breeder",
+        "title": "Breeders",
+        "desc": "Trusted breeders providing healthy, vaccinated, and responsibly raised pets with proper care, nutrition, and safe environments for every animal.",
+        "icon": "🏡"
+      },
+      {
+        "id": "trainer",
+        "title": "Trainers",
+        "desc": "Professional pet trainers helping pets learn obedience, discipline, social behavior, and smart activities through friendly and effective training methods.",
+        "icon": "🎓"
+      },
+      {
+        "id": "walker",
+        "title": "Dog Walkers",
+        "desc": "Reliable pet walkers ensuring your dogs stay active, healthy, energetic, and happy with safe daily walks and outdoor activities.",
+        "icon": "🏃"
+      },
+      {
+        "id": "shed",
+        "title": "Dog Studs",
+        "desc": "Find popular dog breeds with unique personalities, playful nature, intelligence, loyalty, and suitability for different homes and lifestyles.",
+        "icon": "⛺"
+      },
+      {
+        "id": "accessories",
+        "title": "pet Accessories",
+        "desc": "Shop stylish and comfortable pet accessories including collars, toys, beds, clothes, leashes, grooming kits, and everyday pet essentials.",
+        "icon": "💎"
+      },
+      {
+        "id": "food",
+        "title": "Pet Food",
+        "desc": "Premium dog food made with healthy ingredients to support nutrition, strong immunity, energy, growth, and overall pet wellness daily.",
+        "icon": "🥩"
+      },
+      {
+        "id": "stay",
+        "title": "Stay Centres",
+        "desc": "Safe and comfortable dog stay centers providing loving care, supervision, playtime, feeding, and relaxation while owners are away.",
+        "icon": "🏨"
+      },
+      {
+        "id": "medicine",
+        "title": "Pet Medicine",
+        "desc": "Trusted pet medicine services offering prescription and over-the-counter medications, supplements, preventive care products, and expert guidance to support your pet’s health and well-being.",
+        "icon": "💊"
+      }
     ],
     "breedSizes": [
-      { "id": "small", "name": "Small Scale Breed" },
-      { "id": "medium", "name": "Medium Scale Breed" },
-      { "id": "large", "name": "Large Scale Breed" },
-      { "id": "giant", "name": "Giant Scale Breed" }
+      {
+        "id": "small",
+        "name": "Small Scale Breed"
+      },
+      {
+        "id": "medium",
+        "name": "Medium Scale Breed"
+      },
+      {
+        "id": "large",
+        "name": "Large Scale Breed"
+      },
+      {
+        "id": "giant",
+        "name": "Giant Scale Breed"
+      }
     ],
     "dogSliderData": {
       "breeder": [
-        { "id": 1, "title": "Healthy Pets From Trusted Breeding Experts", "desc": "Professionally raised pets with proper nutrition, hygiene, vaccinations, and loving care for healthy companionship.", "tag": "Breeding", "image": "https://images.unsplash.com/photo-1548658166-136d9f6a7e76?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9nJTIwYnJlZWVkfGVufDB8fDB8fHww" },
-        { "id": 2, "title": "Ethical Breeding With Complete Pet Care", "desc": "Responsible breeders ensuring safe environments, healthy growth, social behavior, and quality pet development every day.", "tag": "K9 Elite", "image": "https://plus.unsplash.com/premium_photo-1668606717900-0ecf91e55655?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZG9nJTIwYnJlZWVkfGVufDB8fDB8fHww" },
-        { "id": 3, "title": "Premium Quality Breeds For Loving Families", "desc": "Find friendly, active, and well-trained pets suitable for comfortable homes and caring family lifestyles.", "tag": "Breeding", "image": "https://plus.unsplash.com/premium_photo-1683134036144-82b0a3d50f11?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRvZyUyMGJyZWVlZHxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 4, "title": "Safe And Professional Pet Breeding Services", "desc": "Experienced breeders providing healthy pets with verified care routines, vaccinations, and proper early-stage attention.", "tag": "Breeding", "image": "https://plus.unsplash.com/premium_photo-1675431318990-710f8adf1e96?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRvZyUyMGJyZWVlZHxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 5, "title": "Find Perfect Pets With Trusted Breeders", "desc": "Connect with reliable breeders offering healthy, playful, and well-socialized pets for happy lifelong companionship.", "tag": "Breeding", "image": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600" }
+        {
+          "id": 1,
+          "title": "Healthy Pets From Trusted Breeding Experts",
+          "desc": "Professionally raised pets with proper nutrition, hygiene, vaccinations, and loving care for healthy companionship.",
+          "tag": "Breeding",
+          "image": "https://images.unsplash.com/photo-1548658166-136d9f6a7e76?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9nJTIwYnJlZWVkfGVufDB8fDB8fHww"
+        },
+        {
+          "id": 2,
+          "title": "Ethical Breeding With Complete Pet Care",
+          "desc": "Responsible breeders ensuring safe environments, healthy growth, social behavior, and quality pet development every day.",
+          "tag": "K9 Elite",
+          "image": "https://plus.unsplash.com/premium_photo-1668606717900-0ecf91e55655?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZG9nJTIwYnJlZWVkfGVufDB8fDB8fHww"
+        },
+        {
+          "id": 3,
+          "title": "Premium Quality Breeds For Loving Families",
+          "desc": "Find friendly, active, and well-trained pets suitable for comfortable homes and caring family lifestyles.",
+          "tag": "Breeding",
+          "image": "https://plus.unsplash.com/premium_photo-1683134036144-82b0a3d50f11?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRvZyUyMGJyZWVlZHxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 4,
+          "title": "Safe And Professional Pet Breeding Services",
+          "desc": "Experienced breeders providing healthy pets with verified care routines, vaccinations, and proper early-stage attention.",
+          "tag": "Breeding",
+          "image": "https://plus.unsplash.com/premium_photo-1675431318990-710f8adf1e96?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRvZyUyMGJyZWVlZHxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 5,
+          "title": "Find Perfect Pets With Trusted Breeders",
+          "desc": "Connect with reliable breeders offering healthy, playful, and well-socialized pets for happy lifelong companionship.",
+          "tag": "Breeding",
+          "image": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600"
+        }
       ],
       "trainer": [
-        { "id": 1, "title": "Professional Training For Smart And Obedient Pets", "desc": "Expert trainers helping pets learn discipline, commands, social behavior, and friendly interaction through effective training methods.", "tag": "Training", "image": "https://images.unsplash.com/photo-1596278852720-141ba859bbbf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZG9nJTIwdHJhaW5lcnxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 2, "title": "Trusted Pet Trainers For Better Behavior", "desc": "Improve your pet’s confidence, obedience, communication, and daily habits with caring and professional training support.", "tag": "Training", "image": "https://images.unsplash.com/photo-1660838528615-727eb57216e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwdHJhaW5lcnxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 3, "title": "Expert Guidance For Happy Trained Pets", "desc": "Friendly trainers providing customized lessons to develop smarter, active, disciplined, and socially confident pets every day.", "tag": "Training", "image": "https://plus.unsplash.com/premium_photo-1686523494950-e3b291024aad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRvZyUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D" },
-        { "id": 4, "title": "Smart Training Solutions For Every Pet", "desc": "Build strong bonding, positive habits, obedience skills, and playful behavior with experienced professional pet trainers.", "tag": "Training", "image": "https://images.unsplash.com/photo-1651226070331-ae9d64c55c35?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRvZyUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D" },
-        { "id": 5, "title": "Caring Trainers For Active And Friendly Pets", "desc": "Professional pet training services focused on behavior improvement, social skills, confidence, and healthy pet development.", "tag": "Training", "image": "https://images.unsplash.com/photo-1541888050297-a615ca315e96?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZyUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D" }
+        {
+          "id": 1,
+          "title": "Professional Training For Smart And Obedient Pets",
+          "desc": "Expert trainers helping pets learn discipline, commands, social behavior, and friendly interaction through effective training methods.",
+          "tag": "Training",
+          "image": "https://images.unsplash.com/photo-1596278852720-141ba859bbbf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZG9nJTIwdHJhaW5lcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 2,
+          "title": "Trusted Pet Trainers For Better Behavior",
+          "desc": "Improve your pet’s confidence, obedience, communication, and daily habits with caring and professional training support.",
+          "tag": "Training",
+          "image": "https://images.unsplash.com/photo-1660838528615-727eb57216e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwdHJhaW5lcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 3,
+          "title": "Expert Guidance For Happy Trained Pets",
+          "desc": "Friendly trainers providing customized lessons to develop smarter, active, disciplined, and socially confident pets every day.",
+          "tag": "Training",
+          "image": "https://plus.unsplash.com/premium_photo-1686523494950-e3b291024aad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRvZyUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 4,
+          "title": "Smart Training Solutions For Every Pet",
+          "desc": "Build strong bonding, positive habits, obedience skills, and playful behavior with experienced professional pet trainers.",
+          "tag": "Training",
+          "image": "https://images.unsplash.com/photo-1651226070331-ae9d64c55c35?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRvZyUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 5,
+          "title": "Caring Trainers For Active And Friendly Pets",
+          "desc": "Professional pet training services focused on behavior improvement, social skills, confidence, and healthy pet development.",
+          "tag": "Training",
+          "image": "https://images.unsplash.com/photo-1541888050297-a615ca315e96?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZyUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D"
+        }
       ],
       "walker": [
-        { "id": 1, "title": "Daily Walks For Happy Active Dogs", "desc": "Professional dog walkers keeping pets healthy, energetic, active, and stress-free through safe outdoor walking sessions.", "tag": "Fitness", "image": "https://images.unsplash.com/photo-1530700131180-d43d9b8cc41f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwd2Fsa2VyfGVufDB8fDB8fHww" },
-        { "id": 2, "title": "Trusted Walkers For Healthy Pet Lifestyle", "desc": "Experienced walkers providing enjoyable walks, exercise routines, and caring supervision for your beloved dogs every day.", "tag": "Fitness", "image": "https://images.unsplash.com/photo-1636998094055-ec16a40164f5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRvZyUyMHdhbGtlcnxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 3, "title": "Safe Outdoor Walks For Energetic Dogs", "desc": "Keep your dogs fit, playful, and socially active with reliable daily walking and outdoor activity services.", "tag": "Fitness", "image": "https://plus.unsplash.com/premium_photo-1715724784991-717221c25c4e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZG9nJTIwd2Fsa2VyJTIwc3RhbmR8ZW58MHx8MHx8fDA%3D" },
-        { "id": 4, "title": "Caring Dog Walkers For Busy Owners", "desc": "Friendly pet walkers ensuring your dogs receive exercise, attention, companionship, and fresh outdoor experiences regularly.", "tag": "Fitness", "image": "https://plus.unsplash.com/premium_photo-1663127332060-b3b7fb0b967e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRvZyUyMHdhbGtlciUyMHN0YW5kfGVufDB8fDB8fHww" },
-        { "id": 5, "title": "Reliable Walking Services For Loving Pets", "desc": "Professional walking support helping dogs maintain fitness, healthy habits, social interaction, and daily physical activity.", "tag": "Fitness", "image": "https://images.unsplash.com/photo-1760703740399-e99d8ab59486?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvZyUyMHdhbGtlciUyMHN0YW5kfGVufDB8fDB8fHww" }
+        {
+          "id": 1,
+          "title": "Daily Walks For Happy Active Dogs",
+          "desc": "Professional dog walkers keeping pets healthy, energetic, active, and stress-free through safe outdoor walking sessions.",
+          "tag": "Fitness",
+          "image": "https://images.unsplash.com/photo-1530700131180-d43d9b8cc41f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwd2Fsa2VyfGVufDB8fDB8fHww"
+        },
+        {
+          "id": 2,
+          "title": "Trusted Walkers For Healthy Pet Lifestyle",
+          "desc": "Experienced walkers providing enjoyable walks, exercise routines, and caring supervision for your beloved dogs every day.",
+          "tag": "Fitness",
+          "image": "https://images.unsplash.com/photo-1636998094055-ec16a40164f5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRvZyUyMHdhbGtlcnxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 3,
+          "title": "Safe Outdoor Walks For Energetic Dogs",
+          "desc": "Keep your dogs fit, playful, and socially active with reliable daily walking and outdoor activity services.",
+          "tag": "Fitness",
+          "image": "https://plus.unsplash.com/premium_photo-1715724784991-717221c25c4e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZG9nJTIwd2Fsa2VyJTIwc3RhbmR8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 4,
+          "title": "Caring Dog Walkers For Busy Owners",
+          "desc": "Friendly pet walkers ensuring your dogs receive exercise, attention, companionship, and fresh outdoor experiences regularly.",
+          "tag": "Fitness",
+          "image": "https://plus.unsplash.com/premium_photo-1663127332060-b3b7fb0b967e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRvZyUyMHdhbGtlciUyMHN0YW5kfGVufDB8fDB8fHww"
+        },
+        {
+          "id": 5,
+          "title": "Reliable Walking Services For Loving Pets",
+          "desc": "Professional walking support helping dogs maintain fitness, healthy habits, social interaction, and daily physical activity.",
+          "tag": "Fitness",
+          "image": "https://images.unsplash.com/photo-1760703740399-e99d8ab59486?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvZyUyMHdhbGtlciUyMHN0YW5kfGVufDB8fDB8fHww"
+        }
       ],
       "shed": [
-        { "id": 1, "title": "Comfortable Dog Stays With Loving Care", "desc": "Safe dog stay services providing comfort, supervision, feeding, playtime, and relaxation for pets during your absence.", "tag": "Sheds", "image": "https://images.unsplash.com/photo-1702499579843-2b316eca50cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D" },
-        { "id": 2, "title": "Trusted Dog Boarding For Happy Pets", "desc": "Professional pet stay centers ensuring dogs feel secure, active, comfortable, and cared for throughout their complete stay.", "tag": "Sheds", "image": "https://images.unsplash.com/photo-1595886578982-a9de564a984e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D" },
-        { "id": 3, "title": "Safe And Friendly Dog Stay Services", "desc": "Give your pets a clean, caring, and enjoyable environment with expert supervision and daily attention services.", "tag": "Sheds", "image": "https://images.unsplash.com/photo-1636837147362-4f2091789589?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D" },
-        { "id": 4, "title": "Premium Stay Centers For Comfortable Dogs", "desc": "Reliable dog stay facilities offering proper care, hygiene, healthy routines, and fun activities for every pet.", "tag": "Sheds", "image": "https://images.unsplash.com/photo-1596383924439-4d410af270f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D" },
-        { "id": 5, "title": "Caring Dog Stays For Stress-Free Owners", "desc": "Enjoy peace of mind knowing your dogs receive safety, comfort, love, and professional attention while staying.", "tag": "Sheds", "image": "https://images.unsplash.com/photo-1607754700425-e90c7ed81c6b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGRvZyUyMHNoZWRzfGVufDB8fDB8fHww" }
+        {
+          "id": 1,
+          "title": "Comfortable Dog Stays With Loving Care",
+          "desc": "Safe dog stay services providing comfort, supervision, feeding, playtime, and relaxation for pets during your absence.",
+          "tag": "Sheds",
+          "image": "https://images.unsplash.com/photo-1702499579843-2b316eca50cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 2,
+          "title": "Trusted Dog Boarding For Happy Pets",
+          "desc": "Professional pet stay centers ensuring dogs feel secure, active, comfortable, and cared for throughout their complete stay.",
+          "tag": "Sheds",
+          "image": "https://images.unsplash.com/photo-1595886578982-a9de564a984e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 3,
+          "title": "Safe And Friendly Dog Stay Services",
+          "desc": "Give your pets a clean, caring, and enjoyable environment with expert supervision and daily attention services.",
+          "tag": "Sheds",
+          "image": "https://images.unsplash.com/photo-1636837147362-4f2091789589?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 4,
+          "title": "Premium Stay Centers For Comfortable Dogs",
+          "desc": "Reliable dog stay facilities offering proper care, hygiene, healthy routines, and fun activities for every pet.",
+          "tag": "Sheds",
+          "image": "https://images.unsplash.com/photo-1596383924439-4d410af270f4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwc2hlZHN8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 5,
+          "title": "Caring Dog Stays For Stress-Free Owners",
+          "desc": "Enjoy peace of mind knowing your dogs receive safety, comfort, love, and professional attention while staying.",
+          "tag": "Sheds",
+          "image": "https://images.unsplash.com/photo-1607754700425-e90c7ed81c6b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGRvZyUyMHNoZWRzfGVufDB8fDB8fHww"
+        }
       ],
       "accessories": [
-        { "id": 1, "title": "Stylish Accessories For Happy And Active Dogs", "desc": "Discover comfortable collars, toys, beds, clothes, and essentials designed for your dog’s everyday comfort and fun.", "tag": "Gear", "image": "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nJTIwYWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D" },
-        { "id": 2, "title": "Premium Pet Accessories For Everyday Comfort", "desc": "Shop high-quality accessories that provide safety, style, relaxation, and convenience for your beloved pet companions daily.", "tag": "Gear", "image": "https://images.unsplash.com/photo-1600352712371-15fd49ca42b5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwYWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D" },
-        { "id": 3, "title": "Trendy Essentials For Smart And Playful Dogs", "desc": "Find modern pet accessories including leashes, bowls, grooming kits, and toys for active and happy pets.", "tag": "Gear", "image": "https://images.unsplash.com/photo-1583511666372-62fc211f8377?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZyUyMGFjY2Vzc29yaWVzfGVufDB8fDB8fHww" },
-        { "id": 4, "title": "Comfortable Products Designed For Loving Dogs", "desc": "Premium pet accessories crafted to improve comfort, safety, style, and enjoyable daily experiences for every pet.", "tag": "Gear", "image": "https://plus.unsplash.com/premium_photo-1723601193263-6b022f5c8eb5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZG9nJTIwYWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D" },
-        { "id": 5, "title": "Quality Accessories For Stylish Pet Lifestyle", "desc": "Upgrade your dog’s lifestyle with durable, fashionable, and comfortable accessories made for playful pet companions.", "tag": "Gear", "image": "https://images.unsplash.com/photo-1661340529386-53d959043b03?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvZyUyMGFjY2Vzc29yaWVzfGVufDB8fDB8fHww" }
+        {
+          "id": 1,
+          "title": "Stylish Accessories For Happy And Active Dogs",
+          "desc": "Discover comfortable collars, toys, beds, clothes, and essentials designed for your dog’s everyday comfort and fun.",
+          "tag": "Gear",
+          "image": "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nJTIwYWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 2,
+          "title": "Premium Pet Accessories For Everyday Comfort",
+          "desc": "Shop high-quality accessories that provide safety, style, relaxation, and convenience for your beloved pet companions daily.",
+          "tag": "Gear",
+          "image": "https://images.unsplash.com/photo-1600352712371-15fd49ca42b5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwYWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 3,
+          "title": "Trendy Essentials For Smart And Playful Dogs",
+          "desc": "Find modern pet accessories including leashes, bowls, grooming kits, and toys for active and happy pets.",
+          "tag": "Gear",
+          "image": "https://images.unsplash.com/photo-1583511666372-62fc211f8377?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZyUyMGFjY2Vzc29yaWVzfGVufDB8fDB8fHww"
+        },
+        {
+          "id": 4,
+          "title": "Comfortable Products Designed For Loving Dogs",
+          "desc": "Premium pet accessories crafted to improve comfort, safety, style, and enjoyable daily experiences for every pet.",
+          "tag": "Gear",
+          "image": "https://plus.unsplash.com/premium_photo-1723601193263-6b022f5c8eb5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZG9nJTIwYWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 5,
+          "title": "Quality Accessories For Stylish Pet Lifestyle",
+          "desc": "Upgrade your dog’s lifestyle with durable, fashionable, and comfortable accessories made for playful pet companions.",
+          "tag": "Gear",
+          "image": "https://images.unsplash.com/photo-1661340529386-53d959043b03?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvZyUyMGFjY2Vzc29yaWVzfGVufDB8fDB8fHww"
+        }
       ],
       "food": [
-        { "id": 1, "title": "Healthy Dog Food For Active Lifestyle", "desc": "Nutritious meals packed with healthy ingredients supporting energy, growth, immunity, and overall wellness for every dog.", "tag": "Nutrition", "image": "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 2, "title": "Premium Nutrition For Happy And Healthy Dogs", "desc": "Quality dog food made to improve digestion, strength, health, and daily activity for loving pet companions.", "tag": "Nutrition", "image": "https://images.unsplash.com/photo-1565674244283-993fb27a215f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 3, "title": "Balanced Meals For Strong And Energetic Dogs", "desc": "Provide your pets healthy nutrition with tasty meals supporting fitness, immunity, and proper growth every single day.", "tag": "Nutrition", "image": "https://plus.unsplash.com/premium_photo-1726761692986-6bcde87fc2b8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 4, "title": "Tasty And Nutritious Food For Dogs", "desc": "Delicious dog food prepared with quality ingredients for healthy digestion, strong bones, and active playful lifestyles.", "tag": "Nutrition", "image": "https://images.unsplash.com/photo-1682536192307-c25211b1d4ac?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 5, "title": "Complete Nutrition For Your Beloved Dogs", "desc": "Healthy dog food supporting balanced diets, better immunity, active routines, and long-term wellness for pets.", "tag": "Nutrition", "image": "https://images.unsplash.com/photo-1632236568054-12f36ecee2f6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" }
+        {
+          "id": 1,
+          "title": "Healthy Dog Food For Active Lifestyle",
+          "desc": "Nutritious meals packed with healthy ingredients supporting energy, growth, immunity, and overall wellness for every dog.",
+          "tag": "Nutrition",
+          "image": "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 2,
+          "title": "Premium Nutrition For Happy And Healthy Dogs",
+          "desc": "Quality dog food made to improve digestion, strength, health, and daily activity for loving pet companions.",
+          "tag": "Nutrition",
+          "image": "https://images.unsplash.com/photo-1565674244283-993fb27a215f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 3,
+          "title": "Balanced Meals For Strong And Energetic Dogs",
+          "desc": "Provide your pets healthy nutrition with tasty meals supporting fitness, immunity, and proper growth every single day.",
+          "tag": "Nutrition",
+          "image": "https://plus.unsplash.com/premium_photo-1726761692986-6bcde87fc2b8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 4,
+          "title": "Tasty And Nutritious Food For Dogs",
+          "desc": "Delicious dog food prepared with quality ingredients for healthy digestion, strong bones, and active playful lifestyles.",
+          "tag": "Nutrition",
+          "image": "https://images.unsplash.com/photo-1682536192307-c25211b1d4ac?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 5,
+          "title": "Complete Nutrition For Your Beloved Dogs",
+          "desc": "Healthy dog food supporting balanced diets, better immunity, active routines, and long-term wellness for pets.",
+          "tag": "Nutrition",
+          "image": "https://images.unsplash.com/photo-1632236568054-12f36ecee2f6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZG9nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+        }
       ],
       "stay": [
-        { "id": 1, "title": "Safe Pet Stay With Loving Care", "desc": "Comfortable pet stay services offering supervision, feeding, relaxation, playtime, and complete care for your pet companions.", "tag": "Boarding", "image": "https://images.unsplash.com/photo-1455103493930-a116f655b6c5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwc3RheXxlbnwwfHwwfHx8MA%3D%3D" },
-        { "id": 2, "title": "Trusted Stay Centers For Happy Pets", "desc": "Professional pet boarding facilities ensuring safety, hygiene, comfort, and enjoyable experiences during your pet’s complete stay.", "tag": "Boarding", "image": "https://images.unsplash.com/photo-1545328951-d483a3667ed0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D" },
-        { "id": 3, "title": "Comfortable Pet Boarding For Stress-Free Owners", "desc": "Reliable stay centers providing loving attention, healthy routines, and safe environments while owners are away from pets.", "tag": "Boarding", "image": "https://images.unsplash.com/photo-1540653767498-cd679b1faa23?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D" },
-        { "id": 4, "title": "Premium Pet Stay Services With Comfort", "desc": "Give your pets a caring, clean, and secure place with professional supervision and daily fun activities.", "tag": "Boarding", "image": "https://images.unsplash.com/photo-1613658243754-ef4f6026db3f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D" },
-        { "id": 5, "title": "Caring Stay Facilities For Every Pet", "desc": "Safe and friendly pet stay centers focused on comfort, happiness, hygiene, and personalized care for animals.", "tag": "Boarding", "image": "https://images.unsplash.com/photo-1549739098-f0b42840c7e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D" }
+        {
+          "id": 1,
+          "title": "Safe Pet Stay With Loving Care",
+          "desc": "Comfortable pet stay services offering supervision, feeding, relaxation, playtime, and complete care for your pet companions.",
+          "tag": "Boarding",
+          "image": "https://images.unsplash.com/photo-1455103493930-a116f655b6c5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwc3RheXxlbnwwfHwwfHx8MA%3D%3D"
+        },
+        {
+          "id": 2,
+          "title": "Trusted Stay Centers For Happy Pets",
+          "desc": "Professional pet boarding facilities ensuring safety, hygiene, comfort, and enjoyable experiences during your pet’s complete stay.",
+          "tag": "Boarding",
+          "image": "https://images.unsplash.com/photo-1545328951-d483a3667ed0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 3,
+          "title": "Comfortable Pet Boarding For Stress-Free Owners",
+          "desc": "Reliable stay centers providing loving attention, healthy routines, and safe environments while owners are away from pets.",
+          "tag": "Boarding",
+          "image": "https://images.unsplash.com/photo-1540653767498-cd679b1faa23?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 4,
+          "title": "Premium Pet Stay Services With Comfort",
+          "desc": "Give your pets a caring, clean, and secure place with professional supervision and daily fun activities.",
+          "tag": "Boarding",
+          "image": "https://images.unsplash.com/photo-1613658243754-ef4f6026db3f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          "id": 5,
+          "title": "Caring Stay Facilities For Every Pet",
+          "desc": "Safe and friendly pet stay centers focused on comfort, happiness, hygiene, and personalized care for animals.",
+          "tag": "Boarding",
+          "image": "https://images.unsplash.com/photo-1549739098-f0b42840c7e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGRvZyUyMHN0YXl8ZW58MHx8MHx8fDA%3D"
+        }
       ]
     },
     "catSliderData": [
-  {
-    "id": 1,
-    "title": "Healthy Persian Cats For Loving Families",
-    "desc": "Find playful Persian cats with beautiful coats, friendly personalities, and complete health care support daily.",
-    "tag": "Breed",
-    "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
-  },
-  {
-    "id": 2,
-    "title": "Nutritious Food For Active Indoor Cats",
-    "desc": "Premium healthy cat food supporting digestion, energy, immunity, and overall wellness for every breed.",
-    "tag": "Food",
-    "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600"
-  },
-  {
-    "id": 3,
-    "title": "Luxury Cat Boarding With Premium Comfort",
-    "desc": "Safe and comfortable cat stay centers providing supervision, hygiene, relaxation, and playful daily activities.",
-    "tag": "Stay",
-    "image": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600"
-  },
-  {
-    "id": 4,
-    "title": "Professional Grooming Services For Stylish Cats",
-    "desc": "Expert cat grooming services keeping pets clean, healthy, stylish, and comfortable throughout every season.",
-    "tag": "Grooming",
-    "image": "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600"
-  },
-  {
-    "id": 5,
-    "title": "Trusted Veterinary Care For Healthy Cats",
-    "desc": "Experienced pet doctors providing vaccinations, health checkups, treatments, and complete wellness support for cats.",
-    "tag": "Clinic",
-    "image": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=600"
-  }
-],
+      {
+        "id": 1,
+        "title": "Healthy Persian Cats For Loving Families",
+        "desc": "Find playful Persian cats with beautiful coats, friendly personalities, and complete health care support daily.",
+        "tag": "Breed",
+        "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
+      },
+      {
+        "id": 2,
+        "title": "Nutritious Food For Active Indoor Cats",
+        "desc": "Premium healthy cat food supporting digestion, energy, immunity, and overall wellness for every breed.",
+        "tag": "Food",
+        "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600"
+      },
+      {
+        "id": 3,
+        "title": "Luxury Cat Boarding With Premium Comfort",
+        "desc": "Safe and comfortable cat stay centers providing supervision, hygiene, relaxation, and playful daily activities.",
+        "tag": "Stay",
+        "image": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600"
+      },
+      {
+        "id": 4,
+        "title": "Professional Grooming Services For Stylish Cats",
+        "desc": "Expert cat grooming services keeping pets clean, healthy, stylish, and comfortable throughout every season.",
+        "tag": "Grooming",
+        "image": "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600"
+      },
+      {
+        "id": 5,
+        "title": "Trusted Veterinary Care For Healthy Cats",
+        "desc": "Experienced pet doctors providing vaccinations, health checkups, treatments, and complete wellness support for cats.",
+        "tag": "Clinic",
+        "image": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=600"
+      }
+    ],
     "smallAnimalSliderData": [
-  {
-    "id": 1,
-    "title": "Cute Small Pets For Happy Homes",
-    "desc": "Discover adorable small animals with playful behavior, friendly nature, and easy care for families daily.",
-    "tag": "Pets",
-    "image": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600"
-  },
-  {
-    "id": 2,
-    "title": "Healthy Food For Small Animal Care",
-    "desc": "Nutritious meals supporting growth, energy, digestion, immunity, and wellness for small pets every day.",
-    "tag": "Food",
-    "image": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600"
-  },
-  {
-    "id": 3,
-    "title": "Safe Stay Centers For Small Pets",
-    "desc": "Comfortable boarding spaces providing hygiene, supervision, feeding, relaxation, and loving care for small animals.",
-    "tag": "Stay",
-    "image": "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=600"
-  },
-  {
-    "id": 4,
-    "title": "Professional Grooming For Small Cute Animals",
-    "desc": "Gentle grooming services helping small pets stay clean, healthy, comfortable, and active throughout every season.",
-    "tag": "Grooming",
-    "image": "https://images.unsplash.com/photo-1452857297128-d9c29adba80b?w=600"
-  },
-  {
-    "id": 5,
-    "title": "Trusted Veterinary Services For Small Animals",
-    "desc": "Experienced veterinarians offering treatments, vaccinations, checkups, and complete healthcare support for small pets.",
-    "tag": "Clinic",
-    "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600"
-  }
-],
+      {
+        "id": 1,
+        "title": "Cute Small Pets For Happy Homes",
+        "desc": "Discover adorable small animals with playful behavior, friendly nature, and easy care for families daily.",
+        "tag": "Pets",
+        "image": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600"
+      },
+      {
+        "id": 2,
+        "title": "Healthy Food For Small Animal Care",
+        "desc": "Nutritious meals supporting growth, energy, digestion, immunity, and wellness for small pets every day.",
+        "tag": "Food",
+        "image": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600"
+      },
+      {
+        "id": 3,
+        "title": "Safe Stay Centers For Small Pets",
+        "desc": "Comfortable boarding spaces providing hygiene, supervision, feeding, relaxation, and loving care for small animals.",
+        "tag": "Stay",
+        "image": "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=600"
+      },
+      {
+        "id": 4,
+        "title": "Professional Grooming For Small Cute Animals",
+        "desc": "Gentle grooming services helping small pets stay clean, healthy, comfortable, and active throughout every season.",
+        "tag": "Grooming",
+        "image": "https://images.unsplash.com/photo-1452857297128-d9c29adba80b?w=600"
+      },
+      {
+        "id": 5,
+        "title": "Trusted Veterinary Services For Small Animals",
+        "desc": "Experienced veterinarians offering treatments, vaccinations, checkups, and complete healthcare support for small pets.",
+        "tag": "Clinic",
+        "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600"
+      }
+    ],
     "fishSliderData": [
-  {
-    "id": 1,
-    "title": "Colorful Aquarium Fish For Peaceful Homes",
-    "desc": "Discover vibrant aquarium fish bringing beauty, calmness, and relaxing underwater experiences to every living space.",
-    "tag": "Fish",
-    "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600"
-  },
-  {
-    "id": 2,
-    "title": "Healthy Fish Food For Better Growth",
-    "desc": "Nutritious fish food supporting energy, healthy growth, immunity, and vibrant colors for aquarium fish daily.",
-    "tag": "Food",
-    "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600"
-  },
-  {
-    "id": 3,
-    "title": "Premium Aquariums For Beautiful Fish Care",
-    "desc": "Modern aquariums designed for comfort, safety, clean environments, and healthy living conditions for fish.",
-    "tag": "Aquarium",
-    "image": "https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=600"
-  },
-  {
-    "id": 4,
-    "title": "Professional Aquarium Cleaning And Maintenance Services",
-    "desc": "Expert cleaning services maintaining water quality, hygiene, filtration, and healthy aquarium environments for fish.",
-    "tag": "Care",
-    "image": "https://images.unsplash.com/photo-1508182314998-3bd49473002f?w=600"
-  },
-  {
-    "id": 5,
-    "title": "Trusted Fish Care And Health Support",
-    "desc": "Reliable fish care solutions providing health guidance, treatments, feeding support, and aquarium wellness services.",
-    "tag": "Clinic",
-    "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600"
-  }
-],
+      {
+        "id": 1,
+        "title": "Colorful Aquarium Fish For Peaceful Homes",
+        "desc": "Discover vibrant aquarium fish bringing beauty, calmness, and relaxing underwater experiences to every living space.",
+        "tag": "Fish",
+        "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600"
+      },
+      {
+        "id": 2,
+        "title": "Healthy Fish Food For Better Growth",
+        "desc": "Nutritious fish food supporting energy, healthy growth, immunity, and vibrant colors for aquarium fish daily.",
+        "tag": "Food",
+        "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600"
+      },
+      {
+        "id": 3,
+        "title": "Premium Aquariums For Beautiful Fish Care",
+        "desc": "Modern aquariums designed for comfort, safety, clean environments, and healthy living conditions for fish.",
+        "tag": "Aquarium",
+        "image": "https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=600"
+      },
+      {
+        "id": 4,
+        "title": "Professional Aquarium Cleaning And Maintenance Services",
+        "desc": "Expert cleaning services maintaining water quality, hygiene, filtration, and healthy aquarium environments for fish.",
+        "tag": "Care",
+        "image": "https://images.unsplash.com/photo-1508182314998-3bd49473002f?w=600"
+      },
+      {
+        "id": 5,
+        "title": "Trusted Fish Care And Health Support",
+        "desc": "Reliable fish care solutions providing health guidance, treatments, feeding support, and aquarium wellness services.",
+        "tag": "Clinic",
+        "image": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600"
+      }
+    ],
     "birdSliderData": [
-  {
-    "id": 1,
-    "title": "Beautiful Birds For Happy Loving Homes",
-    "desc": "Discover colorful birds with cheerful voices, playful personalities, and friendly companionship for every family daily.",
-    "tag": "Birds",
-    "image": "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600"
-  },
-  {
-    "id": 2,
-    "title": "Healthy Bird Food For Active Lifestyle",
-    "desc": "Nutritious bird food supporting energy, immunity, healthy feathers, growth, and overall wellness for birds daily.",
-    "tag": "Food",
-    "image": "https://images.unsplash.com/photo-1501706362039-c6e13b4f69d4?w=600"
-  },
-  {
-    "id": 3,
-    "title": "Comfortable Bird Cages With Premium Safety",
-    "desc": "Spacious bird cages designed for comfort, safety, movement, relaxation, and healthy living environments for birds.",
-    "tag": "Cages",
-    "image": "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=600"
-  },
-  {
-    "id": 4,
-    "title": "Professional Bird Grooming And Care Services",
-    "desc": "Gentle bird care services helping pets stay clean, healthy, active, and comfortable throughout every season daily.",
-    "tag": "Care",
-    "image": "https://images.unsplash.com/photo-1497206365907-f5e630693df0?w=600"
-  },
-  {
-    "id": 5,
-    "title": "Trusted Veterinary Support For Pet Birds",
-    "desc": "Experienced bird specialists providing checkups, treatments, healthcare guidance, and wellness support for pet birds.",
-    "tag": "Clinic",
-    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600"
-  }
-]
+      {
+        "id": 1,
+        "title": "Beautiful Birds For Happy Loving Homes",
+        "desc": "Discover colorful birds with cheerful voices, playful personalities, and friendly companionship for every family daily.",
+        "tag": "Birds",
+        "image": "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600"
+      },
+      {
+        "id": 2,
+        "title": "Healthy Bird Food For Active Lifestyle",
+        "desc": "Nutritious bird food supporting energy, immunity, healthy feathers, growth, and overall wellness for birds daily.",
+        "tag": "Food",
+        "image": "https://images.unsplash.com/photo-1501706362039-c6e13b4f69d4?w=600"
+      },
+      {
+        "id": 3,
+        "title": "Comfortable Bird Cages With Premium Safety",
+        "desc": "Spacious bird cages designed for comfort, safety, movement, relaxation, and healthy living environments for birds.",
+        "tag": "Cages",
+        "image": "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=600"
+      },
+      {
+        "id": 4,
+        "title": "Professional Bird Grooming And Care Services",
+        "desc": "Gentle bird care services helping pets stay clean, healthy, active, and comfortable throughout every season daily.",
+        "tag": "Care",
+        "image": "https://images.unsplash.com/photo-1497206365907-f5e630693df0?w=600"
+      },
+      {
+        "id": 5,
+        "title": "Trusted Veterinary Support For Pet Birds",
+        "desc": "Experienced bird specialists providing checkups, treatments, healthcare guidance, and wellness support for pet birds.",
+        "tag": "Clinic",
+        "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600"
+      }
+    ]
   },
   "keepExploringSection": {
     "heading": "Keep exploring",
-    
     "pills": [
-      { "id": "New Born", "name": "New Born" },
-      { "id": "Adults", "name": "Adults" }
+      {
+        "id": "New Born",
+        "name": "New Born"
+      },
+      {
+        "id": "Adults",
+        "name": "Adults"
+      }
     ],
     "photographyData": [
-  {
-    "id": 1,
-    "author": "Healthy Puppy Care",
-    "title": "Learn essential puppy care tips, healthy feeding routines, grooming methods, and playful training activities for newborn puppies.",
-    "bg": "bg-[#D0EBE5]",
-    "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600"
-  },
-  {
-    "id": 2,
-    "author": "Cute Puppy Training",
-    "title": "Simple puppy training guidance helping newborn dogs develop discipline, confidence, social behavior, and healthy daily habits easily.",
-    "bg": "bg-[#E2E2E2]",
-    "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600"
-  },
-  {
-    "id": 3,
-    "author": "Newborn Puppy Nutrition",
-    "title": "Healthy nutrition plans supporting puppy growth, strong immunity, better digestion, energy levels, and active development every day.",
-    "bg": "bg-[#FADCD5]",
-    "image": "https://images.unsplash.com/photo-1525253086316-d0c936c814f8?w=600"
-  },
-  {
-    "id": 4,
-    "author": "Professional Puppy Grooming",
-    "title": "Gentle grooming services keeping newborn puppies clean, comfortable, healthy, stylish, and active throughout every changing season daily.",
-    "bg": "bg-[#E6E6E6]",
-    "image": "/src/assets/mm.jpeg"
-  },
-  {
-    "id": 5,
-    "author": "Happy Puppy Lifestyle",
-    "title": "Create joyful lifestyles for puppies with playful activities, comfortable spaces, healthy routines, and loving family companionship daily.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600"
-  },
-  {
-    "id": 6,
-    "author": "Trusted Puppy Healthcare",
-    "title": "Professional veterinary support providing vaccinations, regular health checkups, treatments, and wellness guidance for newborn puppies safely.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600"
-  },
-  {
-    "id": 7,
-    "author": "Safe Puppy Boarding",
-    "title": "Comfortable puppy boarding services offering supervision, feeding, hygiene, relaxation, and caring environments while owners stay away.",
-    "bg": "bg-[#F3EED9]",
-    "image": "/src/assets/l2.jpg"
-  },
-  {
-    "id": 8,
-    "author": "Playful Puppy Activities",
-    "title": "Fun activities helping puppies stay energetic, mentally active, socially confident, and emotionally happy with daily engagement routines.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1523480717984-24cba35ae1ef?w=600"
-  },
-  {
-    "id": 9,
-    "author": "Loving Puppy Companionship",
-    "title": "Build stronger bonds with newborn puppies through love, proper care, playful moments, and healthy companionship experiences daily.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
-  }
-],
+      {
+        "id": 1,
+        "author": "Healthy Puppy Care",
+        "title": "Learn essential puppy care tips, healthy feeding routines, grooming methods, and playful training activities for newborn puppies.",
+        "bg": "bg-[#D0EBE5]",
+        "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600"
+      },
+      {
+        "id": 2,
+        "author": "Cute Puppy Training",
+        "title": "Simple puppy training guidance helping newborn dogs develop discipline, confidence, social behavior, and healthy daily habits easily.",
+        "bg": "bg-[#E2E2E2]",
+        "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600"
+      },
+      {
+        "id": 3,
+        "author": "Newborn Puppy Nutrition",
+        "title": "Healthy nutrition plans supporting puppy growth, strong immunity, better digestion, energy levels, and active development every day.",
+        "bg": "bg-[#FADCD5]",
+        "image": "https://images.unsplash.com/photo-1525253086316-d0c936c814f8?w=600"
+      },
+      {
+        "id": 4,
+        "author": "Professional Puppy Grooming",
+        "title": "Gentle grooming services keeping newborn puppies clean, comfortable, healthy, stylish, and active throughout every changing season daily.",
+        "bg": "bg-[#E6E6E6]",
+        "image": "/src/assets/mm.jpeg"
+      },
+      {
+        "id": 5,
+        "author": "Happy Puppy Lifestyle",
+        "title": "Create joyful lifestyles for puppies with playful activities, comfortable spaces, healthy routines, and loving family companionship daily.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600"
+      },
+      {
+        "id": 6,
+        "author": "Trusted Puppy Healthcare",
+        "title": "Professional veterinary support providing vaccinations, regular health checkups, treatments, and wellness guidance for newborn puppies safely.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600"
+      },
+      {
+        "id": 7,
+        "author": "Safe Puppy Boarding",
+        "title": "Comfortable puppy boarding services offering supervision, feeding, hygiene, relaxation, and caring environments while owners stay away.",
+        "bg": "bg-[#F3EED9]",
+        "image": "/src/assets/l2.jpg"
+      },
+      {
+        "id": 8,
+        "author": "Playful Puppy Activities",
+        "title": "Fun activities helping puppies stay energetic, mentally active, socially confident, and emotionally happy with daily engagement routines.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1523480717984-24cba35ae1ef?w=600"
+      },
+      {
+        "id": 9,
+        "author": "Loving Puppy Companionship",
+        "title": "Build stronger bonds with newborn puppies through love, proper care, playful moments, and healthy companionship experiences daily.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
+      }
+    ],
     "somethingNewData": [
-  {
-    "id": 1,
-    "author": "Healthy Adult Dog Care",
-    "title": "Expert care routines helping adult dogs stay active, healthy, disciplined, and emotionally happy with proper daily attention.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1517423738875-5ce310acd3da?w=600"
-  },
-  {
-    "id": 2,
-    "author": "Professional Dog Training",
-    "title": "Advanced dog training methods improving obedience, confidence, social interaction, and discipline for active adult dogs daily.",
-    "bg": "bg-[#E6E6E6]",
-    "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600"
-  },
-  {
-    "id": 3,
-    "author": "Nutritious Food For Dogs",
-    "title": "Balanced nutrition plans supporting strength, healthy digestion, energy, immunity, and wellness for adult dogs every day.",
-    "bg": "bg-[#ECC9B8]",
-    "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600"
-  },
-  {
-    "id": 4,
-    "author": "Comfortable Dog Stay Centers",
-    "title": "Safe boarding facilities providing hygiene, supervision, feeding, relaxation, and enjoyable environments for adult dogs comfortably.",
-    "bg": "bg-[#D8E6C5]",
-    "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600"
-  },
-  {
-    "id": 5,
-    "author": "Trusted Veterinary Dog Services",
-    "title": "Experienced veterinarians offering vaccinations, treatments, regular checkups, and complete healthcare support for adult dogs safely.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600"
-  },
-  {
-    "id": 6,
-    "author": "Daily Walks For Dogs",
-    "title": "Professional walking services helping adult dogs stay fit, energetic, socially active, and mentally refreshed every single day.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1525253086316-d0c936c814f8?w=600"
-  },
-  {
-    "id": 7,
-    "author": "Premium Accessories For Dogs",
-    "title": "Stylish pet accessories including collars, beds, toys, leashes, and essentials designed for comfort and safety daily.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
-  },
- {
-  "id": 8,
-  "author": "Playful Activities For Adult Cats",
-  "title": "Fun activities keeping adult cats mentally active, physically agile, emotionally happy, and socially confident every day.",
-  "bg": "bg-[#F3EED9]",
-  "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
-},
-  {
-    "id": 9,
-    "author": "Loving Companionship For Dogs",
-    "title": "Build stronger bonds with adult dogs through proper care, playful moments, trust, and daily companionship experiences.",
-    "bg": "bg-[#F3EED9]",
-    "image": "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600"
-  }
-]
+      {
+        "id": 1,
+        "author": "Healthy Adult Dog Care",
+        "title": "Expert care routines helping adult dogs stay active, healthy, disciplined, and emotionally happy with proper daily attention.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1517423738875-5ce310acd3da?w=600"
+      },
+      {
+        "id": 2,
+        "author": "Professional Dog Training",
+        "title": "Advanced dog training methods improving obedience, confidence, social interaction, and discipline for active adult dogs daily.",
+        "bg": "bg-[#E6E6E6]",
+        "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600"
+      },
+      {
+        "id": 3,
+        "author": "Nutritious Food For Dogs",
+        "title": "Balanced nutrition plans supporting strength, healthy digestion, energy, immunity, and wellness for adult dogs every day.",
+        "bg": "bg-[#ECC9B8]",
+        "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600"
+      },
+      {
+        "id": 4,
+        "author": "Comfortable Dog Stay Centers",
+        "title": "Safe boarding facilities providing hygiene, supervision, feeding, relaxation, and enjoyable environments for adult dogs comfortably.",
+        "bg": "bg-[#D8E6C5]",
+        "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600"
+      },
+      {
+        "id": 5,
+        "author": "Trusted Veterinary Dog Services",
+        "title": "Experienced veterinarians offering vaccinations, treatments, regular checkups, and complete healthcare support for adult dogs safely.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600"
+      },
+      {
+        "id": 6,
+        "author": "Daily Walks For Dogs",
+        "title": "Professional walking services helping adult dogs stay fit, energetic, socially active, and mentally refreshed every single day.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1525253086316-d0c936c814f8?w=600"
+      },
+      {
+        "id": 7,
+        "author": "Premium Accessories For Dogs",
+        "title": "Stylish pet accessories including collars, beds, toys, leashes, and essentials designed for comfort and safety daily.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
+      },
+      {
+        "id": 8,
+        "author": "Playful Activities For Adult Cats",
+        "title": "Fun activities keeping adult cats mentally active, physically agile, emotionally happy, and socially confident every day.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
+      },
+      {
+        "id": 9,
+        "author": "Loving Companionship For Dogs",
+        "title": "Build stronger bonds with adult dogs through proper care, playful moments, trust, and daily companionship experiences.",
+        "bg": "bg-[#F3EED9]",
+        "image": "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600"
+      }
+    ]
   },
   "ourBlogSliderSection": {
     "heading": "Our Blog",
     "blogsData": [
-  {
-    "id": 1,
-    "author": "Pet Health Care",
-    "title": "Expert healthcare guidance helping pets stay healthy, active, protected, and comfortable through every stage of life.",
-    "bg": "bg-[#ECC9B8]",
-    "image": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600"
-  },
-  {
-    "id": 2,
-    "author": "Understanding Pet Behavior",
-    "title": "Learn pet emotions, communication signals, habits, and behaviors to build stronger relationships every day.",
-    "bg": "bg-[#D8E6C5]",
-    "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600"
-  },
-  {
-    "id": 3,
-    "author": "Aquarium Care Guide",
-    "title": "Simple aquarium maintenance tips ensuring healthy fish, clean water, and beautiful aquatic environments.",
-    "bg": "bg-[#D0EBE5]",
-    "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600"
-  },
-  {
-    "id": 4,
-    "author": "Healthy Pet Nutrition",
-    "title": "Balanced nutrition advice supporting growth, immunity, energy, digestion, and wellness for every pet.",
-    "bg": "bg-[#FADCD5]",
-    "image": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600"
-  },
-  {
-    "id": 5,
-    "author": "Pet Grooming Tips",
-    "title": "Professional grooming practices helping pets stay clean, comfortable, stylish, and healthy throughout the year.",
-    "bg": "bg-[#FADCD5]",
-    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
-  },
-  {
-    "id": 6,
-    "author": "Choosing Perfect Pets",
-    "title": "Find suitable pets based on lifestyle, family preferences, available space, and care requirements.",
-    "bg": "bg-[#FADCD5]",
-    "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
-  },
-  {
-    "id": 7,
-    "author": "Dog Training Advice",
-    "title": "Helpful training methods improving obedience, confidence, behavior, and communication between dogs and owners.",
-    "bg": "bg-[#FADCD5]",
-    "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600"
-  },
-  {
-    "id": 8,
-    "author": "Safe Pet Boarding",
-    "title": "Reliable boarding solutions providing comfort, safety, supervision, and personalized care while owners travel.",
-    "bg": "bg-[#FADCD5]",
-    "image": "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600"
-  },
-  {
-    "id": 9,
-    "author": "Life With Pets",
-    "title": "Discover ways to create joyful memories, stronger bonds, and happier experiences with beloved pets.",
-    "bg": "bg-[#FADCD5]",
-    "image": "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=600"
-  }
-]
+      {
+        "id": 1,
+        "author": "Pet Health Care",
+        "title": "Expert healthcare guidance helping pets stay healthy, active, protected, and comfortable through every stage of life.",
+        "bg": "bg-[#ECC9B8]",
+        "image": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600"
+      },
+      {
+        "id": 2,
+        "author": "Understanding Pet Behavior",
+        "title": "Learn pet emotions, communication signals, habits, and behaviors to build stronger relationships every day.",
+        "bg": "bg-[#D8E6C5]",
+        "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600"
+      },
+      {
+        "id": 3,
+        "author": "Aquarium Care Guide",
+        "title": "Simple aquarium maintenance tips ensuring healthy fish, clean water, and beautiful aquatic environments.",
+        "bg": "bg-[#D0EBE5]",
+        "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600"
+      },
+      {
+        "id": 4,
+        "author": "Healthy Pet Nutrition",
+        "title": "Balanced nutrition advice supporting growth, immunity, energy, digestion, and wellness for every pet.",
+        "bg": "bg-[#FADCD5]",
+        "image": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600"
+      },
+      {
+        "id": 5,
+        "author": "Pet Grooming Tips",
+        "title": "Professional grooming practices helping pets stay clean, comfortable, stylish, and healthy throughout the year.",
+        "bg": "bg-[#FADCD5]",
+        "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
+      },
+      {
+        "id": 6,
+        "author": "Choosing Perfect Pets",
+        "title": "Find suitable pets based on lifestyle, family preferences, available space, and care requirements.",
+        "bg": "bg-[#FADCD5]",
+        "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600"
+      },
+      {
+        "id": 7,
+        "author": "Dog Training Advice",
+        "title": "Helpful training methods improving obedience, confidence, behavior, and communication between dogs and owners.",
+        "bg": "bg-[#FADCD5]",
+        "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600"
+      },
+      {
+        "id": 8,
+        "author": "Safe Pet Boarding",
+        "title": "Reliable boarding solutions providing comfort, safety, supervision, and personalized care while owners travel.",
+        "bg": "bg-[#FADCD5]",
+        "image": "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600"
+      },
+      {
+        "id": 9,
+        "author": "Life With Pets",
+        "title": "Discover ways to create joyful memories, stronger bonds, and happier experiences with beloved pets.",
+        "bg": "bg-[#FADCD5]",
+        "image": "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=600"
+      }
+    ]
   },
   "proBannerSectionData": {
     "upperContext": "PART OF OMI PET",
@@ -534,9 +839,25 @@
     "title": "Have Questions About Pet Care?",
     "subtitle": "(We're Here To Help Us)",
     "linksGrid": {
-      "exploreBy": ["Home", "About Us", "Blogs", "Contact Us", "Update & Requirements"],
-      "wePresent": ["Dog", "Cat", "Small Animals", "Fish", "Birds"],
-      "weTransfer": ["Legal Terms", "Explore WeTransfer", "RSS"]
+      "exploreBy": [
+        "Home",
+        "About Us",
+        "Blogs",
+        "Contact Us",
+        "Update & Requirements"
+      ],
+      "wePresent": [
+        "Dog",
+        "Cat",
+        "Small Animals",
+        "Fish",
+        "Birds"
+      ],
+      "weTransfer": [
+        "Legal Terms",
+        "Explore WeTransfer",
+        "RSS"
+      ]
     }
   }
 }
