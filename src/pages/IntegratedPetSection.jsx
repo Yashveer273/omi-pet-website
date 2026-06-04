@@ -1,22 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   X, 
   ChevronRight, 
   ChevronLeft,
   MapPin,
-  Clock,
-  
-  Star,
- 
-  ShoppingBag,
-  Award
+
+  Award,
+  Search,
+  SlidersHorizontal,
+
+  ShoppingBag
 } from 'lucide-react';
-import { SwiperSlide,Swiper } from 'swiper/react';
+import { SwiperSlide, Swiper } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
 const PET_DATA_STORE = {
-  "heading": "Pets & Care Categories",
+  "heading": "Pets & Cat Categories",
   "subheading": "Explore Dogs, Cats, Birds, Fish, Small Pets, and Trusted Veterinary Care Services",
   "speciesTabs": [
     { "id": "dog", "name": "🐕 Dog", "prefix": "Dog", "foodIcon": "🥩" },
@@ -25,129 +26,70 @@ const PET_DATA_STORE = {
     { "id": "fish", "name": "🐟 Fish", "prefix": "Fish", "foodIcon": "🫙" },
     { "id": "bird", "name": "🦜 Bird", "prefix": "Bird", "foodIcon": "🌾" }
   ],
-  "combinedBreedFilters":  [
-  {
-    id: "all",
-    label: "All Breeds",
-    description: "Browse all available dog breeds."
-  },
-
-  {
-    id: "toy-breed",
-    label: "🧸 Toy Breeds",
-    description: "Tiny companion dogs that are easy to handle and perfect for small families."
-  },
-
-  {
-    id: "small-size",
-    label: "✨ Small Size",
-    description: "Compact breeds that require less space and are suitable for most homes."
-  },
-
-  {
-    id: "medium-size",
-    label: "✨ Medium Size",
-    description: "Balanced breeds with moderate exercise and space requirements."
-  },
-
-  {
-    id: "giant-size",
-    label: "🐕 Giant Size",
-    description: "Large and powerful breeds that need ample space and regular activity."
-  },
-
-  {
-    id: "apartment-breed",
-    label: "🏠 Apartment Breeds",
-    description: "Breeds well-suited for apartment living due to their size, temperament, and activity level."
-  },
-
-  {
-    id: "office-breed",
-    label: "💼 Office Breeds",
-    description: "Calm, friendly, and social breeds that adapt well to office environments."
-  },
-
-  {
-    id: "family-breed",
-    label: "👨‍👩‍👧‍👦 Family Breeds",
-    description: "Affectionate and gentle breeds that thrive around families and children."
-  },
-
-  {
-    id: "gifting-breed",
-    label: "🎁 Gifting Breeds",
-    description: "Popular companion breeds often chosen as memorable gifts for loved ones."
-  },
-
-  {
-    id: "farm-breed",
-    label: "🚜 Farm Breeds",
-    description: "Hard-working breeds known for herding, guarding livestock, and outdoor living."
-  },
-
-  {
-    id: "alarming-breed",
-    label: "🚨 Alert & Guard Breeds",
-    description: "Naturally alert breeds that quickly notify owners of unfamiliar activity."
-  },
-
-  {
-    id: "trending",
-    label: "🔥 Trending Breeds",
-    description: "Popular and highly sought-after breeds among pet lovers right now."
-  }
-],
-  // Dynamic directory mock data mapped by species and layout type
+  "combinedBreedFilters": [
+    { id: "all", label: "All Breeds" },
+    { id: "toy-breed", label: "🧸 Toy Breeds" },
+    { id: "small-size", label: "✨ Small Size" },
+    { id: "medium-size", label: "⚡ Medium Size" },
+    { id: "giant-size", label: "🐕 Giant Size" },
+    { id: "apartment-breed", label: "🏠 Apartment Breeds" },
+    { id: "office-breed", label: "💼 Office Breeds" },
+    { id: "family-breed", label: "👨‍👩‍👧‍👦 Family Breeds" },
+    { id: "gifting-breed", label: "🎁 Gifting Breeds" },
+    { id: "farm-breed", label: "🚜 Farm Breeds" },
+    { id: "alarming-breed", label: "🚨 Alert & Guard" },
+    { id: "trending", label: "🔥 Trending Breeds" }
+  ],
   "serviceDirectories": {
     "dog": {
       "breeder": [
         { "id": "b1", "title": "Royal Golden Kennels", "sub": "KCI Certified Breeder", "rating": "4.9", "loc": "Delhi, NCR", "meta": "Specialty: Golden Retrievers & Labs", "badge": "Verified Champion Lines", "img": "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=500" },
-        { "id": "b2", "title": "Elite Frenchie Haven", "sub": "Home-Raised Ethical Breeding", "rating": "4.8", "loc": "Mumbai", "meta": "Specialty: French Bulldogs", "badge": "Health Cleared Parents", "img": "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=500" }
+        { "id": "b2", "title": "Elite Frenchie Haven", "sub": "Home-Raised Ethical Breeding", "rating": "4.8", "loc": "Mumbai", "meta": "Specialty: French Bulldogs", "badge": "Health Cleared Parents", "img": "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=500" },
+        { "id": "b3", "title": "Vanguard Rottweilers", "sub": "KCI Working Class Registered", "rating": "4.9", "loc": "Punjab", "meta": "Specialty: Protection Line Rottweilers", "badge": "Import Lines", "img": "https://images.unsplash.com/photo-1567752881298-894bb81f9379?w=500" },
+        { "id": "b4", "title": "Majestic GSD Empire", "sub": "Schutzhund Titled Lineage", "rating": "4.7", "loc": "Bangalore", "meta": "Specialty: Working Line German Shepherds", "badge": "X-Ray Screened", "img": "https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=500" },
+        { "id": "b5", "title": "Pocket Paws Boutique", "sub": "Premium Toy & Teacup Breeds", "rating": "4.6", "loc": "Goa", "meta": "Specialty: Chihuahuas & Pomeranians", "badge": "Home Environment", "img": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500" }
       ],
       "trainer": [
         { "id": "t1", "title": "Captain Rohit Sharma", "sub": "Certified Canine Behaviorist", "rating": "5.0", "loc": "In-Home & Center", "meta": "Obedience, Socialization, Agility", "badge": "12+ Yrs Experience", "img": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" },
-        { "id": "t2", "title": "Bark Academy by Pooja", "sub": "Positive Reinforcement Specialist", "rating": "4.9", "loc": "Bangalore", "meta": "Puppy Potty Training & Leash Manners", "badge": "Fear-Free Certified", "img": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500" }
+        { "id": "t2", "title": "Bark Academy by Pooja", "sub": "Positive Reinforcement Specialist", "rating": "4.9", "loc": "Bangalore", "meta": "Puppy Potty Training & Leash Manners", "badge": "Fear-Free Certified", "img": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500" },
+        { "id": "t3", "title": "K9 Elite Command", "sub": "Protection & Guard Duty Coach", "rating": "4.8", "loc": "Hyderabad", "meta": "Advanced Protection, Tracker training", "badge": "Ex-Military Handler", "img": "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=500" },
+        { "id": "t4", "title": "Zen Dog Behavior Clinic", "sub": "Aggression Correction Specialist", "rating": "4.9", "loc": "Pune", "meta": "Rehabilitation for Reactive Dogs", "badge": "IAABC Certified", "img": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500" },
+        { "id": "t5", "title": "Smart Paws Agility Club", "sub": "Sports & Trick Training", "rating": "4.7", "loc": "Chennai", "meta": "Frisbee, Flyball, and Advanced Focus", "badge": "Competition Winner", "img": "https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?w=500" }
       ],
       "walker": [
-        { "id": "w1", "title": "Happy Paws Daily Walks", "sub": "Professional Dog Walker Group", "rating": "4.7", "loc": "South Delhi", "meta": "30/60 Min Slots • Live GPS Tracking", "badge": "Insured & Background Checked", "img": "https://images.unsplash.com/photo-1551712702-4b7335dd8706?w=500" }
+        { "id": "w1", "title": "Happy Paws Daily Walks", "sub": "Professional Dog Walker Group", "rating": "4.7", "loc": "South Delhi", "meta": "30/60 Min Slots • Live GPS Tracking", "badge": "Insured Checked", "img": "https://images.unsplash.com/photo-1551712702-4b7335dd8706?w=500" },
+        { "id": "w2", "title": "Wagging Tails Pack Walks", "sub": "Social Pack Walk Experts", "rating": "4.8", "loc": "West Mumbai", "meta": "Includes basic outdoor discipline training", "badge": "First-Aid Trained", "img": "https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=500" },
+        { "id": "w3", "title": "The Daily Strut Co.", "sub": "Solo Walkers for Sensitive Dogs", "rating": "4.9", "loc": "Kolkata", "meta": "One-on-One focused attention walks", "badge": "Verified Criminal Check", "img": "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=500" },
+        { "id": "w4", "title": "Paws & Paths Fitness", "sub": "High-Energy Running Partner", "rating": "4.6", "loc": "Chandigarh", "meta": "Trail runs and intense exercise sessions", "badge": "Athletic Handlers", "img": "https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=500" },
+        { "id": "w5", "title": "Little Paws Easy Strolls", "sub": "Tailored Walks for Senior Dogs", "rating": "4.9", "loc": "Ahmedabad", "meta": "Slow pacing, medication administration if needed", "badge": "Senior Care Certified", "img": "https://images.unsplash.com/photo-1514984879728-be0aff75a6e8?w=500" }
       ],
       "food": [
-        { "id": "f1", "title": "Premium Puppy Salmon & Rice", "sub": "Orijen Superfood Nutrition", "price": "₹4,200", "meta": "High Protein, Grain-Free recipe", "tag": "Best Seller", "img": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=500" },
-        { "id": "f2", "title": "Adult Fresh Chicken Meat Loaf", "sub": "Urban Aura Fresh Kitchen", "price": "₹1,800", "meta": "Freshly cooked human-grade food box", "tag": "100% Organic", "img": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500" }
+        { "id": "f1", "title": "Premium Puppy Salmon & Rice", "sub": "Orijen Superfood Nutrition", "meta": "High Protein, Grain-Free recipe", "tag": "Best Seller", "img": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=500" },
+        { "id": "f2", "title": "Adult Fresh Chicken Meat Loaf", "sub": "Urban Aura Fresh Kitchen", "meta": "Freshly cooked human-grade food box", "tag": "100% Organic", "img": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500" },
+        { "id": "f3", "title": "Active Adult Dry Kibble", "sub": "Royal Canin Breed Nutrition", "meta": "Formulated for high-stamina breeds", "tag": "Vet Choice", "img": "https://images.unsplash.com/photo-1608454504242-a422278694d8?w=500" },
+        { "id": "f4", "title": "Hypoallergenic Insect Protein", "sub": "Yora Eco Friendly Food", "meta": "For dogs with extreme meat allergies", "tag": "Eco Awarded", "img": "https://images.unsplash.com/photo-1569591159212-b02ea8a9f239?w=500" },
+        { "id": "f5", "title": "Raw Freeze-Dried Feast", "sub": "Primal Ancestral Diet", "meta": "90% Meat, Organ, and Bone blend", "tag": "Premium Grade", "img": "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=500" }
       ],
       "accessories": [
-        { "id": "a1", "title": "Ergonomic No-Pull Harness", "sub": "Durable Nylon with Reflective Strips", "price": "₹1,499", "meta": "Size: S, M, L, XL available", "tag": "Premium Build", "img": "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500" }
+        { "id": "a1", "title": "Ergonomic No-Pull Harness", "sub": "Durable Nylon with Reflective Strips", "meta": "Size: S, M, L, XL available", "tag": "Premium Build", "img": "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500" },
+        { "id": "a2", "title": "Orthopedic Memory Foam Bed", "sub": "Spine Support Therapeutic Mattress", "meta": "Washable plush outer cover", "tag": "Top Rated", "img": "https://images.unsplash.com/photo-1591946614720-90a587da4a36?w=500" },
+        { "id": "a3", "title": "Automatic Interactive Ball Launcher", "sub": "iFetch Electronic Toy", "meta": "Adjustable distance up to 30 feet", "tag": "Tech Award", "img": "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500" },
+        { "id": "a4", "title": "GPS Smart Tracker Collar", "sub": "Tractive Waterproof Locator", "meta": "Real-time tracking & health metrics", "tag": "Trending", "img": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=500" },
+        { "id": "a5", "title": "Heavy-Duty Stainless Steel Bowls", "sub": "Yeti Boomer Non-Slip Dishes", "meta": "Double-wall insulated food grade", "tag": "Lifetime Guard", "img": "https://images.unsplash.com/photo-1553901753-215db31720be?w=500" }
       ],
       "stay": [
-        { "id": "s1", "title": "Paws Luxury Resort & Spa", "sub": "Climate Controlled Boarding", "rating": "4.9", "loc": "Gurugram", "meta": "24/7 CCTV Access • Swimming Pool • Vet On Call", "badge": "5-Star Rating", "img": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=500" }
+        { "id": "s1", "title": "Paws Luxury Resort & Spa", "sub": "Climate Controlled Boarding", "rating": "4.9", "loc": "Gurugram", "meta": "24/7 CCTV Access • Swimming Pool • Vet On Call", "badge": "5-Star Rating", "img": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=500" },
+        { "id": "s2", "title": "The Bark Hotel", "sub": "Cage-Free Social Living", "rating": "4.8", "loc": "North Bangalore", "meta": "Large indoor play park, dynamic groups", "badge": "Verified Eco-Friendly", "img": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=500" },
+        { "id": "s3", "title": "Cozy Home Boarding", "sub": "Family-Style Private Care", "rating": "5.0", "loc": "South Mumbai", "meta": "Max 3 dogs at a time, sleeps in bed", "badge": "Top Host", "img": "https://images.unsplash.com/photo-1514984879728-be0aff75a6e8?w=500" },
+        { "id": "s4", "title": "Camp Canine Wilderness", "sub": "Farm & Field Adventure Stay", "rating": "4.7", "loc": "Karjat Ranch", "meta": "Acre of running space, agility run trials", "badge": "Nature Lover Pick", "img": "https://images.unsplash.com/photo-1444212477490-ca407925329e?w=500" },
+        { "id": "s5", "title": "Silver Paws Retirement Suite", "sub": "Specialized Geriatric Dog Stay", "rating": "4.9", "loc": "Noida", "meta": "Orthopedic bedding, medical schedule supervision", "badge": "Medical Staffed", "img": "https://images.unsplash.com/photo-1544568100-847a948585b9?w=500" }
       ],
       "medicine": [
-        { "id": "m1", "title": "Advanced Hip & Joint Supplements", "sub": "Beaphar Glucosamine Chews", "price": "₹850", "meta": "Supports bone density and cartilage health", "tag": "Vet Recommended", "img": "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=500" }
-      ]
-    },
-    "small": {
-      "breeder": [
-        { "id": "sb1", "title": "Tiny Paws Exotic Hamsteries", "sub": "Purebred Pedigree Specialist", "rating": "4.9", "loc": "Pune", "meta": "Syrian, Dwarf, and Roborovski setups", "badge": "Ethical Breeder", "img": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=500" }
-      ],
-      "trainer": [
-        { "id": "st1", "title": "Small Pet Habitats & Taming Clinic", "sub": "Small Mammal Expert Consultant", "rating": "4.8", "loc": "Virtual Consultation", "meta": "Handling advice, clicker training, bite corrections", "badge": "Rodent Expert", "img": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500" }
-      ],
-      "walker": [
-        { "id": "sw1", "title": "Enclosure Maintenance & Play Foraging", "sub": "In-Home Enrichment Handlers", "rating": "4.9", "loc": "Mumbai Suburbs", "meta": "Deep cage cleaning & out-of-cage supervised exercise", "badge": "Certified Handlers", "img": "https://images.unsplash.com/photo-1516715094727-ec48be335d79?w=500" }
-      ],
-      "food": [
-        { "id": "sf1", "title": "Gourmet Forage Seed & Fruit Mix", "sub": "Versele-Laga Hamster Nature", "price": "₹650", "meta": "Enriched with mealworms and premium nuts", "tag": "Top Pick", "img": "https://images.unsplash.com/photo-1608454504242-3b9579733de1?w=500" },
-        { "id": "sf2", "title": "Organic Premium Timothy Hay", "sub": "Oxbow Animal Health", "price": "₹890", "meta": "High-fiber hand-selected hay for Guinea Pigs/Rabbits", "tag": "Essential Daily", "img": "https://images.unsplash.com/photo-1533152162573-53d7450343f0?w=500" }
-      ],
-      "accessories": [
-        { "id": "sa1", "title": "Silent Running Spinner Wheel (11-inch)", "sub": "Exotic Nutrition Dual-Bearing", "price": "₹1,850", "meta": "Tail-safe wide track surface layout", "tag": "Super Quiet", "img": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=500" }
-      ],
-      "stay": [
-        { "id": "ss1", "title": "The Burrow Pocket-Pet Boarding", "sub": "Dedicated Small Rodent Safe Space", "rating": "5.0", "loc": "Noida", "meta": "Escape-proof quarantine rooms, customized fresh veggies diet", "badge": "Strict Safety Standards", "img": "https://images.unsplash.com/photo-1507682531662-421b17ac4f93?w=500" }
-      ],
-      "medicine": [
-        { "id": "sm1", "title": "Stabilized Vitamin C Daily Drops", "sub": "Oxbow Natural Science Supplements", "price": "₹720", "meta": "Prevents scurvy and builds strong immunity profiles", "tag": "Crucial Formula", "img": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=500" }
+        { "id": "m1", "title": "Advanced Hip & Joint Supplements", "sub": "Beaphar Glucosamine Chews", "meta": "Supports bone density and cartilage health", "tag": "Vet Recommended", "img": "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=500" },
+        { "id": "m2", "title": "Broad Spectrum Anti-Tick Spot-On", "sub": "Bravecto Chewable Tablet", "meta": "3 Months full flea & tick systemic shield", "tag": "Clinically Proven", "img": "https://images.unsplash.com/photo-1628771065518-0d82f1113871?w=500" },
+        { "id": "m3", "title": "Organic Calming Hemp Oils", "sub": "CannaPaw Stress relief drops", "meta": "Reduces separation anxiety & thunderstorm fear", "tag": "100% Natural", "img": "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=500" },
+        { "id": "m4", "title": "Probiotic Digestive Balance Powder", "sub": "FortiFlora Canine Formula", "meta": "Stops acute diarrhea, fixes gut microflora", "tag": "Global No. 1", "img": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500" },
+        { "id": "m5", "title": "Medicated Chlorhexidine Shampoo", "sub": "Ketochem Anti-Fungal Formula", "meta": "Cures ringworm, hot spots, and heavy flaking", "tag": "Fast Acting", "img": "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?w=500" }
       ]
     }
   },
@@ -157,7 +99,7 @@ const PET_DATA_STORE = {
         "breedId": "DOG-001",
         "name": "French Bulldog",
         "sizeGroup": "small-size",
-        "traitGroup": "apartment",
+        "traitGroup": "apartment-breed",
         "scaleAndType": "Small Size • Cozy & Adaptable",
         "origin": "France",
         "lifespan": "10-12 Years",
@@ -174,7 +116,7 @@ const PET_DATA_STORE = {
         "breedId": "DOG-002",
         "name": "Golden Retriever",
         "sizeGroup": "medium-size",
-        "traitGroup": "trending",
+        "traitGroup": "family-breed",
         "scaleAndType": "Medium Size • Ultimate Family Pet",
         "origin": "Scotland",
         "lifespan": "10-12 Years",
@@ -186,38 +128,425 @@ const PET_DATA_STORE = {
           "young": "Full of bright energy! Needs soft chew toys and lots of positive, rewarding praise.",
           "mature": "Loves playing backyard catch, swimming, and receiving a regular coat brushing to stay shiny."
         }
+      },
+      {
+        "breedId": "DOG-003",
+        "name": "Chihuahua",
+        "sizeGroup": "toy-breed",
+        "traitGroup": "gifting-breed",
+        "scaleAndType": "Toy Breed • Tiny Pack Leader",
+        "origin": "Mexico",
+        "lifespan": "12-20 Years",
+        "temperament": "Devoted, lively, alert, and quick-witted",
+        "puppyImg": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600",
+        "phaseLabels": { "young": "Tiny Pup Steps", "mature": "Vigilant Guard Companion" },
+        "developmentPhases": {
+          "young": "Needs gentle handling and careful warmth management during early stages.",
+          "mature": "Requires small-scale mental tracking games and structured socialization spaces."
+        }
+      },
+      {
+        "breedId": "DOG-004",
+        "name": "Tibetan Mastiff",
+        "sizeGroup": "giant-size",
+        "traitGroup": "alarming-breed",
+        "scaleAndType": "Giant Size • Majestic & Protective",
+        "origin": "Tibet",
+        "lifespan": "10-12 Years",
+        "temperament": "Tenacious, aloof, stubborn, and highly intelligent guardian",
+        "puppyImg": "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=600",
+        "phaseLabels": { "young": "Fluffy Colossus Pup", "mature": "Absolute Alpha Sentinel" },
+        "developmentPhases": {
+          "young": "Demands strict firm discipline boundary training combined with extensive socialization setups.",
+          "mature": "Thrives best when patrolling large territorial properties with consistent leadership parameters."
+        }
+      },
+      {
+        "breedId": "DOG-005",
+        "name": "Border Collie",
+        "sizeGroup": "medium-size",
+        "traitGroup": "office-breed",
+        "scaleAndType": "Medium Size • Brain & Work Leader",
+        "origin": "United Kingdom",
+        "lifespan": "12-15 Years",
+        "temperament": "Intelligent, energetic, alert, and responsive",
+        "puppyImg": "https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?w=600",
+        "phaseLabels": { "young": "Agile Learner Puppy", "mature": "Focused Workspace Exec" },
+        "developmentPhases": {
+          "young": "Demands consistent cognitive puzzles, agility training, and dynamic clicker reinforcement.",
+          "mature": "Excels at tactical spatial coordination, routine problem-solving, and high-focus assignments."
+        }
+      }
+    ],
+    "cat": [
+      {
+        "breedId": "CAT-001",
+        "name": "Persian Cat",
+        "sizeGroup": "small-size",
+        "traitGroup": "apartment-breed",
+        "scaleAndType": "Small Size • Regal Luxury",
+        "origin": "Iran",
+        "lifespan": "12-17 Years",
+        "temperament": "Quiet, dignified, sweet, and peaceful",
+        "puppyImg": "https://images.unsplash.com/photo-1614035030394-b6e5b01e0737?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1614035030394-b6e5b01e0737?w=600",
+        "phaseLabels": { "young": "Silk Kitten Phase", "mature": "Majestic Lounge Sovereign" },
+        "developmentPhases": {
+          "young": "Requires delicate daily coat detailing, tier-one nutrition mixes, and low-impact spaces.",
+          "mature": "Thrives beautifully in luxury silent spots, showcasing a calm demeanor and peak elegance."
+        }
+      },
+      {
+        "breedId": "CAT-002",
+        "name": "Maine Coon",
+        "sizeGroup": "giant-size",
+        "traitGroup": "family-breed",
+        "scaleAndType": "Giant Size • Gentle Forest Monarch",
+        "origin": "United States",
+        "lifespan": "12-15 Years",
+        "temperament": "Friendly, loving, curious, and gentle giant",
+        "puppyImg": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600",
+        "phaseLabels": { "young": "Fluffy Colossus Kitten", "mature": "Grand Domestic Guardian" },
+        "developmentPhases": {
+          "young": "Exhibits rapid bone development; requires heavy calcium monitoring and interaction matrices.",
+          "mature": "Possesses supreme water-resistant double coats; shows highly interactive and dog-like behavior."
+        }
+      },
+      {
+        "breedId": "CAT-003",
+        "name": "Siamese Cat",
+        "sizeGroup": "small-size",
+        "traitGroup": "office-breed",
+        "scaleAndType": "Small Size • Vocal Dynast",
+        "origin": "Thailand",
+        "lifespan": "12-20 Years",
+        "temperament": "Vocal, affectionate, active, social, and demanding",
+        "puppyImg": "https://images.unsplash.com/photo-1513360309081-36f20c28596f?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1513360309081-36f20c28596f?w=600",
+        "phaseLabels": { "young": "Chatty Blue-Eyed Sprite", "mature": "Sleek Interactive Executive" },
+        "developmentPhases": {
+          "young": "Demands intensive vocal tracking stimulation and clicker training structures.",
+          "mature": "Thrives on complex interactive puzzle trees and constants of human communication."
+        }
+      },
+      {
+        "breedId": "CAT-004",
+        "name": "Bengal Cat",
+        "sizeGroup": "medium-size",
+        "traitGroup": "trending",
+        "scaleAndType": "Medium Size • Domestic Leopard",
+        "origin": "United States",
+        "lifespan": "12-16 Years",
+        "temperament": "High-energy, confident, highly wild-natured, athletic",
+        "puppyImg": "https://images.unsplash.com/photo-1574158622643-69d34d72650a?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1574158622643-69d34d72650a?w=600",
+        "phaseLabels": { "young": "Wild Spotted Speedster", "mature": "Apex Vertical Explorer" },
+        "developmentPhases": {
+          "young": "Requires structural cat-wheel dynamic conditioning and high vertical climbing pillars.",
+          "mature": "Loves processing water toys, fishing simulations, and complex leash-walking maps."
+        }
+      },
+      {
+        "breedId": "CAT-005",
+        "name": "Ragdoll Cat",
+        "sizeGroup": "medium-size",
+        "traitGroup": "gifting-breed",
+        "scaleAndType": "Medium Size • Plush Velvet Companion",
+        "origin": "United States",
+        "lifespan": "13-18 Years",
+        "temperament": "Docile, gentle, placid, exceptionally affectionate",
+        "puppyImg": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600",
+        "phaseLabels": { "young": "Fluffy Pillow Fledgling", "mature": "The Complete Living Plush" },
+        "developmentPhases": {
+          "young": "Prone to floor-drop relaxation habits; needs ultra-soft padded landing pads.",
+          "mature": "Perfect lap partner; acts with extreme trust models and low stress metrics."
+        }
       }
     ],
     "small": [
       {
-        "breedId": "SMALL-001",
+        "breedId": "SMP-001",
         "name": "Syrian Hamster",
-        "sizeGroup": "small-size",
-        "traitGroup": "apartment",
-        "scaleAndType": "Pocket Size • Gentle & Solitary",
+        "sizeGroup": "toy-breed",
+        "traitGroup": "apartment-breed",
+        "scaleAndType": "Toy Variant • Solitary Architect",
         "origin": "Syria",
         "lifespan": "2-3 Years",
-        "temperament": "Curious, quiet, active at night, and loves exploring tunnels",
+        "temperament": "Solitary, active, territorial, and curious",
         "puppyImg": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600",
-        "adultImg": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600",
-        "phaseLabels": { "young": "Tiny Pup Phase", "mature": "Active Explorer Stage" },
+        "adultImg": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600",
+        "phaseLabels": { "young": "Micro Forager", "mature": "Night-Shift Master Builder" },
         "developmentPhases": {
-          "young": "Requires a safe nesting space, premium seed mix, and zero handling during the first two weeks.",
-          "mature": "Enjoys running on solid exercise wheels, foraging for healthy treats, and burrowing deep into soft bedding."
+          "young": "Needs specialized high-wheel security checks and complex burrow bedding setups.",
+          "mature": "Highly active tunnel network manager; loves independent processing matrices."
+        }
+      },
+      {
+        "breedId": "SMP-002",
+        "name": "Abyssinian Guinea Pig",
+        "sizeGroup": "small-size",
+        "traitGroup": "family-breed",
+        "scaleAndType": "Small Size • Rosetted Vocalist",
+        "origin": "Andes Mountains",
+        "lifespan": "5-7 Years",
+        "temperament": "Social, expressive, gentle, conversational",
+        "puppyImg": "https://images.unsplash.com/photo-1534833219166-d830b501174d?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1534833219166-d830b501174d?w=600",
+        "phaseLabels": { "young": "Wheeking Tiny Popcorn", "mature": "Herbal Foraging Maestro" },
+        "developmentPhases": {
+          "young": "Demands massive structural Vitamin C injections and social alignment pairings.",
+          "mature": "Thrives on high-volume Timothy hay diets and predictable family interaction loops."
+        }
+      },
+      {
+        "breedId": "SMP-003",
+        "name": "Holland Lop Rabbit",
+        "sizeGroup": "medium-size",
+        "traitGroup": "trending",
+        "scaleAndType": "Medium Size • Floppy-Eared Charmer",
+        "origin": "Netherlands",
+        "lifespan": "7-12 Years",
+        "temperament": "Docile, intelligent, energetic, deeply affectionate",
+        "puppyImg": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600",
+        "phaseLabels": { "young": "Bounding Velvet Kit", "mature": "Free-Roam Territory King" },
+        "developmentPhases": {
+          "young": "Needs strict environmental chew-proofing and gentle physical handling safety protocols.",
+          "mature": "Excels inside litter-trained free-roam rooms with intense cardboard puzzle grids."
+        }
+      },
+      {
+        "breedId": "SMP-004",
+        "name": "Long-Tailed Chinchilla",
+        "sizeGroup": "small-size",
+        "traitGroup": "gifting-breed",
+        "scaleAndType": "Small Size • High-Density Cloud",
+        "origin": "Andes Region",
+        "lifespan": "10-15 Years",
+        "temperament": "Skittish, highly energetic, nocturnal, fast-moving",
+        "puppyImg": "https://images.unsplash.com/photo-1588612140445-91ff800fc482?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1588612140445-91ff800fc482?w=600",
+        "phaseLabels": { "young": "Micro-Fur Lightning Bolt", "mature": "Volcanic Dust-Bath Acrobat" },
+        "developmentPhases": {
+          "young": "Strict zero-moisture framework required; needs specialized volcanic ash bath setups.",
+          "mature": "Demands strict climate control under 23°C to completely avoid heat exhaustion loops."
+        }
+      },
+      {
+        "breedId": "SMP-005",
+        "name": "Marshall Ferret",
+        "sizeGroup": "medium-size",
+        "traitGroup": "office-breed",
+        "scaleAndType": "Medium Size • Elongated Shadow Rogue",
+        "origin": "Europe",
+        "lifespan": "6-9 Years",
+        "temperament": "Mischievous, hyper-curious, silent, deeply playful",
+        "puppyImg": "https://images.unsplash.com/photo-1615089728254-8e10086bc57a?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1615089728254-8e10086bc57a?w=600",
+        "phaseLabels": { "young": "Hissing Micro-Weasel", "mature": "Master Plastic-Tube Navigator" },
+        "developmentPhases": {
+          "young": "Requires complex bite-inhibition tracking protocols and early harness alignment.",
+          "mature": "Thrives on sleeping 18 hours and spending 6 hours executing structural maze sprints."
+        }
+      }
+    ],
+    "fish": [
+      {
+        "breedId": "FSH-001",
+        "name": "Super Delta Betta",
+        "sizeGroup": "toy-breed",
+        "traitGroup": "office-breed",
+        "scaleAndType": "Toy Variant • Aquatic Masterpiece",
+        "origin": "Southeast Asia",
+        "lifespan": "3-5 Years",
+        "temperament": "Territorial, elegant, prideful, and visually responsive",
+        "puppyImg": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600",
+        "phaseLabels": { "young": "Vibrant Fry Growth", "mature": "Chromatic Desk Sovereign" },
+        "developmentPhases": {
+          "young": "Requires highly monitored micro-filtration systems and warm steady water variables.",
+          "mature": "Displays grand scale fin flare patterns; perfectly fine inside peaceful standalone desktop tanks."
+        }
+      },
+      {
+        "breedId": "FSH-002",
+        "name": "Red Tiger Discus",
+        "sizeGroup": "medium-size",
+        "traitGroup": "trending",
+        "scaleAndType": "Medium Size • King of Fresh Water",
+        "origin": "Amazon Basin",
+        "lifespan": "10-15 Years",
+        "temperament": "Peaceful, timid, high-maintenance, schooling",
+        "puppyImg": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600",
+        "phaseLabels": { "young": "Striated Cryptic Fry", "mature": "Grand Discus Monarch" },
+        "developmentPhases": {
+          "young": "Demands daily 50% automated water updates and high temperature parameter tracking.",
+          "mature": "Requires complex planted community tanks with low-flow filtration configurations."
+        }
+      },
+      {
+        "breedId": "FSH-003",
+        "name": "Oranda Goldfish",
+        "sizeGroup": "small-size",
+        "traitGroup": "family-breed",
+        "scaleAndType": "Small Size • Bubble-Crowned Swimmer",
+        "origin": "East Asia",
+        "lifespan": "10-20 Years",
+        "temperament": "Docile, highly social, slow-moving, food-motivated",
+        "puppyImg": "https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=600",
+        "phaseLabels": { "young": "Sleek Orange Starter", "mature": "Grand Velvet Wen Sovereign" },
+        "developmentPhases": {
+          "young": "Needs clean sand substrates to prevent delicate mouth injuries during floor feeding.",
+          "mature": "Develops a prominent head growth (Wen); demands completely smooth decoration elements to avoid tears."
+        }
+      },
+      {
+        "breedId": "FSH-004",
+        "name": "Neon Tetra",
+        "sizeGroup": "toy-breed",
+        "traitGroup": "apartment-breed",
+        "scaleAndType": "Toy Variant • Electric Schooler",
+        "origin": "South America",
+        "lifespan": "5-8 Years",
+        "temperament": "Peaceful, energetic, hyper-communal, shoaling",
+        "puppyImg": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600",
+        "phaseLabels": { "young": "Micro-Translucent Line", "mature": "Neon Light Synchronization" },
+        "developmentPhases": {
+          "young": "Requires strict protection from filter intake currents using sponge guards.",
+          "mature": "Thrives best in schools of 10+ inside dark-water planted display arrangements."
+        }
+      },
+      {
+        "breedId": "FSH-005",
+        "name": "Electric Blue Ram",
+        "sizeGroup": "small-size",
+        "traitGroup": "gifting-breed",
+        "scaleAndType": "Small Size • Neon Cichlid Sentinel",
+        "origin": "Orinoco River",
+        "lifespan": "3-4 Years",
+        "temperament": "Territorial but peaceful, loyal pair-bonding",
+        "puppyImg": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600",
+        "phaseLabels": { "young": "Pale Sapphire Juvenile", "mature": "Iridescent Terrestrial Guard" },
+        "developmentPhases": {
+          "young": "Extremely susceptible to nitrates; demands premium chemical resin filtration matrices.",
+          "mature": "Establishes small structural flat-stone breeding nests; highly active defender of young."
+        }
+      }
+    ],
+    "bird": [
+      {
+        "breedId": "BRD-001",
+        "name": "Indian Ringneck",
+        "sizeGroup": "small-size",
+        "traitGroup": "trending",
+        "scaleAndType": "Small Size • Vocal Mastermind",
+        "origin": "India",
+        "lifespan": "20-30 Years",
+        "temperament": "Intelligent, charismatic, vocal, and deeply expressive",
+        "puppyImg": "https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?w=600",
+        "phaseLabels": { "young": "Fledgling Linguistic Scholar", "mature": "High-Fidelity Vocal Leader" },
+        "developmentPhases": {
+          "young": "Demands intensive direct human handling, step-up coordination training, and vocal modeling.",
+          "mature": "Possesses incredible vocabulary recollection and highly complex puzzle-solving capacity."
+        }
+      },
+      {
+        "breedId": "BRD-002",
+        "name": "Hyacinth Macaw",
+        "sizeGroup": "giant-size",
+        "traitGroup": "alarming-breed",
+        "scaleAndType": "Giant Size • Cobalt Cobalt Titan",
+        "origin": "South America",
+        "lifespan": "50-60 Years",
+        "temperament": "Gentle giant, highly social, exceptionally strong, loyal",
+        "puppyImg": "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=600",
+        "phaseLabels": { "young": "Destructive Beak Nestling", "mature": "Majestic Blue Aviary King" },
+        "developmentPhases": {
+          "young": "Requires heavy raw macadamia oil nutrition and intense structure-chewing redirection.",
+          "mature": "Demands massive custom alloy enclosures and constant multi-hour socialization blocks."
+        }
+      },
+      {
+        "breedId": "BRD-003",
+        "name": "Cockatiel",
+        "sizeGroup": "small-size",
+        "traitGroup": "family-breed",
+        "scaleAndType": "Small Size • Crested Whistler",
+        "origin": "Australia",
+        "lifespan": "15-20 Years",
+        "temperament": "Gentle, cheerful, highly musical, easygoing",
+        "puppyImg": "https://images.unsplash.com/photo-1522850959403-e28d1c9ef007?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1522850959403-e28d1c9ef007?w=600",
+        "phaseLabels": { "young": "Hissing Tufted Fledgling", "mature": "Melodic Household Whistle-Pro" },
+        "developmentPhases": {
+          "young": "Requires consistent hand-feeding temperature matching and basic wing safety monitoring.",
+          "mature": "Thrives on mimicking household tunes, whistle cues, and regular head-scratch bonding loops."
+        }
+      },
+      {
+        "breedId": "BRD-004",
+        "name": "African Grey Parrot",
+        "sizeGroup": "medium-size",
+        "traitGroup": "office-breed",
+        "scaleAndType": "Medium Size • Cognitive Elite",
+        "origin": "Equatorial Africa",
+        "lifespan": "40-60 Years",
+        "temperament": "Analytical, highly intelligent, sensitive, quiet observer",
+        "puppyImg": "https://images.unsplash.com/photo-1522745343448-6c5b620022ec?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1522745343448-6c5b620022ec?w=600",
+        "phaseLabels": { "young": "Observational Charcoal Chick", "mature": "Contextual Language Oracle" },
+        "developmentPhases": {
+          "young": "Needs absolute avoidance of emotional isolation to completely eliminate feather-plucking loops.",
+          "mature": "Capable of structural label association, logic puzzles, and complete sentence formation."
+        }
+      },
+      {
+        "breedId": "BRD-005",
+        "name": "Sun Conure",
+        "sizeGroup": "small-size",
+        "traitGroup": "gifting-breed",
+        "scaleAndType": "Small Size • Solar Flare Acrobat",
+        "origin": "South America",
+        "lifespan": "15-25 Years",
+        "temperament": "Playful, high-volume, bold, expressive, cuddly",
+        "puppyImg": "https://images.unsplash.com/photo-1601991401345-d85c4f2ae867?w=600",
+        "adultImg": "https://images.unsplash.com/photo-1601991401345-d85c4f2ae867?w=600",
+        "phaseLabels": { "young": "Green-Winged Fire Cracker", "mature": "Vivid Golden Sun Sentinel" },
+        "developmentPhases": {
+          "young": "Requires sound-dampening positive reinforcement to manage extreme volume peaks.",
+          "mature": "Thrives when doing physical rolling tricks, playing with bright wood toys, and nesting in shirts."
         }
       }
     ]
   }
 };
-
 export default function SimpleCutePetSection() {
   const [activeTab, setActiveTab] = useState('dog'); 
   const [selectedService, setSelectedService] = useState(null); 
   const [modalOpen, setModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
-  
-  
+
+  // Prevent background scroll when the full screen popup layout is mounted
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [modalOpen]);
 
   const activeSpeciesConfig = PET_DATA_STORE.speciesTabs.find(t => t.id === activeTab) || PET_DATA_STORE.speciesTabs[0];
   const activeLabelPrefix = activeSpeciesConfig.prefix;
@@ -227,14 +556,11 @@ export default function SimpleCutePetSection() {
     { "id": "breeder", "title": `${activeLabelPrefix} Breeders`, "desc": "Trusted, verified professionals focusing on health, vaccination records, and genetics.", "icon": "🏡", "uiType": "serviceGrid" },
     { "id": "trainer", "title": `${activeLabelPrefix} Trainers`, "desc": "Professional coaches specializing in smart basic obedience, behavioral adjustments, and play.", "icon": "🎓", "uiType": "expertGrid" },
     { "id": "walker", "title": `${activeLabelPrefix} Walkers`, "desc": "Reliable background-checked handlers to keep your companions fit, energetic, and happy.", "icon": "🏃", "uiType": "expertGrid" },
-    { "id": "shed", "title": `${activeLabelPrefix} Studs`, "desc": "Explore verified champion bloodlines with comprehensive medical and fitness clearances.", "icon": "⛺", "uiType": "serviceGrid" },
-    { "id": "accessories", "title": `${activeLabelPrefix} Accessories`, "desc": "Shop elite items, ergonomic harnesses, custom enclosures, and high-end beds.", "icon": "💎", "uiType": "productGrid" },
     { "id": "food", "title": `${activeLabelPrefix} Food`, "desc": "Premium nutritional diets tailored perfectly to support optimal development and long lifespans.", "icon": activeSpeciesConfig.foodIcon, "uiType": "productGrid" },
+    { "id": "accessories", "title": `${activeLabelPrefix} Accessories`, "desc": "Shop elite items, ergonomic harnesses, custom enclosures, and high-end beds.", "icon": "💎", "uiType": "productGrid" },
     { "id": "stay", "title": `${activeLabelPrefix} Stay Centres`, "desc": "Premium climate-controlled luxury boarding spots with 24/7 CCTV surveillance feeds.", "icon": "🏨", "uiType": "serviceGrid" },
     { "id": "medicine", "title": `${activeLabelPrefix} Medicines`, "desc": "Expert prescription tracking, preventive essential vitamins, and targeted joint supplements.", "icon": "💊", "uiType": "productGrid" }
   ];
-
- 
 
   const handleCategoryClick = (serviceItem) => {
     setSelectedService(serviceItem);
@@ -243,9 +569,8 @@ export default function SimpleCutePetSection() {
     setModalOpen(true);
   };
 
-  // Safe fallback selection strategy to gracefully handle missing active species combinations
   const activeDataStoreKey = PET_DATA_STORE.serviceDirectories[activeTab] ? activeTab : 'dog';
-  const directoryList = PET_DATA_STORE.serviceDirectories[activeDataStoreKey][selectedService?.id] || [];
+  const directoryList = PET_DATA_STORE.serviceDirectories[activeDataStoreKey]?.[selectedService?.id] || [];
   
   const currentRegistryList = PET_DATA_STORE.speciesRegistry[activeTab] || [];
   const filteredBreeds = currentRegistryList.filter(b => {
@@ -255,19 +580,19 @@ export default function SimpleCutePetSection() {
   });
 
   return (
-    <div className="bg-[#EAF0F9] text-stone-700  font-sans  relative overflow-x-hidden  selection:text-black-900">
-      
+    <div className="bg-[#EAF0F9] text-stone-700 font-sans relative py-12">
       <style>{`
         @keyframes scrollInfinite { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-infinite-marquee { display: flex; width: max-content; animation: scrollInfinite 25s linear infinite; }
-        .animate-infinite-marquee:hover { animation-play-state: paused; }
+        .animate-infinite-marquee { display: flex; width: max-content; animation: scrollInfinite 30s linear infinite; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #F4F4F5; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #D4D4D8; border-radius: 9999px; }
       `}</style>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        
+      <div className="max-w-6xl mx-auto px-4">
         {/* Title Blocks */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-stone-800 tracking-tight mb-3">{PET_DATA_STORE.heading}</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight mb-3">{PET_DATA_STORE.heading}</h2>
           <p className="text-sm text-stone-500 font-medium leading-relaxed">{PET_DATA_STORE.subheading}</p>
         </div>
 
@@ -280,8 +605,8 @@ export default function SimpleCutePetSection() {
                 <button
                   key={`${tab.id}-${index}`}
                   onClick={() => { setActiveTab(tab.id); setSelectedService(null); }}
-                  className={`px-6 py-3 rounded-full font-bold text-xs sm:text-sm tracking-wide transition-all border shadow-2xs flex items-center gap-2 mx-1.5 shrink-0
-                    ${isSelected ? 'bg-pink-400 border-pink-400 text-white shadow-md scale-105' : 'bg-white text-stone-600 border-stone-200/60 hover:bg-pink-50/30'}`}
+                  className={`px-6 py-3 rounded-full font-bold text-xs sm:text-sm tracking-wide transition-all border shadow-xs flex items-center gap-2 mx-1.5 shrink-0
+                    ${isSelected ? 'bg-stone-900 border-stone-900 text-white shadow-md scale-105' : 'bg-white text-stone-600 border-stone-200/60 hover:bg-stone-50'}`}
                 >
                   <span>{tab.name}</span>
                 </button>
@@ -290,221 +615,251 @@ export default function SimpleCutePetSection() {
           </div>
         </div>
 
-        {/* Horizontally Scrollable Dynamic Service Grid Track */}
-       {/* MOBILE/TABLET SLIDER */}
-<div className="lg:hidden px-4">
-  <Swiper
-    slidesPerView={1.15}
-    centeredSlides
-    loop
-    spaceBetween={18}
-    modules={[Navigation]}
-    navigation={{
-      nextEl: ".service-next",
-      prevEl: ".service-prev",
-    }}
-    breakpoints={{
-      480: {
-        slidesPerView: 1.4,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2.1,
-        spaceBetween: 24,
-      },
-    }}
-    className="!overflow-visible py-6"
-  >
-    {computedServices.map((service) => (
-      <SwiperSlide key={service.id}>
-        {({ isActive }) => (
-          <div
-            onClick={() => handleCategoryClick(service)}
-            className={`
-              bg-white rounded-[28px] p-6 cursor-pointer
-              transition-all duration-500 ease-out
-              border
-              ${
-                isActive
-                  ? "scale-100 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border-pink-200"
-                  : "scale-95 opacity-80 border-stone-100"
-              }
-            `}
+        {/* MOBILE SLIDER */}
+        <div className="lg:hidden">
+          <Swiper
+            slidesPerView={1.15}
+            centeredSlides
+            loop
+            spaceBetween={18}
+            modules={[Navigation]}
+            navigation={{ nextEl: ".service-next", prevEl: ".service-prev" }}
+            breakpoints={{
+              480: { slidesPerView: 1.4, spaceBetween: 20 },
+              768: { slidesPerView: 2.1, spaceBetween: 24 },
+            }}
+            className="!overflow-visible py-6"
           >
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-50 to-rose-100 flex items-center justify-center text-2xl mb-5">
-              {service.icon}
-            </div>
-
-            <h3 className="font-bold text-lg text-stone-800 mb-3">
-              {service.title}
-            </h3>
-
-            <p className="text-sm text-stone-500 leading-relaxed line-clamp-3">
-              {service.desc}
-            </p>
-
-            <div className="mt-6 flex items-center justify-between text-pink-500 font-semibold">
-              <span>Explore</span>
-              <ChevronRight className="w-4 h-4" />
-            </div>
+            {computedServices.map((service) => (
+              <SwiperSlide key={service.id}>
+                {({ isActive }) => (
+                  <div
+                    onClick={() => handleCategoryClick(service)}
+                    className={`bg-white rounded-3xl p-6 cursor-pointer transition-all duration-500 border
+                      ${isActive ? "scale-100 shadow-xl border-stone-300" : "scale-95 opacity-70 border-stone-100"}`}
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-stone-50 border border-stone-200 flex items-center justify-center text-xl mb-5">
+                      {service.icon}
+                    </div>
+                    <h3 className="font-bold text-lg text-stone-900 mb-2">{service.title}</h3>
+                    <p className="text-xs text-stone-500 leading-relaxed line-clamp-2">{service.desc}</p>
+                    <div className="mt-6 flex items-center justify-between text-stone-900 font-bold text-xs uppercase tracking-wider">
+                      <span>Explore</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="flex justify-center gap-3 mt-4">
+            <button className="service-prev w-10 h-10 rounded-full bg-white border border-stone-200 shadow-xs flex items-center justify-center"><ChevronLeft className="w-4 h-4" /></button>
+            <button className="service-next w-10 h-10 rounded-full bg-white border border-stone-200 shadow-xs flex items-center justify-center"><ChevronRight className="w-4 h-4" /></button>
           </div>
-        )}
-      </SwiperSlide>
-    ))}
-  </Swiper>
-
-  <div className="flex justify-center gap-3 mt-8">
-    <button className="service-prev w-11 h-11 rounded-full bg-white border shadow-sm flex items-center justify-center">
-      <ChevronLeft className="w-5 h-5" />
-    </button>
-
-    <button className="service-next w-11 h-11 rounded-full bg-white border shadow-sm flex items-center justify-center">
-      <ChevronRight className="w-5 h-5" />
-    </button>
-  </div>
-</div>
-
-{/* DESKTOP GRID */}
-<div className="hidden lg:grid grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
-  {computedServices.map((service) => (
-    <div
-      key={service.id}
-      onClick={() => handleCategoryClick(service)}
-      className="
-        group
-        bg-white
-        rounded-[28px]
-        border border-stone-200
-        p-7
-        cursor-pointer
-        transition-all duration-300
-        hover:-translate-y-2
-        hover:shadow-[0_25px_50px_rgba(0,0,0,0.08)]
-        hover:border-pink-200
-      "
-    >
-      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-50 to-rose-100 flex items-center justify-center text-2xl mb-5">
-        {service.icon}
-      </div>
-
-      <h3 className="font-bold text-lg text-stone-800 mb-3">
-        {service.title}
-      </h3>
-
-      <p className="text-sm text-stone-500 leading-relaxed line-clamp-3">
-        {service.desc}
-      </p>
-
-      <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-pink-500 font-semibold">
-        <span>Explore Catalog</span>
-
-        <div className="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center transition-transform group-hover:translate-x-1">
-          <ChevronRight className="w-4 h-4" />
         </div>
-      </div>
-    </div>
-  ))}
-</div>
 
-      </div>
-
-      {/* Deep Component Portal Modal Engine */}
-      {modalOpen && selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          <div className="fixed inset-0 bg-stone-900/10 backdrop-blur-xs" onClick={() => setModalOpen(false)} />
-
-          <div className="relative bg-white border border-stone-150 w-full max-w-5xl rounded-2xl shadow-xl overflow-hidden z-10 max-h-[90vh] flex flex-col">
-            
-            {/* Modal Heading Control */}
-            <div className="px-6 py-4 bg-stone-50/50 border-b border-stone-100 flex items-center justify-between sticky top-0 z-20">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 text-lg rounded-lg bg-white border border-stone-200 flex items-center justify-center shadow-2xs">{selectedService.icon}</div>
-                <div>
-                  <h4 className="text-base font-bold text-stone-800 capitalize">{selectedService.title}</h4>
-                  <p className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">{activeLabelPrefix} Specialized Portal</p>
+        {/* DESKTOP GRID */}
+        <div className="hidden lg:grid grid-cols-3 xl:grid-cols-4 gap-6">
+          {computedServices.map((service) => (
+            <div
+              key={service.id}
+              onClick={() => handleCategoryClick(service)}
+              className="group bg-white rounded-2xl border border-stone-200/80 p-6 cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-stone-400 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-stone-50 border border-stone-150 flex items-center justify-center text-xl mb-4 transition-transform group-hover:scale-105">
+                  {service.icon}
+                </div>
+                <h3 className="font-bold text-base text-stone-900 mb-2">{service.title}</h3>
+                <p className="text-xs text-stone-500 leading-relaxed line-clamp-3">{service.desc}</p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-stone-900 font-bold text-xs uppercase tracking-wider">
+                <span>Explore Catalog</span>
+                <div className="w-7 h-7 rounded-full bg-stone-50 border border-stone-200 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                  <ChevronRight className="w-3.5 h-3.5" />
                 </div>
               </div>
-              <button onClick={() => setModalOpen(false)} className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 hover:text-stone-600"><X className="w-4 h-4" /></button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ULTRA PROFESSIONAL FULL SCREEN LIGHT WHITE ARCHITECTURE POPUP MODAL */}
+      {modalOpen && selectedService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white overflow-hidden w-full h-full min-h-screen">
+          
+          {/* Pure Full Screen Panel Layout */}
+          <div className="w-full h-full flex flex-col bg-white">
+            
+            {/* Elegant Fixed White Header Container */}
+            <div className="px-6 py-5 sm:px-10 bg-white border-b border-stone-200 flex items-center justify-between sticky top-0 z-20">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 text-2xl rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-center shadow-3xs">{selectedService.icon}</div>
+                <div>
+                  <h4 className="text-lg font-black text-stone-900 tracking-tight">{selectedService.title}</h4>
+                  <p className="text-[10px] text-stone-400 font-bold tracking-widest uppercase flex items-center gap-1.5 mt-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-stone-900 animate-pulse"></span>
+                    {activeLabelPrefix} Professional Workspace
+                  </p>
+                </div>
+              </div>
+              
+              {/* Close Window Command */}
+              <button 
+                onClick={() => setModalOpen(false)} 
+                className="group flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-600 text-xs font-bold transition-all hover:bg-stone-900 hover:text-white hover:border-stone-900"
+              >
+                <span>Close Workspace</span>
+                <X className="w-4 h-4 transition-transform group-hover:rotate-90" />
+              </button>
             </div>
 
-            {/* Core Modal Processing Switchboard */}
-            <div className="p-6 overflow-y-auto flex-1 bg-white">
+            {/* Expansive Full Screen Custom Scroll Body Area */}
+            <div className="p-6 sm:p-10 overflow-y-auto flex-1 bg-white custom-scrollbar max-w-7xl mx-auto w-full">
               
-              {/* LAYOUT 1: BREED SWITCH INTERFACE */}
+              {/* INTERFACE: BREED SWITCH LAYOUT */}
               {selectedService.uiType === 'breed' && (
-                <div className="space-y-6">
-                  <div className="flex flex-col md:flex-row gap-4 items-center justify-between pb-4 border-b border-stone-100">
-                    <h5 className="text-sm font-bold text-stone-800">Filter verified native breeds:</h5>
-                    <input type="text" placeholder={`Search ${activeLabelPrefix.toLowerCase()} variants...`} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full md:w-64 bg-stone-50 border border-stone-200 rounded-xl pl-4 pr-4 py-1.5 text-xs text-stone-700 font-medium focus:outline-none focus:border-pink-300" />
+                <div className="space-y-8">
+                  {/* Filters & Search Header */}
+                  <div className="flex flex-col md:flex-row gap-4 items-center justify-between pb-6 border-b border-stone-200">
+                    <div className="flex items-center gap-2 text-stone-800 text-xs font-bold">
+                      <SlidersHorizontal className="w-4 h-4 text-stone-500" />
+                      <span>Filter Active Taxonomic Lineages:</span>
+                    </div>
+                    <div className="relative w-full md:w-80">
+                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+                      <input 
+                        type="text" 
+                        placeholder={`Search verified variants...`} 
+                        value={searchQuery} 
+                        onChange={(e) => setSearchQuery(e.target.value)} 
+                        className="w-full bg-stone-50 border border-stone-200 rounded-xl pl-10 pr-4 py-3 text-xs text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-stone-900 focus:bg-white focus:ring-1 focus:ring-stone-900 transition-all" 
+                      />
+                    </div>
                   </div>
-                  <div className="bg-amber-50/40 border border-amber-100 p-2 rounded-xl flex flex-wrap gap-1.5">
+
+                  {/* Filter Badges Horizontal Track */}
+                  <div className="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar">
                     {PET_DATA_STORE.combinedBreedFilters.map((filter) => (
-                      <button key={filter.id} onClick={() => setSelectedFilter(filter.id)} className={`px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition-all uppercase whitespace-nowrap ${selectedFilter === filter.id ? 'bg-pink-400 text-white shadow-2xs' : 'text-stone-500 bg-white border border-stone-200'}`}>{filter.label}</button>
+                      <button 
+                        key={filter.id} 
+                        onClick={() => setSelectedFilter(filter.id)} 
+                        className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap border ${
+                          selectedFilter === filter.id 
+                            ? 'bg-stone-900 border-stone-900 text-white shadow-xs' 
+                            : 'text-stone-600 bg-stone-50 border-stone-200 hover:bg-stone-100 hover:text-stone-900'
+                        }`}
+                      >
+                        {filter.label}
+                      </button>
                     ))}
                   </div>
-                  <div className="space-y-6">
-                    {filteredBreeds.length > 0 ? (filteredBreeds.map((breed) => (
-                      <div key={breed.breedId} className="bg-white border border-stone-150 rounded-2xl p-5 flex flex-col lg:flex-row gap-6 shadow-2xs">
-                        <div className="flex-1 space-y-3 text-left lg:max-w-xs border-b lg:border-b-0 lg:border-r border-stone-100 pb-4 lg:pb-0 lg:pr-5">
-                          <div>
-                            <h6 className="text-base sm:text-lg font-black text-stone-800 tracking-tight">{breed.name}</h6>
-                            <span className="text-[10px] font-bold uppercase tracking-wide text-pink-500 bg-pink-50 border border-pink-100 px-2 py-0.5 rounded mt-1 inline-block">{breed.scaleAndType}</span>
+
+                  {/* Output Grid */}
+                  <div className="space-y-6 pt-2">
+                    {filteredBreeds.length > 0 ? (
+                      filteredBreeds.map((breed) => (
+                        <div key={breed.breedId} className="bg-[#FCFCFD] border border-stone-200 rounded-2xl p-6 flex flex-col lg:flex-row gap-8 hover:border-stone-300 transition-all shadow-3xs">
+                          {/* Left Panel: Stats */}
+                          <div className="flex-1 space-y-4 text-left lg:max-w-xs lg:border-r lg:border-stone-200 lg:pr-8 pb-4 lg:pb-0">
+                            <div>
+                              <h6 className="text-2xl font-black text-stone-900 tracking-tight">{breed.name}</h6>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-600 bg-stone-100 border border-stone-200 px-2.5 py-1 rounded-md mt-2 inline-block">
+                                {breed.scaleAndType}
+                              </span>
+                            </div>
+                            
+                            <div className="space-y-2.5 text-xs text-stone-600 bg-white p-4 rounded-xl border border-stone-200 shadow-3xs">
+                              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
+                                <span className="text-stone-400">Origin</span>
+                                <strong className="text-stone-800 font-semibold">{breed.origin}</strong>
+                              </div>
+                              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
+                                <span className="text-stone-400">Lifespan</span>
+                                <strong className="text-stone-800 font-semibold">{breed.lifespan}</strong>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-stone-400">Group</span>
+                                <strong className="text-stone-800 font-semibold capitalize">{breed.sizeGroup.replace('-', ' ')}</strong>
+                              </div>
+                            </div>
+
+                            <div className="text-xs bg-white p-4 rounded-xl border border-stone-200 shadow-3xs">
+                              <span className="text-[9px] uppercase tracking-wider font-bold text-stone-400 block mb-1">Temperament Matrix</span>
+                              <p className="text-stone-600 font-medium leading-relaxed">{breed.temperament}</p>
+                            </div>
                           </div>
-                          <div className="space-y-1.5 text-xs text-stone-400 font-medium">
-                            <div className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-stone-300" /> <span>Origin: <strong className="text-stone-600 font-semibold">{breed.origin}</strong></span></div>
-                            <div className="flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-stone-300" /> <span>Expected Lifespan: <strong className="text-stone-600 font-semibold">{breed.lifespan}</strong></span></div>
+
+                          {/* Right Panel: Dual Phase Cards */}
+                          <div className="flex-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* Young Card */}
+                            <div className="border border-stone-200 rounded-2xl overflow-hidden bg-white flex flex-col justify-between group hover:border-stone-300 transition-all shadow-3xs">
+                              <div className="h-48 bg-stone-100 overflow-hidden relative">
+                                <img src={breed.puppyImg} alt="young variant" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div className="absolute top-4 left-4 bg-stone-900/80 backdrop-blur-xs text-white font-bold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                                  ✨ {breed.phaseLabels?.young}
+                                </div>
+                              </div>
+                              <div className="p-4 text-left bg-stone-50/50 border-t border-stone-200 flex-1 flex items-center">
+                                <p className="text-xs text-stone-600 font-medium leading-relaxed">{breed.developmentPhases.young}</p>
+                              </div>
+                            </div>
+
+                            {/* Mature Card */}
+                            <div className="border border-stone-200 rounded-2xl overflow-hidden bg-white flex flex-col justify-between group hover:border-stone-300 transition-all shadow-3xs">
+                              <div className="h-48 bg-stone-100 overflow-hidden relative">
+                                <img src={breed.adultImg} alt="mature variant" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div className="absolute top-4 left-4 bg-stone-900/80 backdrop-blur-xs text-white font-bold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                                  🌿 {breed.phaseLabels?.mature}
+                                </div>
+                              </div>
+                              <div className="p-4 text-left bg-stone-50/50 border-t border-stone-200 flex-1 flex items-center">
+                                <p className="text-xs text-stone-600 font-medium leading-relaxed">{breed.developmentPhases.mature}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div className="text-xs bg-stone-50 p-3 rounded-xl border border-stone-150"><p className="text-stone-500 font-medium leading-relaxed">{breed.temperament}</p></div>
                         </div>
-                        <div className="flex-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="border border-stone-150 rounded-xl overflow-hidden bg-stone-50 flex flex-col justify-between">
-                            <div className="h-36 bg-stone-100 overflow-hidden relative"><img src={breed.puppyImg} alt="puppy variant structural look" className="w-full h-full object-cover" /><div className="absolute top-2 left-2 bg-sky-400 text-white font-bold text-[9px] uppercase tracking-wide px-2 py-0.5 rounded-md shadow-2xs">✨ {breed.phaseLabels?.young}</div></div>
-                            <div className="p-3 text-left bg-white"><p className="text-xs text-stone-400 font-medium leading-relaxed">{breed.developmentPhases.young}</p></div>
-                          </div>
-                          <div className="border border-stone-150 rounded-xl overflow-hidden bg-stone-50 flex flex-col justify-between">
-                            <div className="h-36 bg-stone-100 overflow-hidden relative"><img src={breed.adultImg} alt="mature variant structural look" className="w-full h-full object-cover" /><div className="absolute top-2 left-2 bg-emerald-400 text-white font-bold text-[9px] uppercase tracking-wide px-2 py-0.5 rounded-md shadow-2xs">🌿 {breed.phaseLabels?.mature}</div></div>
-                            <div className="p-3 text-left bg-white"><p className="text-xs text-stone-400 font-medium leading-relaxed">{breed.developmentPhases.mature}</p></div>
-                          </div>
-                        </div>
+                      ))
+                    ) : (
+                      <div className="py-20 text-center border border-dashed border-stone-200 rounded-2xl bg-stone-50">
+                        <p className="text-xs text-stone-400 font-bold uppercase tracking-widest">No configurations discovered matching search.</p>
                       </div>
-                    ))) : (
-                      <div className="py-12 text-center border border-dashed border-stone-200 rounded-xl bg-stone-50"><p className="text-xs text-stone-400 font-bold uppercase tracking-wider">No specific variants uploaded under this combination yet.</p></div>
                     )}
                   </div>
                 </div>
               )}
 
-              {/* LAYOUT 2: EXPERTS DIRECTORY (TRAINERS, WALKERS) */}
+              {/* INTERFACE: EXPERTS DIRECTORY (TRAINERS, WALKERS) */}
               {selectedService.uiType === 'expertGrid' && (
                 <div className="space-y-6 text-left">
-                  <div className="bg-stone-50 p-4 rounded-xl border border-stone-100 flex items-center justify-between">
+                  <div className="bg-stone-50 p-5 rounded-xl border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
-                      <h5 className="text-sm font-bold text-stone-800">Available Certified Specialists</h5>
-                      <p className="text-xs text-stone-400">Showing background verified partners ready to assist with your {activeLabelPrefix.toLowerCase()}.</p>
+                      <h5 className="text-sm font-bold text-stone-900 tracking-wide">Available Certified Specialists</h5>
+                      <p className="text-xs text-stone-500 mt-0.5">Verified expert partners operating inside premium care networks.</p>
                     </div>
-                    <span className="text-xs bg-pink-50 text-pink-500 font-bold px-2.5 py-1 rounded-md border border-pink-100">{directoryList.length} Experts Online</span>
+                    <span className="text-xs bg-white text-stone-800 font-bold px-3 py-1.5 rounded-lg border border-stone-200 shrink-0 self-start sm:self-auto">
+                      {directoryList.length} Active Consultants
+                    </span>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {directoryList.map((expert) => (
-                      <div key={expert.id} className="bg-white border border-stone-200 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-2xs hover:shadow-sm transition-all">
-                        <div className="w-full sm:w-32 h-36 bg-stone-100 shrink-0 relative">
-                          <img src={expert.img} alt="expert profile headshot" className="w-full h-full object-cover" />
-                          <div className="absolute bottom-2 left-2 bg-stone-900/70 text-white text-[10px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1"><Star className="w-3 h-3 fill-amber-400 text-amber-400" /> {expert.rating}</div>
+                      <div key={expert.id} className="bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col sm:flex-row hover:border-stone-300 hover:shadow-sm transition-all group">
+                        <div className="w-full sm:w-40 h-40 bg-stone-100 shrink-0 relative overflow-hidden">
+                          <img src={expert.img} alt="expert portrait" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                         </div>
-                        <div className="p-4 flex flex-col justify-between flex-1">
+                        <div className="p-5 flex flex-col justify-between flex-1">
                           <div>
-                            <div className="flex items-center justify-between gap-2">
-                              <h6 className="text-sm font-bold text-stone-800">{expert.title}</h6>
-                              <span className="text-[9px] bg-emerald-50 text-emerald-600 font-bold px-1.5 py-0.5 rounded border border-emerald-100 uppercase tracking-wide whitespace-nowrap">{expert.badge}</span>
+                            <div className="flex items-start justify-between gap-2">
+                              <h6 className="text-base font-bold text-stone-900 tracking-wide">{expert.title}</h6>
+                              <span className="text-[9px] bg-stone-100 text-stone-700 font-bold px-2 py-0.5 rounded border border-stone-200 uppercase tracking-wider whitespace-nowrap">{expert.badge}</span>
                             </div>
-                            <p className="text-xs text-pink-500 font-medium mt-0.5">{expert.sub}</p>
-                            <p className="text-xs text-stone-400 font-medium mt-2 leading-relaxed">{expert.meta}</p>
+                            <p className="text-xs text-stone-500 font-semibold mt-0.5">{expert.sub}</p>
+                            <p className="text-xs text-stone-400 font-medium mt-3 leading-relaxed">{expert.meta}</p>
                           </div>
-                          <div className="mt-3 pt-3 border-t border-stone-50 flex items-center justify-between text-[11px] text-stone-400 font-medium">
-                            <span className="flex items-center gap-1"><MapPin className="w-3 h-3 text-stone-300" /> {expert.loc}</span>
-                            <button className="bg-stone-900 hover:bg-pink-500 text-white font-bold px-3 py-1 rounded-lg transition-colors">Book Consultation</button>
-                          </div>
+                          <div className="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+                            <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-stone-400" /> {expert.loc}</span>
+                            </div>
                         </div>
                       </div>
                     ))}
@@ -512,28 +867,28 @@ export default function SimpleCutePetSection() {
                 </div>
               )}
 
-              {/* LAYOUT 3: SERVICE STATIONS (BREEDERS, STUDS, STAY CENTRES) */}
+              {/* INTERFACE: SERVICE STATIONS (BREEDERS, STAY) */}
               {selectedService.uiType === 'serviceGrid' && (
                 <div className="space-y-6 text-left">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {directoryList.map((center) => (
-                      <div key={center.id} className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-2xs hover:border-pink-200 transition-all">
-                        <div className="h-44 bg-stone-100 w-full relative">
-                          <img src={center.img} alt="center architecture viewport" className="w-full h-full object-cover" />
-                          <div className="absolute top-3 left-3 bg-white/95 border border-stone-150 rounded-md px-2 py-0.5 text-[10px] font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1 shadow-2xs">
-                            <Award className="w-3.5 h-3.5 text-pink-400" /> {center.badge}
+                      <div key={center.id} className="bg-white border border-stone-200 rounded-2xl overflow-hidden hover:border-stone-300 transition-all group shadow-3xs">
+                        <div className="h-56 bg-stone-100 w-full relative overflow-hidden border-b border-stone-200">
+                          <img src={center.img} alt="center layout" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                          <div className="absolute top-4 left-4 bg-white border border-stone-200 rounded-lg px-2.5 py-1 text-[10px] font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5 shadow-xs">
+                            <Award className="w-3.5 h-3.5 text-stone-900" /> {center.badge}
                           </div>
                         </div>
-                        <div className="p-4 space-y-2">
-                          <div className="flex items-center justify-between">
-                            <h6 className="text-base font-bold text-stone-800">{center.title}</h6>
-                            <div className="flex items-center gap-1 text-xs font-bold text-stone-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded"><Star className="w-3 h-3 fill-amber-400 text-amber-400" /> {center.rating}</div>
+                        <div className="p-5 space-y-3">
+                          <div className="flex items-center justify-between gap-2">
+                            <h6 className="text-lg font-black text-stone-900 tracking-wide">{center.title}</h6>
+                            <span className="text-xs font-bold text-stone-600 bg-stone-50 border border-stone-200 px-2 py-0.5 rounded-md">⭐ {center.rating}</span>
                           </div>
-                          <p className="text-xs text-stone-400 font-semibold">{center.sub}</p>
-                          <p className="text-xs text-stone-500 leading-relaxed bg-stone-50 p-2.5 rounded-lg border border-stone-100 font-medium">{center.meta}</p>
-                          <div className="pt-2 flex items-center justify-between text-xs text-stone-400 font-medium">
-                            <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5 text-stone-300" /> {center.loc}</span>
-                            <button className="bg-pink-400 hover:bg-pink-500 text-white font-bold px-4 py-1.5 rounded-lg shadow-3xs transition-colors">Contact Hub</button>
+                          <p className="text-xs text-stone-500 font-semibold">{center.sub}</p>
+                          <p className="text-xs text-stone-400 leading-relaxed bg-stone-50 p-3 rounded-xl border border-stone-150 font-medium">{center.meta}</p>
+                          <div className="pt-3 flex items-center justify-between text-xs text-stone-500">
+                            <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-stone-400" /> {center.loc}</span>
+                            <button className="bg-stone-900 hover:bg-stone-800 text-white font-bold px-4 py-2 rounded-xl transition-colors text-xs shadow-3xs">Contact Hub</button>
                           </div>
                         </div>
                       </div>
@@ -542,29 +897,21 @@ export default function SimpleCutePetSection() {
                 </div>
               )}
 
-              {/* LAYOUT 4: PRODUCT TILES (FOOD, ACCESSORIES, MEDICINE) */}
+              {/* INTERFACE: PRODUCT TILES (FOOD, ACCESSORIES, MEDICINE) */}
               {selectedService.uiType === 'productGrid' && (
                 <div className="space-y-6 text-left">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {directoryList.map((product) => (
-                      <div key={product.id} className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-2xs flex flex-col justify-between hover:border-pink-200 transition-all">
+                      <div key={product.id} className="bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-stone-300 transition-all group shadow-3xs pb-4">
                         <div>
-                          <div className="h-40 bg-stone-50 overflow-hidden relative border-b border-stone-100">
-                            <img src={product.img} alt="retail merchandise profile" className="w-full h-full object-cover" />
-                            <span className="absolute top-2 right-2 bg-stone-900 text-white font-bold text-[9px] uppercase tracking-wide px-2 py-0.5 rounded">{product.tag}</span>
+                          <div className="h-48 bg-stone-50 overflow-hidden relative border-b border-stone-200">
+                            <img src={product.img} alt="product display" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <span className="absolute top-3 right-3 bg-white/95 border border-stone-200 text-stone-800 font-bold text-[9px] uppercase tracking-wider px-2.5 py-0.5 rounded-md shadow-3xs">{product.tag}</span>
                           </div>
-                          <div className="p-4 space-y-1">
-                            <h6 className="text-sm font-bold text-stone-800 line-clamp-1">{product.title}</h6>
-                            <p className="text-xs text-pink-500 font-medium">{product.sub}</p>
+                          <div className="p-4 space-y-1.5">
+                            <h6 className="text-sm font-bold text-stone-900 tracking-wide line-clamp-1">{product.title}</h6>
+                            <p className="text-xs text-stone-500 font-semibold">{product.sub}</p>
                             <p className="text-[11px] text-stone-400 font-medium leading-relaxed pt-1">{product.meta}</p>
-                          </div>
-                        </div>
-                        <div className="p-4 pt-0">
-                          <div className="pt-3 border-t border-stone-50 flex items-center justify-between">
-                            <span className="text-sm font-black text-stone-800">{product.price}</span>
-                            <button className="bg-stone-50 hover:bg-pink-50 border border-stone-200 text-stone-700 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all">
-                              <ShoppingBag className="w-3.5 h-3.5 text-stone-400" /> Add to Cart
-                            </button>
                           </div>
                         </div>
                       </div>
@@ -573,11 +920,10 @@ export default function SimpleCutePetSection() {
                 </div>
               )}
 
-              {/* Empty Data Placeholder Validation Check */}
+              {/* Empty Data Placeholder Guard */}
               {directoryList.length === 0 && selectedService.uiType !== 'breed' && (
-                <div className="py-16 text-center border border-dashed border-stone-200 rounded-xl bg-stone-50/50">
-                  <div className="text-2xl mb-2">📁</div>
-                  <p className="text-xs text-stone-400 font-bold uppercase tracking-wider">Deploying full structural catalog items for {activeLabelPrefix} soon.</p>
+                <div className="py-24 text-center border border-dashed border-stone-200 rounded-2xl bg-stone-50">
+                  <p className="text-xs text-stone-400 font-bold uppercase tracking-widest">Preparing inventory catalog records shortly.</p>
                 </div>
               )}
 

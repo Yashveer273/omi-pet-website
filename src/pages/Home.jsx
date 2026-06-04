@@ -19,14 +19,13 @@ export default function Home() {
     dualCardLeftImage, dualCardRightImage, thirdGalleryImages, footerParagraph
   } = siteData.homeContent;
 
-  const { heading, subheading, speciesTabs, dogServices, breedSizes, dogSliderData, catSliderData, smallAnimalSliderData, fishSliderData, birdSliderData } = siteData.omiPetSection;
 
   const { heading: keepExploringHeading, pills: keepExploringPills, photographyData, somethingNewData } = siteData.keepExploringSection;
 
   const { heading: ourBlogHeading, blogsData } = siteData.ourBlogSliderSection;
 
   // Destructuring brand new Pro Promo Banner asset nodes
-  const { upperContext, mainHeading, accentGraphicText, redirectUrl } = siteData.proBannerSectionData;
+  const { upperContext, mainHeading, } = siteData.proBannerSectionData;
 
   const { title: footerTitle, subtitle: footerSubtitle, linksGrid } = siteData.footerSectionData;
 
@@ -62,37 +61,12 @@ export default function Home() {
   const [exitAnimationActive4, setExitAnimationActive4] = useState(false);
   const imageContainerRef4 = useRef(null);
 
-  // ========================================================
-  // ⚡ DYNAMIC PORTAL ENGINE SWITCHER STATES & REFS
-  // ========================================================
-  const [activeTab, setActiveTab] = useState('dog'); 
-  const [selectedServiceId, setSelectedServiceId] = useState(null); 
-  const [selectedBreedSize, setSelectedBreedSize] = useState(null); 
-  const [selectedAgeNode, setSelectedAgeNode] = useState(null); 
-  const [isTabAutoScrollPaused, setIsTabAutoScrollPaused] = useState(false);
 
-  // 🎯 Slider Section ke liye Ref banaya auto-scroll target karne ke liye
-  const sliderSectionRef = useRef(null);
 
-  const [clinicForm, setClinicForm] = useState({
-    petName: '', species: 'Dog', age: '', breed: '', sex: 'Male', observation: ''
-  });
 
-  // 🎯 Smooth Scroll Function
-  const scrollToSlider = () => {
-    if (sliderSectionRef.current) {
-      sliderSectionRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center' // Slider ko screen ke center mein scroll karega
-      });
-    }
-  };
 
-  const handleClinicSubmit = (e) => {
-    e.preventDefault();
-    alert(`Clinical Logbook Recorded Successfully!\nPET: ${clinicForm.petName}`);
-    setClinicForm({ petName: '', species: 'Dog', age: '', breed: '', sex: 'Male', observation: '' });
-  };
+
+
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
@@ -136,18 +110,9 @@ export default function Home() {
     setIsLightboxOpen(true);
   };
 
-  const getActiveSliderDataset = () => {
-    if (activeTab === 'cat') return catSliderData || [];
-    if (activeTab === 'small') return smallAnimalSliderData || [];
-    if (activeTab === 'fish') return fishSliderData || [];
-    if (activeTab === 'bird') return birdSliderData || [];
-    if (activeTab === 'dog' && selectedServiceId && selectedServiceId !== 'breed' && dogSliderData[selectedServiceId]) {
-      return dogSliderData[selectedServiceId];
-    }
-    return [];
-  };
+ 
 
-  const activeSliderDataList = getActiveSliderDataset();
+
   const getKeepExploringDataset = () => {
     return activeExplorePill === 'photography' ? photographyData : somethingNewData;
   };
