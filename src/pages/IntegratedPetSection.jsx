@@ -11,6 +11,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+import ContactActions from "../components/ContactActions";
+
 
 
 import { collection, doc, onSnapshot, getDoc } from 'firebase/firestore';
@@ -50,8 +52,8 @@ const mergeBreedFilters = (filters = []) => {
 
 export default function IntegratedPetSection() {
   const [activeTab, setActiveTab] = useState('dog');
-  
-  const [selectedService, setSelectedService] = useState(null); 
+
+  const [selectedService, setSelectedService] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -119,10 +121,10 @@ export default function IntegratedPetSection() {
       { "id": "bird", "name": "🦜 Bird", "prefix": "Bird", "foodIcon": "🌾" }
     ],
     "combinedBreedFilters": mergeBreedFilters(metaConfig.combinedBreedFilters),
-    
+
     // Dynamic Data Mapped Here
     "serviceDirectories": {
-      [activeTab]: servicesData 
+      [activeTab]: servicesData
     },
     "speciesRegistry": {
       [activeTab]: registryData
@@ -272,209 +274,292 @@ export default function IntegratedPetSection() {
 
       {/* ULTRA PROFESSIONAL FULL SCREEN LIGHT WHITE ARCHITECTURE POPUP MODAL */}
       {modalOpen && selectedService && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-white overflow-hidden w-full h-full min-h-screen">
-    
-    {/* Pure Full Screen Panel Layout */}
-    <div className="w-full h-full flex flex-col bg-white">
-      
-      {/* Elegant Fixed White Header Container */}
-      <div className="px-6 py-5 sm:px-10 bg-white border-b border-stone-200 flex items-center justify-between sticky top-0 z-20">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 text-2xl rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-center shadow-3xs">{selectedService.icon}</div>
-          <div>
-            <h4 className="text-lg font-black text-stone-900 tracking-tight">{selectedService.title}</h4>
-            <p className="text-[10px] text-stone-400 font-bold tracking-widest uppercase flex items-center gap-1.5 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-stone-900 animate-pulse"></span>
-              {/* Fallback agar activeLabelPrefix define na ho */}
-              {activeTab ? activeTab.charAt(0).toUpperCase() + activeTab.slice(1) : "Pet"} Professional Workspace
-            </p>
-          </div>
-        </div>
-        
-        {/* Close Window Command */}
-        <button 
-          onClick={() => setModalOpen(false)} 
-          className="group flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-600 text-xs font-bold transition-all hover:bg-stone-900 hover:text-white hover:border-stone-900"
-        >
-          <span>Close Workspace</span>
-          <X className="w-4 h-4 transition-transform group-hover:rotate-90" />
-        </button>
-      </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white overflow-hidden w-full h-full min-h-screen">
 
-      {/* Expansive Full Screen Custom Scroll Body Area */}
-      <div className="p-6 sm:p-10 overflow-y-auto flex-1 bg-white custom-scrollbar max-w-7xl mx-auto w-full">
-        
-        {/* INTERFACE: BREED SWITCH LAYOUT */}
-        {selectedService.uiType === 'breed' && (
-          <div className="space-y-8">
-            {/* Filters & Search Header */}
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between pb-6 border-b border-stone-200">
-              <div className="flex items-center gap-2 text-stone-800 text-xs font-bold">
-                <SlidersHorizontal className="w-4 h-4 text-stone-500" />
-                <span>Filter Active Taxonomic Lineages:</span>
+          {/* Pure Full Screen Panel Layout */}
+          <div className="w-full h-full flex flex-col bg-white">
+
+            {/* Elegant Fixed White Header Container */}
+            <div className="px-6 py-5 sm:px-10 bg-white border-b border-stone-200 flex items-center justify-between sticky top-0 z-20">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 text-2xl rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-center shadow-3xs">{selectedService.icon}</div>
+                <div>
+                  <h4 className="text-lg font-black text-stone-900 tracking-tight">{selectedService.title}</h4>
+                  <p className="text-[10px] text-stone-400 font-bold tracking-widest uppercase flex items-center gap-1.5 mt-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-stone-900 animate-pulse"></span>
+                    {/* Fallback agar activeLabelPrefix define na ho */}
+                    {activeTab ? activeTab.charAt(0).toUpperCase() + activeTab.slice(1) : "Pet"} Professional Workspace
+                  </p>
+                </div>
               </div>
-              <div className="relative w-full md:w-80">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
-                <input 
-                  type="text" 
-                  placeholder={`Search verified variants...`} 
-                  value={searchQuery} 
-                  onChange={(e) => setSearchQuery(e.target.value)} 
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl pl-10 pr-4 py-3 text-xs text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-stone-900 focus:bg-white focus:ring-1 focus:ring-stone-900 transition-all" 
-                />
-              </div>
+
+              {/* Close Window Command */}
+              <button
+                onClick={() => setModalOpen(false)}
+                className="group flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-600 text-xs font-bold transition-all hover:bg-stone-900 hover:text-white hover:border-stone-900"
+              >
+                <span>Close Workspace</span>
+                <X className="w-4 h-4 transition-transform group-hover:rotate-90" />
+              </button>
             </div>
 
-            {/* Filter Badges Horizontal Track */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar">
-              {/* STATIC_UI_DATA access karna zaroori hai */}
-              {PET_DATA_STORE.combinedBreedFilters.map((filter) => (
-                <button 
-                  key={filter.id} 
-                  onClick={() => setSelectedFilter(filter.id)} 
-                  className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap border ${
-                    selectedFilter === filter.id 
-                      ? 'bg-stone-900 border-stone-900 text-white shadow-xs' 
-                      : 'text-stone-600 bg-stone-50 border-stone-200 hover:bg-stone-100 hover:text-stone-900'
-                  }`}
-                >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
+            {/* Expansive Full Screen Custom Scroll Body Area */}
+            <div className="p-6 sm:p-10 overflow-y-auto flex-1 bg-white custom-scrollbar max-w-7xl mx-auto w-full">
 
-            {/* Output Grid */}
-            <div className="space-y-6 pt-2">
-              {filteredBreeds.length > 0 ? (
-                filteredBreeds.map((breed) => (
-                  <div key={breed.breedId} className="bg-[#FCFCFD] border border-stone-200 rounded-2xl p-6 flex flex-col lg:flex-row gap-8 hover:border-stone-300 transition-all shadow-3xs">
-                    {/* Left Panel: Stats */}
-                    <div className="flex-1 space-y-4 text-left lg:max-w-xs lg:border-r lg:border-stone-200 lg:pr-8 pb-4 lg:pb-0">
-                      <div>
-                        <h6 className="text-2xl font-black text-stone-900 tracking-tight">{breed.name}</h6>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-600 bg-stone-100 border border-stone-200 px-2.5 py-1 rounded-md mt-2 inline-block">
-                          {breed.scaleAndType}
-                        </span>
-                      </div>
-                      
-                      <div className="space-y-2.5 text-xs text-stone-600 bg-white p-4 rounded-xl border border-stone-200 shadow-3xs">
-                        <div className="flex items-center justify-between border-b border-stone-100 pb-2">
-                          <span className="text-stone-400">Stage</span>
-                          <strong className="text-stone-800 font-semibold">{getBreedStageLabel(breed.breedStage)}</strong>
-                        </div>
-                        <div className="flex items-center justify-between border-b border-stone-100 pb-2">
-                          <span className="text-stone-400">Breed</span>
-                          <strong className="text-stone-800 font-semibold">{getBreedLabel(breed.traitGroup)}</strong>
-                        </div>
-                        <div className="flex items-center justify-between border-b border-stone-100 pb-2">
-                          <span className="text-stone-400">Origin</span>
-                          <strong className="text-stone-800 font-semibold">{breed.origin}</strong>
-                        </div>
-                        <div className="flex items-center justify-between border-b border-stone-100 pb-2">
-                          <span className="text-stone-400">Lifespan</span>
-                          <strong className="text-stone-800 font-semibold">{breed.lifespan}</strong>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-stone-400">Group</span>
-                          <strong className="text-stone-800 font-semibold capitalize">{breed.sizeGroup?.replace('-', ' ')}</strong>
-                        </div>
-                      </div>
-
-                      <div className="text-xs bg-white p-4 rounded-xl border border-stone-200 shadow-3xs">
-                        <span className="text-[9px] uppercase tracking-wider font-bold text-stone-400 block mb-1">Temperament Matrix</span>
-                        <p className="text-stone-600 font-medium leading-relaxed">{breed.temperament}</p>
-                      </div>
+              {/* INTERFACE: BREED SWITCH LAYOUT */}
+              {selectedService.uiType === 'breed' && (
+                <div className="space-y-8">
+                  {/* Filters & Search Header */}
+                  <div className="flex flex-col md:flex-row gap-4 items-center justify-between pb-6 border-b border-stone-200">
+                    <div className="flex items-center gap-2 text-stone-800 text-xs font-bold">
+                      <SlidersHorizontal className="w-4 h-4 text-stone-500" />
+                      <span>Filter Active Taxonomic Lineages:</span>
                     </div>
-
-                    {/* Right Panel: Single Breed Snapshot */}
-                    <div className="flex-2">
-                      <div className="border border-stone-200 rounded-2xl overflow-hidden bg-white flex flex-col justify-between group shadow-3xs h-full">
-                        <div className="h-48 bg-stone-100 overflow-hidden relative">
-                          <img src={breed.puppyImg || breed.adultImg} alt={breed.name} className="w-full h-full object-cover" />
-                          <div className="absolute top-4 left-4 bg-stone-900/80 backdrop-blur-xs text-white font-bold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
-                            Stage: {getBreedStageLabel(breed.breedStage) || "Adult"}
-                          </div>
-                        </div>
-                        <div className="p-4 text-left bg-stone-50/50 border-t border-stone-200 flex-1 space-y-2">
-                          <p className="text-[10px] uppercase tracking-wider font-bold text-stone-400">Classified Breed</p>
-                          <p className="text-xs text-stone-600 font-medium">{breed.description || "Pending..."}</p>
-                        </div>
-                      </div>
+                    <div className="relative w-full md:w-80">
+                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+                      <input
+                        type="text"
+                        placeholder={`Search verified variants...`}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-stone-50 border border-stone-200 rounded-xl pl-10 pr-4 py-3 text-xs text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-stone-900 focus:bg-white focus:ring-1 focus:ring-stone-900 transition-all"
+                      />
                     </div>
                   </div>
-                ))
-              ) : (
-                <div className="py-20 text-center border border-dashed border-stone-200 rounded-2xl bg-stone-50">
-                  <p className="text-xs text-stone-400 font-bold uppercase tracking-widest">No configurations discovered matching search.</p>
+
+                  {/* Filter Badges Horizontal Track */}
+                  <div className="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar">
+                    {/* STATIC_UI_DATA access karna zaroori hai */}
+                    {PET_DATA_STORE.combinedBreedFilters.map((filter) => (
+                      <button
+                        key={filter.id}
+                        onClick={() => setSelectedFilter(filter.id)}
+                        className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap border ${selectedFilter === filter.id
+                          ? 'bg-stone-900 border-stone-900 text-white shadow-xs'
+                          : 'text-stone-600 bg-stone-50 border-stone-200 hover:bg-stone-100 hover:text-stone-900'
+                          }`}
+                      >
+                        {filter.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Output Grid */}
+                  <div className="space-y-6 pt-2">
+                    {filteredBreeds.length > 0 ? (
+                      filteredBreeds.map((breed) => (
+                        <div key={breed.breedId} className="bg-[#FCFCFD] border border-stone-200 rounded-2xl p-6 flex flex-col lg:flex-row gap-8 hover:border-stone-300 transition-all shadow-3xs">
+                          {/* Left Panel: Stats */}
+                          <div className="flex-1 space-y-4 text-left lg:max-w-xs lg:border-r lg:border-stone-200 lg:pr-8 pb-4 lg:pb-0">
+                            <div>
+                              <h6 className="text-2xl font-black text-stone-900 tracking-tight">{breed.name}</h6>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-600 bg-stone-100 border border-stone-200 px-2.5 py-1 rounded-md mt-2 inline-block">
+                                {breed.scaleAndType}
+                              </span>
+                            </div>
+
+                            <div className="space-y-2.5 text-xs text-stone-600 bg-white p-4 rounded-xl border border-stone-200 shadow-3xs">
+                              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
+                                <span className="text-stone-400">Stage</span>
+                                <strong className="text-stone-800 font-semibold">{getBreedStageLabel(breed.breedStage)}</strong>
+                              </div>
+                              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
+                                <span className="text-stone-400">Breed</span>
+                                <strong className="text-stone-800 font-semibold">{getBreedLabel(breed.traitGroup)}</strong>
+                              </div>
+                              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
+                                <span className="text-stone-400">Origin</span>
+                                <strong className="text-stone-800 font-semibold">{breed.origin}</strong>
+                              </div>
+                              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
+                                <span className="text-stone-400">Lifespan</span>
+                                <strong className="text-stone-800 font-semibold">{breed.lifespan}</strong>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-stone-400">Group</span>
+                                <strong className="text-stone-800 font-semibold capitalize">{breed.sizeGroup?.replace('-', ' ')}</strong>
+                              </div>
+                            </div>
+
+                            <div className="text-xs bg-white p-4 rounded-xl border border-stone-200 shadow-3xs">
+                              <span className="text-[9px] uppercase tracking-wider font-bold text-stone-400 block mb-1">Temperament Matrix</span>
+                              <p className="text-stone-600 font-medium leading-relaxed">{breed.temperament}</p>
+                            </div>
+                          </div>
+
+                          {/* Right Panel: Single Breed Snapshot */}
+                          <div className="flex-2">
+                            <div className="border border-stone-200 rounded-2xl overflow-hidden bg-white flex flex-col justify-between group shadow-3xs h-full">
+                              <div className="h-48 bg-stone-100 overflow-hidden relative">
+                                <img src={breed.puppyImg || breed.adultImg} alt={breed.name} className="w-full h-full object-cover" />
+                                <div className="absolute top-4 left-4 bg-stone-900/80 backdrop-blur-xs text-white font-bold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                                  Stage: {getBreedStageLabel(breed.breedStage) || "Adult"}
+                                </div>
+                              </div>
+                              <div className="p-4 text-left bg-stone-50/50 border-t border-stone-200 flex-1 space-y-2">
+                                <p className="text-[10px] uppercase tracking-wider font-bold text-stone-400">Classified Breed</p>
+                                <p className="text-xs text-stone-600 font-medium">{breed.description || "Pending..."}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="py-20 text-center border border-dashed border-stone-200 rounded-2xl bg-stone-50">
+                        <p className="text-xs text-stone-400 font-bold uppercase tracking-widest">No configurations discovered matching search.</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
+              )}
+
+              {/* DYNAMIC LISTS: EXPERTS / SERVICES / PRODUCTS */}
+              {selectedService.uiType !== 'breed' && (
+                (() => {
+                  // Dynamic data extraction based on selected tab and service
+                  const directoryList = servicesData[selectedService.id] || [];
+
+                  return (
+                    <>
+                      {/* INTERFACE: EXPERTS */}
+                      {selectedService.uiType === 'expertGrid' && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                          {directoryList.map((expert) => (
+                            <div key={expert.id} className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-3xs hover:border-stone-300 transition-all">
+                              <img
+                                src={expert.img}
+                                alt={expert.title}
+                                className="w-full h-56 object-cover"
+                              />
+                              <div className="p-5">
+                                <h6 className="font-black text-xl text-stone-900">{expert.title}</h6>
+
+                                <p className="text-sm text-stone-500 mt-2">
+                                  {expert.sub}
+                                </p>
+
+                                {expert.rating && (
+                                  <p className="text-sm text-amber-500 font-semibold mt-3">
+                                    ⭐ {expert.rating}
+                                  </p>
+                                )}
+
+                                {expert.loc && (
+                                  <p className="text-sm text-stone-500 mt-2">
+                                    📍 {expert.loc}
+                                  </p>
+                                )}
+
+                                <ContactActions
+                                  title={expert.title}
+                                  category={selectedService.title}
+                                  whatsappNumber={expert.whatsapp}
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* INTERFACE: SERVICES */}
+                      {selectedService.uiType === 'serviceGrid' && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                          {directoryList.map((center) => (
+                            <div
+                              key={center.id}
+                              className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-3xs"
+                            >
+                              {/* Image */}
+                              {center.img && (
+                                <img
+                                  src={center.img}
+                                  alt={center.title}
+                                  className="w-full h-56 object-cover"
+                                />
+                              )}
+
+                              <div className="p-5">
+                                {/* Title */}
+                                <h6 className="font-black text-xl text-stone-900">
+                                  {center.title}
+                                </h6>
+
+                                {/* Subtitle */}
+                                <p className="text-sm text-stone-500 mt-2">
+                                  {center.sub}
+                                </p>
+
+                                {/* Rating */}
+                                {center.rating && (
+                                  <p className="text-sm text-amber-500 mt-3 font-semibold">
+                                    ⭐ {center.rating}
+                                  </p>
+                                )}
+
+                                {/* Location */}
+                                {center.loc && (
+                                  <p className="text-sm text-stone-500 mt-2">
+                                    📍 {center.loc}
+                                  </p>
+                                )}
+                                <ContactActions
+                                  title={center.title}
+                                  category={selectedService.title}
+                                  whatsappNumber={center.whatsapp}
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* INTERFACE: PRODUCTS */}
+                      {selectedService.uiType === 'productGrid' && (
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+                          {directoryList.map((product) => (
+                            <div key={product.id} className="bg-white border border-stone-200 rounded-2xl p-4">
+                              <img src={product.img} className="w-full h-32 object-cover rounded-xl mb-3" />
+                              <h6 className="font-bold text-sm">{product.title}</h6>
+                              <p className="text-sm text-stone-500 mt-2">{product.sub}</p>
+                              {product.rating && (
+                                <p className="text-sm text-amber-500 font-semibold mt-4">
+                                  ⭐ {product.rating}
+                                </p>
+                              )}
+                              {product.price && (
+                                <p className="text-green-600 font-bold mt-2">
+                                  {product.price}
+                                </p>
+                              )}
+                              {product.loc && (
+                                <p className="text-sm text-stone-500 mt-1">
+                                  📍 {product.loc}
+                                </p>
+                              )}
+                              <p className="text-xs text-stone-400">{product.meta}</p>
+                              <ContactActions
+                                title={product.title}
+                                category={selectedService.title}
+                                whatsappNumber={product.whatsapp}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {directoryList.length === 0 && (
+                        <div className="py-24 text-center border border-dashed border-stone-200 rounded-2xl bg-stone-50">
+                          <p className="text-xs text-stone-400 font-bold uppercase">Preparing catalog records...</p>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()
               )}
             </div>
           </div>
-        )}
-
-        {/* DYNAMIC LISTS: EXPERTS / SERVICES / PRODUCTS */}
-        {selectedService.uiType !== 'breed' && (
-           (() => {
-             // Dynamic data extraction based on selected tab and service
-             const directoryList = servicesData[selectedService.id] || [];
-             
-             return (
-               <>
-                 {/* INTERFACE: EXPERTS */}
-                 {selectedService.uiType === 'expertGrid' && (
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                     {directoryList.map((expert) => (
-                       <div key={expert.id} className="bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col sm:flex-row hover:border-stone-300 transition-all">
-                         <div className="w-full sm:w-40 h-40 bg-stone-100 shrink-0"><img src={expert.img} className="w-full h-full object-cover" /></div>
-                         <div className="p-5 flex-1">
-                           <h6 className="font-bold text-stone-900">{expert.title}</h6>
-                           <p className="text-xs text-stone-500">{expert.sub}</p>
-                           <p className="text-xs text-stone-400 mt-2">{expert.meta}</p>
-                         </div>
-                       </div>
-                     ))}
-                   </div>
-                 )}
-
-                 {/* INTERFACE: SERVICES */}
-                 {selectedService.uiType === 'serviceGrid' && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                      {directoryList.map((center) => (
-                        <div key={center.id} className="bg-white border border-stone-200 rounded-2xl p-5 shadow-3xs">
-                          <h6 className="font-black text-lg">{center.title}</h6>
-                          <p className="text-xs text-stone-500 my-2">{center.sub}</p>
-                          <button className="bg-stone-900 text-white w-full py-2 rounded-xl text-xs">Contact</button>
-                        </div>
-                      ))}
-                    </div>
-                 )}
-
-                 {/* INTERFACE: PRODUCTS */}
-                 {selectedService.uiType === 'productGrid' && (
-                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-                     {directoryList.map((product) => (
-                       <div key={product.id} className="bg-white border border-stone-200 rounded-2xl p-4">
-                         <img src={product.img} className="w-full h-32 object-cover rounded-xl mb-3" />
-                         <h6 className="font-bold text-sm">{product.title}</h6>
-                         <p className="text-xs text-stone-400">{product.meta}</p>
-                       </div>
-                     ))}
-                   </div>
-                 )}
-
-                 {directoryList.length === 0 && (
-                   <div className="py-24 text-center border border-dashed border-stone-200 rounded-2xl bg-stone-50">
-                     <p className="text-xs text-stone-400 font-bold uppercase">Preparing catalog records...</p>
-                   </div>
-                 )}
-               </>
-             );
-           })()
-        )}
-      </div>
-    </div>
-  </div>
-)}
+        </div>
+      )}
     </div>
   );
 } 
