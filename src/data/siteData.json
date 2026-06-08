@@ -64,7 +64,7 @@
   "homeContent": {
     "artist": "Trusted Pet Care",
     "headline": "Give Your Pet the Best Life with Expert Care, Professional Grooming, and Loving Support from Omi Pet.",
-    "heroImage": "/src/assets/13.png",
+    "heroImage": "/assets/13.png",
     "publishedDate": "May 28, 2026",
     "author": "Omi Pet",
     "articleParagraph": "At Omi Pet, we help you find healthy and loving pets with complete care support for every stage of their journey. From pet adoption and grooming to training, nutrition, and healthcare guidance, our mission is to create happy bonds between pets and families. We provide trusted services, quality products, and expert care to keep your pet companions safe, active, and joyful every day.",
@@ -85,7 +85,7 @@
       "https://images.unsplash.com/photo-1759745063505-ca18c2ccf77c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1571325654970-9c00c5432fcb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],
-    "secondGalleryCover": "/src/assets/1.jpg",
+    "secondGalleryCover": "/assets/1.jpg",
     "secondGalleryImages": [
       "https://plus.unsplash.com/premium_photo-1731693607351-d4f74ac3f7c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1573435567032-ff5982925350?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -96,10 +96,10 @@
         "text": "Omi Pet provides healthy pets, trusted care services, grooming, training, and quality pet essentials for every loving pet owner. Our mission is to create happy, safe, and caring relationships between pets and families while ensuring comfort, health, and joy for your pet companions every day."
       }
     ],
-    "dualCardLeftImage": "/src/assets/l1.jpg",
-    "dualCardRightImage": "/src/assets/4852.jpg",
+    "dualCardLeftImage": "/assets/l1.jpg",
+    "dualCardRightImage": "/assets/4852.jpg",
     "thirdGalleryImages": [
-      "/src/assets/4852.jpg",
+      "/assets/4852.jpg",
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
     ],
     "footerParagraph": "Omi Pet is dedicated to providing healthy pets, premium pet supplies, and reliable care services for pet lovers. From grooming and nutrition to training and healthcare support, we help your pet companions live a happy, active, and comfortable life with love, safety, and professional attention every single day."
@@ -144,7 +144,7 @@
         "author": "Professional Puppy Grooming",
         "title": "Gentle grooming services keeping newborn puppies clean, comfortable, healthy, stylish, and active throughout every changing season daily.",
         "bg": "bg-[#E6E6E6]",
-        "image": "/src/assets/mm.jpeg"
+        "image": "/assets/mm.jpeg"
       },
       {
         "id": 5,
@@ -165,7 +165,7 @@
         "author": "Safe Puppy Boarding",
         "title": "Comfortable puppy boarding services offering supervision, feeding, hygiene, relaxation, and caring environments while owners stay away.",
         "bg": "bg-[#F3EED9]",
-        "image": "/src/assets/l2.jpg"
+        "image": "/assets/l2.jpg"
       },
       {
         "id": 8,

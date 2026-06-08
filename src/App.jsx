@@ -1,11 +1,11 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
-import Requirements from './pages/Requirements'; 
+import Requirements from './pages/Requirements';
+import LoginPage from './pages/Login';
 import DashboardPage from './dash/Dashboard';
 // import DashboardPage from "./dashboard/page";
 
@@ -33,7 +33,8 @@ export default function App() {
         </Route>
 
         {/* GROUP B: Pages that WILL NOT show the Navbar */}
-        <Route path="/dashboard" element={<DashboardPage/>} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </Router>
   );

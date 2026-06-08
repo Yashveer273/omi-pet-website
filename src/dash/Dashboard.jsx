@@ -1,8 +1,13 @@
-import  { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { firestore } from '../firebase';
 import { doc, getDoc, setDoc, collection, getDocs, deleteDoc } from 'firebase/firestore';
 
+const AUTH_KEY = 'omi-pet-dashboard-auth';
+
 export default function DashboardPage() {
+  const navigate = useNavigate();
+
   // Navigation Routing & Global UI Rendering Switches
   const [activeTab, setActiveTab] = useState('meta');
   const [selectedSubCategory, setSelectedSubCategory] = useState('breeder'); // Nested tab selection for Service Types
@@ -48,6 +53,22 @@ export default function DashboardPage() {
     bird: "🦜 Bird"
   };
 
+  const logDashboardActivity = (event, detail = {}) => {
+    console.info(`[Dashboard:${event}]`, {
+      activeTab,
+      selectedServiceSpecies,
+      selectedSubCategory,
+      timestamp: new Date().toISOString(),
+      ...detail
+    });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem(AUTH_KEY);
+    logDashboardActivity('logout');
+    navigate('/login', { replace: true });
+  };
+
   // Synchronized Firestore Read Handler Engine
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -77,13 +98,17 @@ export default function DashboardPage() {
   }, [activeTab, selectedServiceSpecies]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    if (localStorage.getItem(AUTH_KEY) !== 'true') {
+      navigate('/login', { replace: true });
+      return;
+    }
 
-  useEffect(() => {
-    setSelectedItem(null);
-    setIsEditing(false);
-  }, [activeTab, selectedSubCategory, selectedServiceSpecies]);
+    const timer = window.setTimeout(() => {
+      void fetchData();
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [fetchData, navigate]);
 
   // Automated form helper matching the new description and pricing field variables
   const handleAutofillForm = () => {
@@ -110,6 +135,27 @@ export default function DashboardPage() {
       };
       setSelectedItem(prev => ({ ...prev, ...(samples[selectedSubCategory] || samples.breeder) }));
     }
+  };
+
+  const handleTabSelect = (nextTab) => {
+    setActiveTab(nextTab);
+    setSelectedItem(null);
+    setIsEditing(false);
+    logDashboardActivity('tab-change', { nextTab });
+  };
+
+  const handleSpeciesSelect = (nextSpecies) => {
+    setSelectedServiceSpecies(nextSpecies);
+    setSelectedItem(null);
+    setIsEditing(false);
+    logDashboardActivity('species-change', { nextSpecies });
+  };
+
+  const handleCategorySelect = (nextCategory) => {
+    setSelectedSubCategory(nextCategory);
+    setSelectedItem(null);
+    setIsEditing(false);
+    logDashboardActivity('category-change', { nextCategory });
   };
 
   const handleSeedDatabase = async () => {
@@ -148,6 +194,7 @@ export default function DashboardPage() {
       await setDoc(doc(firestore, 'serviceDirectories', 'fish'), baseCategories);
       await setDoc(doc(firestore, 'serviceDirectories', 'bird'), baseCategories);
 
+      logDashboardActivity('seed-database', { status: 'success' });
       alert("Firestore initialized across all modules successfully!");
       fetchData();
     } catch (err) {
@@ -162,6 +209,7 @@ export default function DashboardPage() {
     setLoading(true);
     try {
       await setDoc(doc(firestore, 'metadata', 'configuration'), meta);
+      logDashboardActivity('meta-saved', { heading: meta.heading });
       alert('Application UI headers synchronized.');
     } catch (err) {
       console.error(err);
@@ -177,6 +225,7 @@ export default function DashboardPage() {
       const generatedDocId = isEditing ? selectedItem.breedId : `${speciesId.toUpperCase()}-${Date.now()}`;
       const payload = { ...selectedItem, breedId: generatedDocId };
       await setDoc(doc(firestore, `registry_${speciesId}`, generatedDocId), payload);
+      logDashboardActivity('registry-saved', { speciesId, generatedDocId, isEditing });
       alert(`Record saved under ID: ${generatedDocId}`);
       setIsEditing(false);
       setSelectedItem(null);
@@ -217,6 +266,7 @@ export default function DashboardPage() {
 
       const updatedPayload = { ...currentSpeciesServices, [selectedSubCategory]: subCategoryList };
       await setDoc(doc(firestore, 'serviceDirectories', selectedServiceSpecies), updatedPayload);
+      logDashboardActivity('service-saved', { selectedServiceSpecies, selectedSubCategory, isEditing });
       alert(`Marketplace directory updated for ${selectedServiceSpecies.toUpperCase()}`);
       setIsEditing(false);
       setSelectedItem(null);
@@ -260,6 +310,7 @@ export default function DashboardPage() {
     btnDanger: { padding: '6px 12px', backgroundColor: '#ef4444', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' },
     btnEdit: { padding: '6px 12px', backgroundColor: '#f59e0b', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '12px', marginRight: '6px' },
     seedBtn: { padding: '10px 16px', backgroundColor: '#334155', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '13px', fontWeight: '500' },
+    logoutBtn: { padding: '10px 16px', backgroundColor: '#ef4444', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '13px', fontWeight: '500' },
     autofillBtn: { padding: '8px 14px', backgroundColor: '#3b82f6', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '13px', fontWeight: '600', marginBottom: '20px', display: 'inline-flex', alignItems: 'center', gap: '6px' },
     cardGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px', marginTop: '25px' },
     card: { backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', position: 'relative', display: 'flex', flexDirection: 'column' },
@@ -291,7 +342,7 @@ export default function DashboardPage() {
       <div style={styles.sidebar}>
         <div style={styles.sidebarHeader}>🐾 Admin Workspace</div>
         {menuOptions.map((opt) => (
-          <button key={opt.id} style={styles.sidebarBtn(activeTab === opt.id)} onClick={() => setActiveTab(opt.id)}>
+          <button key={opt.id} style={styles.sidebarBtn(activeTab === opt.id)} onClick={() => handleTabSelect(opt.id)}>
             <span>{opt.icon}</span> {opt.label}
           </button>
         ))}
@@ -304,7 +355,10 @@ export default function DashboardPage() {
             {activeTab.endsWith('-registry') && `${activeTab.split('-')[0].toUpperCase()} Catalog Inventory`}
             {activeTab === 'global-services' && "Global Services Directory Matrix"}
           </div>
-          <button style={styles.seedBtn} onClick={handleSeedDatabase}>⚡ Seed Blueprints</button>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <button style={styles.seedBtn} onClick={handleSeedDatabase}>⚡ Seed Blueprints</button>
+            <button style={styles.logoutBtn} onClick={handleLogout}>🚪 Logout</button>
+          </div>
         </div>
 
         {loading && <div style={{ textAlign: 'center', padding: '40px', fontSize: '16px', color: '#64748b', fontWeight: '600' }}>🔄 Contacting Cloud Infrastructure Hub...</div>}
@@ -350,7 +404,7 @@ export default function DashboardPage() {
               <div>
                 <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', borderBottom: '1px solid #e2e8f0', paddingBottom: '15px' }}>
                   {['dog', 'cat', 'small', 'fish', 'bird'].map((spKey) => (
-                    <button key={spKey} style={styles.speciesTabBtn(selectedServiceSpecies === spKey)} onClick={() => setSelectedServiceSpecies(spKey)}>
+                    <button key={spKey} style={styles.speciesTabBtn(selectedServiceSpecies === spKey)} onClick={() => handleSpeciesSelect(spKey)}>
                       {speciesLabelMap[spKey]}
                     </button>
                   ))}
@@ -358,7 +412,7 @@ export default function DashboardPage() {
 
                 <div style={styles.subTabsBar}>
                   {['breeder', 'trainer', 'walker', 'food', 'accessories', 'stay', 'medicine'].map((category) => (
-                    <button key={category} style={styles.subTabBtn(selectedSubCategory === category)} onClick={() => setSelectedSubCategory(category)}>
+                    <button key={category} style={styles.subTabBtn(selectedSubCategory === category)} onClick={() => handleCategorySelect(category)}>
                       {category.toUpperCase()}
                     </button>
                   ))}
