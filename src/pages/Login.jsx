@@ -33,8 +33,7 @@ export default function LoginPage() {
       <div style={styles.card}>
         <p style={styles.eyebrow}>Protected Admin Access</p>
         <h1 style={styles.title}>Sign in to the dashboard</h1>
-        <p style={styles.subtitle}>Use the static password <strong>santosh</strong> to unlock the workspace and keep this session saved in your browser.</p>
-
+       
         <form onSubmit={handleSubmit} style={styles.form}>
           <label style={styles.label} htmlFor="password">Password</label>
           <input
