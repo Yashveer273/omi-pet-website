@@ -1,5 +1,9 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import siteData from '../data/siteData.json';
+
+// --- FIREBASE CONNECTION MODULES ---
+import { firestore } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 // --- CORE SWIPER CAROUSEL ENGINE ---
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,13 +23,12 @@ export default function Home() {
     dualCardLeftImage, dualCardRightImage, thirdGalleryImages, footerParagraph
   } = siteData.homeContent;
 
-
-  const { heading: keepExploringHeading, pills: keepExploringPills, photographyData, somethingNewData } = siteData.keepExploringSection;
+  const { heading: keepExploringHeading } = siteData.keepExploringSection;
 
   const { heading: ourBlogHeading, blogsData } = siteData.ourBlogSliderSection;
 
   // Destructuring brand new Pro Promo Banner asset nodes
-  const { upperContext, mainHeading, } = siteData.proBannerSectionData;
+  const { upperContext, mainHeading } = siteData.proBannerSectionData;
 
   const { title: footerTitle, subtitle: footerSubtitle, linksGrid } = siteData.footerSectionData;
 
@@ -34,8 +37,8 @@ export default function Home() {
   const [activeGalleryScope, setActiveGalleryScope] = useState('first'); 
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-  // Keep Exploring Active Pill Toggle State
-  const [activeExplorePill, setActiveExplorePill] = useState('photography'); 
+  // Keep Exploring Dynamic Database State Matrix
+  const [keepExploringList, setKeepExploringList] = useState([]);
 
   // Local state loops to validate news input values natively
   const [newsletterForm, setNewsletterForm] = useState({ firstName: '', lastName: '', email: '' });
@@ -61,12 +64,23 @@ export default function Home() {
   const [exitAnimationActive4, setExitAnimationActive4] = useState(false);
   const imageContainerRef4 = useRef(null);
 
+  // Synchronized Hook to Populate Dynamic Keep Exploring Cards Feed
+  useEffect(() => {
+    const fetchExploringCards = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(firestore, 'keep_exploring'));
+        const items = [];
+        querySnapshot.forEach((doc) => {
+          items.push({ id: doc.id, ...doc.data() });
+        });
+        setKeepExploringList(items);
+      } catch (error) {
+        console.error("Error retrieving dataset configurations from cloud infrastructure: ", error);
+      }
+    };
 
-
-
-
-
-
+    void fetchExploringCards();
+  }, []);
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
@@ -108,13 +122,6 @@ export default function Home() {
     setActiveGalleryScope(galleryContextKey);
     setCurrentSlideIndex(0);
     setIsLightboxOpen(true);
-  };
-
- 
-
-
-  const getKeepExploringDataset = () => {
-    return activeExplorePill === 'photography' ? photographyData : somethingNewData;
   };
 
   return (
@@ -243,7 +250,7 @@ export default function Home() {
       {/* ======================================================== */}
       <hr className="border-t border-slate-300/60 max-w-[1200px] mx-auto mb-20" />
 
-     <SimpleCutePetSection/>
+      <SimpleCutePetSection/>
 
       {/* ======================================================== */}
       {/* 🚀 SECTION 3: KEEP EXPLORING INFINITE WIDE CAROUSEL */}
@@ -254,25 +261,12 @@ export default function Home() {
         <h3 className="font-serif text-3xl md:text-4xl text-slate-900 tracking-tight mb-6">{keepExploringHeading}</h3>
         <h1 className="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-6">Dog & Cat Breed</h1>
 
-        <div className="flex space-x-3 mb-12">
-          {keepExploringPills && keepExploringPills.map((pill) => (
-            <button
-              key={pill.id}
-              onClick={() => setActiveExplorePill(pill.id)}
-              className={`px-5 py-2.5 rounded-full font-sans text-xs font-semibold tracking-wide border transition-all duration-300
-                ${activeExplorePill === pill.id ? 'bg-white text-slate-900 border-slate-900 shadow-sm scale-105' : 'bg-transparent text-slate-500 border-slate-300 hover:text-slate-900 hover:border-slate-400'}`}
-            >
-              {pill.name}
-            </button>
-          ))}
-        </div>
-
         <div className="w-full relative px-0 flex flex-col items-center">
           <Swiper
             slidesPerView={1.3} 
             centeredSlides={true} 
             spaceBetween={24}
-            loop={true}
+            loop={keepExploringList.length > 0}
             modules={[Navigation]}
             navigation={{ nextEl: '.swiper-button-next-explore-omi', prevEl: '.swiper-button-prev-explore-omi' }}
             breakpoints={{
@@ -283,13 +277,21 @@ export default function Home() {
             }}
             className="w-full !overflow-visible keep-exploring-swiper-master"
           >
-            {getKeepExploringDataset().map((card) => (
+            {keepExploringList.map((card) => (
               <SwiperSlide key={card.id} className="transition-all duration-500 py-4 select-none">
                 {({ isActive }) => (
                   <div 
-                    className={`w-full p-6 pb-8 rounded-[28px] flex flex-col justify-between shadow-sm border transition-all duration-500 ease-out text-left ${card.bg}
-                      ${isActive ? 'scale-[1.06] shadow-[0_25px_50px_rgba(0,0,0,0.12)] border-slate-400/40 relative z-30 opacity-100' : 'scale-[0.95] opacity-95 border-transparent z-10'}`}
-                    style={{ height: isActive ? '435px' : '400px' }}
+                    className={`w-full p-6 pb-8 rounded-[28px] flex flex-col justify-between shadow-sm border transition-all duration-500 ease-out text-left ${card.bg}`}
+                    style={{ 
+                      height: isActive ? '435px' : '400px',
+                      transform: isActive ? 'scale(1.06)' : 'scale(0.95)',
+                      boxShadow: isActive ? '0 25px 50px rgba(0,0,0,0.12)' : 'none',
+                      borderColor: isActive ? 'rgba(148, 163, 184, 0.4)' : 'transparent',
+                      zIndex: isActive ? 30 : 10,
+                      opacity: isActive ? 1 : 0.95,
+                      position: 'relative',
+                      transition: 'all 500s cubic-bezier(0.16, 1, 0.3, 1)'
+                    }}
                   >
                     <div className="w-full h-[65%] rounded-[20px] overflow-hidden bg-black/5">
                       <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
@@ -371,10 +373,7 @@ export default function Home() {
       {/* 🚀 SECTION 5: PRO ADVERTISEMENT BANNER BLOCK */}
       {/* ======================================================== */}
       <section className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mb-24 relative z-20 animate-fade-in">
-        <div 
-        
-          className="w-full bg-[#1E1E1E] rounded-[32px] p-8 sm:p-12 md:p-16 flex flex-col md:flex-row items-center justify-between overflow-hidden relative  group shadow-xl hover:shadow-[0_30px_60px_rgba(0,0,0,0.25)] transition-all duration-500"
-        >
+        <div className="w-full bg-[#1E1E1E] rounded-[32px] p-8 sm:p-12 md:p-16 flex flex-col md:flex-row items-center justify-between overflow-hidden relative group shadow-xl hover:shadow-[0_30px_60px_rgba(0,0,0,0.25)] transition-all duration-500">
           <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           
           <div className="flex flex-col items-start text-left z-10 w-full md:w-1/2 mb-8 md:mb-0">

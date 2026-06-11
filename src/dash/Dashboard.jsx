@@ -18,6 +18,7 @@ export default function DashboardPage() {
   const [meta, setMeta] = useState({ heading: '', subheading: '', speciesTabs: [], combinedBreedFilters: [] });
   const [registryList, setRegistryList] = useState([]);
   const [serviceDirectories, setServiceDirectories] = useState({});
+  const [keepExploringList, setKeepExploringList] = useState([]); // Isolated state for Keep Exploring items
 
   // Dynamic Workspace Edit Forms States
   const [selectedItem, setSelectedItem] = useState(null);
@@ -90,6 +91,12 @@ export default function DashboardPage() {
         } else {
           setServiceDirectories(prev => ({ ...prev, [selectedServiceSpecies]: {} }));
         }
+      } else if (activeTab === 'keep-exploring') {
+        // Safe context read to retrieve Keep Exploring cards without breaking prior routes
+        const querySnapshot = await getDocs(collection(firestore, 'keep_exploring'));
+        const items = [];
+        querySnapshot.forEach((doc) => items.push({ id: doc.id, ...doc.data() }));
+        setKeepExploringList(items);
       }
     } catch (err) {
       console.error("Error retrieving dataset configuration arrays: ", err);
@@ -112,6 +119,16 @@ export default function DashboardPage() {
 
   // Automated form helper matching the new description and pricing field variables
   const handleAutofillForm = () => {
+    if (activeTab === 'keep-exploring') {
+      setSelectedItem({
+        author: "Loving Companionship For Dogs",
+        title: "Build stronger bonds with adult dogs through proper care, playful moments, trust, and daily companionship experiences.",
+        bg: "bg-[#F3EED9]",
+        image: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600"
+      });
+      return;
+    }
+
     const speciesId = activeTab.split('-')[0];
 
     if (activeTab.endsWith('-registry')) {
@@ -292,6 +309,37 @@ export default function DashboardPage() {
     setLoading(false);
   };
 
+  // Purely Additive Keep Exploring Database Configuration Logic
+  const handleSaveKeepExploringItem = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const generatedDocId = isEditing ? selectedItem.id : `EXP-${Date.now()}`;
+      const payload = { ...selectedItem, id: generatedDocId };
+      await setDoc(doc(firestore, 'keep_exploring', generatedDocId), payload);
+      logDashboardActivity('keep-exploring-saved', { generatedDocId, isEditing });
+      alert(`Explorer item written securely.`);
+      setIsEditing(false);
+      setSelectedItem(null);
+      fetchData();
+    } catch (err) {
+      console.error("Cloud mutation failed completely: ", err);
+    }
+    setLoading(false);
+  };
+
+  const handleDeleteKeepExploringItem = async (id) => {
+    if (!window.confirm("Permanently strip down this catalog highlight?")) return;
+    setLoading(true);
+    try {
+      await deleteDoc(doc(firestore, 'keep_exploring', id));
+      fetchData();
+    } catch (err) {
+      console.error("Cloud deletion execution error: ", err);
+    }
+    setLoading(false);
+  };
+
   const getFilterLabel = (id) => {
     const match = BREED_FILTERS.find(f => f.id === id);
     return match ? match.label : id;
@@ -326,13 +374,13 @@ export default function DashboardPage() {
   };
 
   const menuOptions = [
-
     { id: 'dog-registry', label: 'Dog Registry', icon: '🐩' },
     { id: 'cat-registry', label: 'Cat Registry', icon: '🐱' },
     { id: 'small-registry', label: 'Small Pets Registry', icon: '🐹' },
     { id: 'fish-registry', label: 'Fish Registry', icon: '🐠' },
     { id: 'bird-registry', label: 'Bird Registry', icon: '🐦' },
-    { id: 'global-services', label: 'Service Directories', icon: '🩺' }
+    { id: 'global-services', label: 'Service Directories', icon: '🩺' },
+    { id: 'keep-exploring', label: 'Keep Exploring', icon: '🧭' }
   ];
 
   const isProductCategory = ['accessories', 'medicine'].includes(selectedSubCategory);
@@ -354,6 +402,7 @@ export default function DashboardPage() {
             {activeTab === 'meta' && "Application Platform Configuration Setup"}
             {activeTab.endsWith('-registry') && `${activeTab.split('-')[0].toUpperCase()} Catalog Inventory`}
             {activeTab === 'global-services' && "Global Services Directory Matrix"}
+            {activeTab === 'keep-exploring' && "Keep Exploring Cards Feed Management"}
           </div>
           <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
             <button style={styles.seedBtn} onClick={handleSeedDatabase}>⚡ Seed Blueprints</button>
@@ -449,6 +498,31 @@ export default function DashboardPage() {
               </div>
             )}
 
+            {/* Content List Feed UI Render for Keep Exploring */}
+            {activeTab === 'keep-exploring' && !selectedItem && (
+              <div>
+                <button style={styles.btnPrimary} onClick={() => setSelectedItem({ author: '', title: '', bg: 'bg-[#F3EED9]', image: '' })}>
+                  ➕ Append New Explorer Card
+                </button>
+                <div style={styles.cardGrid}>
+                  {keepExploringList.map((item) => (
+                    <div key={item.id} style={styles.card}>
+                      <img src={item.image || 'https://via.placeholder.com/150'} alt="Representation Preview" style={styles.cardImg} />
+                      <h3 style={{ margin: '0 0 4px 0', fontSize: '16px' }}>{item.author}</h3>
+                      <p style={{ margin: '4px 0', fontSize: '13px', color: '#475569', flexGrow: 1 }}>{item.title}</p>
+                      <p style={{ margin: '6px 0', fontSize: '12px', color: '#64748b' }}>
+                        <b>Background Class:</b> <code style={{ background: '#f1f5f9', padding: '2px 4px', borderRadius: '4px' }}>{item.bg}</code>
+                      </p>
+                      <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'flex-end' }}>
+                        <button style={styles.btnEdit} onClick={() => { setSelectedItem(item); setIsEditing(true); }}>📝 Edit</button>
+                        <button style={styles.btnDanger} onClick={() => handleDeleteKeepExploringItem(item.id)}>🗑️ Delete</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {selectedItem && (
               <div style={{ backgroundColor: '#fff', padding: '35px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', marginTop: '20px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -463,8 +537,14 @@ export default function DashboardPage() {
                   )}
                 </div>
 
-                <form onSubmit={activeTab.endsWith('-registry') ? handleSaveRegistryItem : handleSaveServiceItem}>
-                  {activeTab.endsWith('-registry') ? (
+                <form onSubmit={
+                  activeTab === 'keep-exploring' 
+                    ? handleSaveKeepExploringItem 
+                    : activeTab.endsWith('-registry') 
+                      ? handleSaveRegistryItem 
+                      : handleSaveServiceItem
+                }>
+                  {activeTab.endsWith('-registry') && (
                     <>
                       <div style={styles.formGroup}>
                         <label style={{ fontSize: '12px', fontWeight: '600' }}>Common Breed Name</label>
@@ -506,7 +586,6 @@ export default function DashboardPage() {
                         <input style={styles.input} placeholder="e.g., Playful, loving, easygoing, and very quiet" value={selectedItem.temperament || ''} onChange={e => setSelectedItem({ ...selectedItem, temperament: e.target.value })} />
                       </div>
                       
-                      {/* COMPREHENSIVE COMPONENT BRIEF DESCRIPTION FIELD */}
                       <div style={styles.formGroup}>
                         <label style={{ fontSize: '12px', fontWeight: '600' }}>Detailed Catalog Variant Description</label>
                         <textarea style={styles.textarea} placeholder="Write a brief structural narrative highlighting behavior, historical details, or space compatibility..." value={selectedItem.description || ''} onChange={e => setSelectedItem({ ...selectedItem, description: e.target.value })} />
@@ -517,7 +596,9 @@ export default function DashboardPage() {
                         <input style={styles.input} placeholder="e.g., https://images.unsplash.com/photo-..." value={selectedItem.puppyImg || ''} onChange={e => setSelectedItem({ ...selectedItem, puppyImg: e.target.value })} />
                       </div>
                     </>
-                  ) : (
+                  )}
+
+                  {activeTab === 'global-services' && (
                     <>
                       <div style={styles.formGroup}>
                         <label style={{ fontSize: '12px', fontWeight: '600' }}>Item/Service Title Name</label>
@@ -539,7 +620,6 @@ export default function DashboardPage() {
                         </select>
                       </div>
 
-                      {/* CONTEXT-SENSITIVE PRICE OR LOCATION INJECTOR SWITCH */}
                       {isProductCategory ? (
                         <div style={styles.formGroup}>
                           <label style={{ fontSize: '12px', fontWeight: '600', color: '#10b981' }}>Retail / Market Pricing Configuration</label>
@@ -559,6 +639,28 @@ export default function DashboardPage() {
                       <div style={styles.formGroup}>
                         <label style={{ fontSize: '12px', fontWeight: '600' }}>Certification Tag Labels / Specialty</label>
                         <input style={styles.input} placeholder="e.g., Premium Build, Vet Recommended, Verified Line" value={selectedItem.badge || ''} onChange={e => setSelectedItem({ ...selectedItem, badge: e.target.value })} />
+                      </div>
+                    </>
+                  )}
+
+                  {/* Keep Exploring Form Input Configuration Workspace */}
+                  {activeTab === 'keep-exploring' && (
+                    <>
+                      <div style={styles.formGroup}>
+                        <label style={{ fontSize: '12px', fontWeight: '600' }}>Author / Label Context</label>
+                        <input style={styles.input} placeholder="e.g., Loving Companionship For Dogs" value={selectedItem.author || ''} onChange={e => setSelectedItem({ ...selectedItem, author: e.target.value })} required />
+                      </div>
+                      <div style={styles.formGroup}>
+                        <label style={{ fontSize: '12px', fontWeight: '600' }}>Descriptive Title / Narrative Phrase</label>
+                        <textarea style={styles.textarea} placeholder="e.g., Build stronger bonds with adult dogs through proper care..." value={selectedItem.title || ''} onChange={e => setSelectedItem({ ...selectedItem, title: e.target.value })} required />
+                      </div>
+                      <div style={styles.formGroup}>
+                        <label style={{ fontSize: '12px', fontWeight: '600' }}>Tailwind Background Utility Class Style (`bg-[...]`)</label>
+                        <input style={styles.input} placeholder="e.g., bg-[#F3EED9]" value={selectedItem.bg || ''} onChange={e => setSelectedItem({ ...selectedItem, bg: e.target.value })} required />
+                      </div>
+                      <div style={styles.formGroup}>
+                        <label style={{ fontSize: '12px', fontWeight: '600' }}>Image URL Resource Location</label>
+                        <input style={styles.input} placeholder="e.g., https://images.unsplash.com/photo-..." value={selectedItem.image || ''} onChange={e => setSelectedItem({ ...selectedItem, image: e.target.value })} required />
                       </div>
                     </>
                   )}
