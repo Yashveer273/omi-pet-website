@@ -371,6 +371,19 @@ export default function DashboardPage() {
     subTabBtn: (active) => ({ padding: '8px 16px', backgroundColor: active ? '#0f172a' : '#e2e8f0', color: active ? '#fff' : '#475569', border: 'none', borderRadius: '20px', cursor: 'pointer', fontSize: '13px', fontWeight: '500', whiteSpace: 'nowrap' }),
     speciesTabBtn: (active) => ({ padding: '10px 20px', backgroundColor: active ? '#f59e0b' : '#fff', color: active ? '#0f172a' : '#475569', border: active ? '2px solid #f59e0b' : '2px solid #e2e8f0', borderRadius: '8px', cursor: 'pointer', fontSize: '14px', fontWeight: '600' }),
     badgeStyle: { background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px', fontWeight: '500', color: '#334155' }
+    ,internalPageButton: {
+    backgroundColor: '#007bff',
+    color: '#ffffff',
+    padding: '10px 20px',
+    borderRadius: '6px',
+    border: 'none',
+    fontSize: '14px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease, transform 0.2s ease',
+    boxShadow: '0 4px 6px rgba(0, 123, 255, 0.2)',
+    marginLeft: '15px'
+  }
   };
 
   const menuOptions = [
@@ -389,11 +402,27 @@ export default function DashboardPage() {
     <div style={styles.layoutContainer}>
       <div style={styles.sidebar}>
         <div style={styles.sidebarHeader}>🐾 Admin Workspace</div>
+       
         {menuOptions.map((opt) => (
           <button key={opt.id} style={styles.sidebarBtn(activeTab === opt.id)} onClick={() => handleTabSelect(opt.id)}>
             <span>{opt.icon}</span> {opt.label}
           </button>
         ))}
+         <button 
+    style={styles.internalPageButton}
+    onMouseOver={(e) => {
+      e.target.style.backgroundColor = '#0056b3';
+      e.target.style.transform = 'translateY(-2px)';
+    }}
+    onMouseOut={(e) => {
+      e.target.style.backgroundColor = '#007bff';
+      e.target.style.transform = 'translateY(0)';
+    }}
+    onClick={() => window.location.href = '/internalpage'}
+  >
+    Manage Stores
+  </button>
+
       </div>
 
       <div style={styles.workArea}>

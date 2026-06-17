@@ -7,6 +7,8 @@ import Contact from './pages/Contact';
 import Requirements from './pages/Requirements';
 import LoginPage from './pages/Login';
 import DashboardPage from './dash/Dashboard';
+import StorePage from './StorePage';
+import AdminStoreManager from './dash/AdminStoreManager';
 // import DashboardPage from "./dashboard/page";
 
 // 1. This component wraps your public pages and includes the Navbar
@@ -30,11 +32,16 @@ export default function App() {
           <Route path="/Blog" element={<Blog />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Requirements" element={<Requirements />} />
+          <Route path="/stores/:storeSlug" element={<StorePage/>} />
+          <Route path="/stores/:storeSlug" element={<StorePage/>} />
+        
+          
         </Route>
 
         {/* GROUP B: Pages that WILL NOT show the Navbar */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/internalpage" element={<AdminStoreManager/>} />
       </Routes>
     </Router>
   );
