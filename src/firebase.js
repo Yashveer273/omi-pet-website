@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyDr-11dHqJzluJ2hyvNRtsy-F5MwOc3kcI",
-  authDomain: "omipet.firebaseapp.com",
-  projectId: "omipet",
-  storageBucket: "omipet.firebasestorage.app",
-  messagingSenderId: "673111453731",
-  appId: "1:673111453731:web:631b16109b792e4afbc196",
-  measurementId: "G-PLWM54HYXC"
+  apiKey: "AIzaSyCi_7vON2iaQfV2PERv2m6m9YjZLNp--fM",
+  authDomain: "kriya1-5fb0d.firebaseapp.com",
+  projectId: "kriya1-5fb0d",
+  storageBucket: "kriya1-5fb0d.appspot.com",
+  messagingSenderId: "892248196632",
+  appId: "1:892248196632:web:86e5a8f33dad9603eea56d",
+  measurementId: "G-7LNS22RP2N"
 };
 
 const app = initializeApp(firebaseConfig);
