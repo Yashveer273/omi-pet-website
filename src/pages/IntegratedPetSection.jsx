@@ -320,7 +320,7 @@ export default function IntegratedPetSection() {
     }
   `}
                   >
-                    <div className="w-16 h-16 rounded-xl overflow-hidden mb-3">
+                    <div className="w-25 h-23 rounded-xl overflow-hidden mb-3">
                       <img
                         src={tab.image}
                         alt={tab.name}

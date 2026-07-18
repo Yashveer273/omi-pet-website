@@ -179,7 +179,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+<hr className="border-t border-slate-300/60 max-w-[1200px] mx-auto mb-20" />
 
+      <SimpleCutePetSection/>
       <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 md:px-8 mb-16 mt-4 flex flex-col items-center">
         <div 
           ref={imageContainerRef2}
@@ -248,19 +250,16 @@ export default function Home() {
       {/* ======================================================== */}
       {/* 🚀 PART 2: DYNAMIC OMI PET PORTAL ENGINE */}
       {/* ======================================================== */}
-      <hr className="border-t border-slate-300/60 max-w-[1200px] mx-auto mb-20" />
-
-      <SimpleCutePetSection/>
+      
 
       {/* ======================================================== */}
       {/* 🚀 SECTION 3: KEEP EXPLORING INFINITE WIDE CAROUSEL */}
       {/* ======================================================== */}
       <hr className="border-t border-slate-300/60 max-w-[1200px] mx-auto mb-20 relative z-10" />
 
-      <section className="w-full mb-24 text-center flex flex-col items-center relative z-20">
+      <section className="w-full mb-2 text-center flex flex-col items-center relative z-20">
         <h3 className="font-serif text-3xl md:text-4xl text-slate-900 tracking-tight mb-6">{keepExploringHeading}</h3>
-        <h1 className="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-6">Dog & Cat Breed</h1>
-
+        <h1 className="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-0">Dog & Cat Breed</h1>
         <div className="w-full relative px-0 flex flex-col items-center">
           <Swiper
             slidesPerView={1.3} 
