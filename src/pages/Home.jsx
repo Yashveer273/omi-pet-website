@@ -254,7 +254,7 @@ export default function Home() {
 
       {/* ======================================================== */}
       {/* 🚀 SECTION 3: KEEP EXPLORING INFINITE WIDE CAROUSEL */}
-      {/* ======================================================== */}
+    
       <hr className="border-t border-slate-300/60 max-w-[1200px] mx-auto mb-20 relative z-10" />
 
       <section className="w-full mb-2 text-center flex flex-col items-center relative z-20">
