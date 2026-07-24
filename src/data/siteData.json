@@ -325,27 +325,66 @@
   "footerSectionData": {
     "title": "Have Questions About Pet Care?",
     "subtitle": "(We're Here To Help Us)",
-    "linksGrid": {
-      "exploreBy": [
-        "Home",
-        "About Us",
-        "Blogs",
-        "Contact Us",
-        "Update & Requirements"
-      ],
-      "wePresent": [
-        "Dog",
-        "Cat",
-        "Small Animals",
-        "Fish",
-        "Birds"
-      ],
-      "weTransfer": [
-        "Legal Terms",
-        "Explore WeTransfer",
-        "RSS"
-      ]
+   "linksGrid": {
+  "exploreBy": [
+    {
+      "name": "Home",
+      "path": "/"
+    },
+    {
+      "name": "About Us",
+      "path": "/about-us"
+    },
+    {
+      "name": "Blogs",
+      "path": "/blogs"
+    },
+    {
+      "name": "Contact Us",
+      "path": "/contact-us"
+    },
+    {
+      "name": "Update & Requirements",
+      "path": "/updates-requirements"
     }
+  ],
+  "wePresent": [
+    {
+      "name": "Dog",
+      "path": "/category/dog"
+    },
+    {
+      "name": "Cat",
+      "path": "/category/cat"
+    },
+    {
+      "name": "Small Animals",
+      "path": "/category/small-animals"
+    },
+    {
+      "name": "Fish",
+      "path": "/category/fish"
+    },
+    {
+      "name": "Birds",
+      "path": "/category/birds"
+    }
+  ],
+  "weTransfer": [
+    {
+      "name": "Legal Terms",
+      "path": "/legal-terms"
+    },
+    {
+      "name": "Explore WeTransfer",
+      "path": "/explore"
+    },
+    {
+      "name": "RSS",
+      "path": "/rss"
+    }
+  ]
+}
   }
 }
 

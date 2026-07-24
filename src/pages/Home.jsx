@@ -13,7 +13,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import SimpleCutePetSection from './IntegratedPetSection';
-
+import { useNavigate } from "react-router-dom";
 export default function Home() {
   // Centralized JSON Destructuring
   const { 
@@ -26,7 +26,7 @@ export default function Home() {
   const { heading: keepExploringHeading } = siteData.keepExploringSection;
 
   const { heading: ourBlogHeading, blogsData } = siteData.ourBlogSliderSection;
-
+const navigate =useNavigate();
   // Destructuring brand new Pro Promo Banner asset nodes
   const { upperContext, mainHeading } = siteData.proBannerSectionData;
 
@@ -82,11 +82,37 @@ export default function Home() {
     void fetchExploringCards();
   }, []);
 
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    alert(`Newsletter Registration Successful!\nWelcome aboard: ${newsletterForm.firstName}`);
-    setNewsletterForm({ firstName: '', lastName: '', email: '' });
-  };
+const handleNewsletterSubmit = (e) => {
+  e.preventDefault();
+
+  const firstName = newsletterForm.firstName.trim();
+  const lastName = newsletterForm.lastName.trim();
+  const email = newsletterForm.email.trim();
+
+  const whatsappNumber = "917300526177";
+
+  const message = `
+Hello,
+
+I would like to connect with you.
+
+First Name: ${firstName}
+Last Name: ${lastName}
+Email: ${email}
+  `.trim();
+
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+
+  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+  setNewsletterForm({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+};
 
   const getLocalizedImagesArray = () => {
     if (activeGalleryScope === 'hero') return [heroImage];
@@ -395,45 +421,104 @@ export default function Home() {
       </section>
 
       {/* 📋 SECTION 6: HIGH-END NEWSLETTER CONTACT FOOTER PANEL */}
-      <footer className="w-full bg-[#EAF0F9] pt-24 pb-16 border-t border-slate-300/60 relative z-10">
-        <div className="max-w-[1240px] mx-auto px-6 sm:px-8 flex flex-col lg:flex-row justify-between items-start w-full gap-16 lg:gap-8">
-          <div className="w-full lg:w-1/2 flex flex-col items-start text-left max-w-[520px]">
-            <h4 className="font-serif text-3xl sm:text-4xl text-slate-900 mb-2">{footerTitle}</h4>
-            <p className="font-serif text-3xl sm:text-4xl text-slate-900 mb-10">{footerSubtitle}</p>
-            <form onSubmit={handleNewsletterSubmit} className="w-full flex flex-col space-y-4">
-              <div className="w-full flex flex-col sm:flex-row gap-4">
-                <input type="text" required placeholder="First name" value={newsletterForm.firstName} onChange={(e) => setNewsletterForm({ ...newsletterForm, firstName: e.target.value })} className="w-full sm:w-1/2 px-6 py-4 rounded-full border border-slate-400/60 bg-transparent text-slate-800 font-sans text-sm focus:outline-none" />
-                <input type="text" required placeholder="Last name" value={newsletterForm.lastName} onChange={(e) => setNewsletterForm({ ...newsletterForm, lastName: e.target.value })} className="w-full sm:w-1/2 px-6 py-4 rounded-full border border-slate-400/60 bg-transparent text-slate-800 font-sans text-sm focus:outline-none" />
-              </div>
-              <input type="email" required placeholder="Your email address" value={newsletterForm.email} onChange={(e) => setNewsletterForm({ ...newsletterForm, email: e.target.value })} className="w-full px-6 py-4 rounded-full border border-slate-400/60 bg-transparent text-slate-800 font-sans text-sm focus:outline-none" />
-              <div className="w-full pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
-                <button type="button" className="px-6 py-4 rounded-full border font-sans text-sm" onClick={() => alert('Expanded Options')}>Tell us more +</button>
-                <button type="submit" className="px-8 py-4 rounded-full bg-slate-900 text-white font-sans text-sm font-semibold">Submit</button>
-              </div>
-            </form>
-          </div>
+     <footer className="w-full bg-[#EAF0F9] border-t border-slate-300/60 relative z-10">
+  <div className="w-full max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
+    <div className="w-full text-center mb-10">
+      <h4 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-slate-900 mb-3">
+        {footerTitle}
+      </h4>
 
-          <div className="w-full lg:w-1/2 grid grid-cols-2 sm:grid-cols-3 gap-10 md:gap-12 text-left pt-2">
-            <div>
-              <span className="text-[11px] font-sans font-bold uppercase text-slate-400 mb-6 block">Explore by</span>
-              <ul className="space-y-4">
-                {linksGrid.exploreBy.map((link, idx) => (
-                  <li key={idx}><a href={`/${link.toLowerCase()}`} className="font-serif text-xl sm:text-2xl text-slate-900">{link}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <span className="text-[11px] font-sans font-bold uppercase text-slate-400 mb-6 block">WePresent</span>
-              <ul className="space-y-4">
-                {linksGrid.wePresent.map((link, idx) => (
-                  <li key={idx}><a href={`/${link.toLowerCase()}`} className="font-serif text-xl sm:text-2xl text-slate-900">{link}</a></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <p className="font-serif text-2xl sm:text-3xl lg:text-4xl text-slate-900">
+        {footerSubtitle}
+      </p>
+    </div>
 
+    <form
+      onSubmit={handleNewsletterSubmit}
+      className="w-full flex flex-col gap-4"
+    >
+      {/* Name fields */}
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <input
+          type="text"
+          required
+          placeholder="First name"
+          value={newsletterForm.firstName}
+          onChange={(e) =>
+            setNewsletterForm({
+              ...newsletterForm,
+              firstName: e.target.value,
+            })
+          }
+          className="w-full px-6 py-4 rounded-full border border-slate-400/60 bg-transparent text-slate-800 font-sans text-sm placeholder:text-slate-500 focus:outline-none focus:border-slate-800 transition-colors"
+        />
+
+        <input
+          type="text"
+          required
+          placeholder="Last name"
+          value={newsletterForm.lastName}
+          onChange={(e) =>
+            setNewsletterForm({
+              ...newsletterForm,
+              lastName: e.target.value,
+            })
+          }
+          className="w-full px-6 py-4 rounded-full border border-slate-400/60 bg-transparent text-slate-800 font-sans text-sm placeholder:text-slate-500 focus:outline-none focus:border-slate-800 transition-colors"
+        />
+      </div>
+
+      {/* Email */}
+      <input
+        type="email"
+        required
+        placeholder="Your email address"
+        value={newsletterForm.email}
+        onChange={(e) =>
+          setNewsletterForm({
+            ...newsletterForm,
+            email: e.target.value,
+          })
+        }
+        className="w-full px-6 py-4 rounded-full border border-slate-400/60 bg-transparent text-slate-800 font-sans text-sm placeholder:text-slate-500 focus:outline-none focus:border-slate-800 transition-colors"
+      />
+
+      {/* Actions */}
+      <div className="w-full flex flex-col sm:flex-row gap-4 pt-2">
+        <button
+          type="button"
+          onClick={() => alert("Expanded Options")}
+          className="w-full sm:flex-1 px-6 py-4 rounded-full border border-slate-400/60 text-slate-900 font-sans text-sm hover:border-slate-900 transition-colors"
+        >
+          Tell us more +
+        </button>
+
+        <button
+          type="submit"
+          className="w-full sm:flex-1 px-8 py-4 rounded-full bg-slate-900 text-white font-sans text-sm font-semibold hover:bg-slate-800 transition-colors"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</footer>
+<a
+  href="https://wa.me/917300526177"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat with us on WhatsApp"
+  className="fixed right-5 bottom-5 sm:right-7 sm:bottom-7 z-[100] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.25)] hover:scale-110 active:scale-95 transition-transform duration-200"
+>
+  <svg
+    viewBox="0 0 32 32"
+    fill="currentColor"
+    className="w-8 h-8 sm:w-9 sm:h-9"
+    aria-hidden="true"
+  >
+    <path d="M16.04 3C8.87 3 3.04 8.83 3.04 16c0 2.29.6 4.53 1.73 6.5L3 29l6.67-1.75A12.94 12.94 0 0 0 16.04 29C23.21 29 29 23.17 29 16S23.21 3 16.04 3Zm0 23.82c-2.04 0-4.04-.55-5.78-1.59l-.41-.24-3.96 1.04 1.06-3.86-.27-.42A10.76 10.76 0 0 1 5.22 16c0-5.97 4.85-10.82 10.82-10.82S26.86 10.03 26.86 16s-4.85 10.82-10.82 10.82Zm5.94-8.11c-.32-.16-1.91-.94-2.21-1.05-.3-.11-.51-.16-.73.16-.21.32-.83 1.05-1.02 1.27-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.6-.96-.85-1.6-1.91-1.79-2.23-.19-.32-.02-.49.14-.65.15-.14.32-.38.49-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.57-.08-.16-.73-1.75-1-2.4-.26-.63-.53-.54-.73-.55h-.62c-.21 0-.57.08-.86.4-.3.32-1.13 1.1-1.13 2.69s1.16 3.12 1.32 3.34c.16.21 2.28 3.49 5.53 4.89.77.33 1.37.53 1.84.68.77.24 1.47.21 2.03.13.62-.09 1.91-.78 2.18-1.54.27-.76.27-1.41.19-1.54-.08-.14-.3-.22-.62-.38Z" />
+  </svg>
+</a>
       {/* LIGHTBOX OVERLAY SLIDER MODAL */}
       {isLightboxOpen && localizedImagesArray && localizedImagesArray.length > 0 && (
         <div onClick={handleBlanketTapAdvance} className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center cursor-pointer select-none">
